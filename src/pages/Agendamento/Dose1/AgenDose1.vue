@@ -22,10 +22,39 @@
               <button id="arrowFront" class=""></button>
             </div>
         </div>
-        <div id="selectDate" > 
+        <div id="selectDate" >
+          <button id="selectComponent"></button> 
+          <button id="selectComponent"></button> 
+          <button id="selectComponent"></button> 
+          <button id="selectComponent"></button> 
+          <button id="selectComponent"></button> 
+          <button id="selectComponent"></button> 
+          <button id="selectComponent"></button> 
+          <button id="selectComponent"></button> 
+          <button id="selectComponent"></button> 
+          <button id="selectComponent"></button> 
+          <button id="selectComponent"></button> 
+          <button id="selectComponent"></button> 
+          <button id="selectComponent"></button> 
+          <button id="selectComponent"></button> 
+          <button id="selectComponent"></button> 
+          <button id="selectComponent"></button> 
+          <button id="selectComponent"></button> 
+          <button id="selectComponent"></button> 
+          <button id="selectComponent"></button> 
+          <button id="selectComponent"></button> 
+          <button id="selectComponent"></button> 
+          <button id="selectComponent"></button> 
+          <button id="selectComponent"></button> 
+          <button id="selectComponent"></button> 
+          <button id="selectComponent"></button> 
+          <button id="selectComponent"></button> 
+          <button id="selectComponent"></button> 
+          <button id="selectComponent"></button> 
+          <button id="selectComponent"></button> 
+          <button id="selectComponent"></button> 
         </div>  
       </div>
-
   </div>
 </template>
 
@@ -97,6 +126,13 @@
   float:right;
   position: relative;
   background-color: #FFF9F9;
-  height: 300px;
+  height: 70%;
+  padding: 10px;
+}
+#selectComponent{
+  width: 100px;
+  height: 50px;
+  background-color: black;
+  margin: 5px;
 }
 </style>
