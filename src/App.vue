@@ -1,20 +1,18 @@
 <template>
   <div id="app">
     <NavBar></NavBar>
-    <CadCidadao></CadCidadao>
+    <router-view></router-view>
     <Footer></Footer>
   </div>
 </template>
 
 <script>
-import NavBar from './components/NavBar.vue'
-import Footer from './components/Footer.vue'
-import CadCidadao from './components/CadCidadao'
+import NavBar from './pages/NavBar.vue'
+import Footer from './pages/Footer.vue'
 
 export default {
   name: 'App',
   components: {
-    CadCidadao,
     NavBar,
     Footer
   }

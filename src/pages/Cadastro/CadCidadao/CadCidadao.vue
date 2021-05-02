@@ -86,7 +86,7 @@ export default {
         id: this.cidadaos.length + 1 });
       if (this.nomeField!='') {
           console.log(this.cidadaos)
-          this.gerarPDF();
+        //   this.gerarPDF();
             // this.nomeField = '',
             // this.dataField = '',
             // this.CPFField = '',

@@ -11,7 +11,6 @@
         <p>Email: {{cidadao.email}}</p>
         <p>Senha: {{cidadao.senha}}</p>
         <button @click="mudarCor">Mudar cor</button>
-        
     </div>
 </template>
 
