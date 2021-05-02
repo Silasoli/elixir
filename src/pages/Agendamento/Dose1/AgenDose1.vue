@@ -10,14 +10,22 @@
         </div>
       </div>
       <div id="mainDiv">
-        <button id="arrowBack" class="inline"></button>
-          <h4 class="inline">Abril</h4>
-          <p class="inline">2021</p>
-        <b-button id="arrowFront" class="inline"></b-button>
-         <div id="selectDate" > 
+        <div id="header">
+          <div id="btnBack">
+              <button id="arrowBack" class=""></button>
+          </div>  
+          <div id="divTitle">
+            <h4 class="">Abril</h4>
+            <p class="">2021</p>  
+          </div> 
+           <div id="btnFront">
+              <button id="arrowFront" class=""></button>
+            </div>
+        </div>
+        <div id="selectDate" > 
         </div>  
       </div>
-       
+
   </div>
 </template>
 
@@ -47,37 +55,48 @@
 #mainDiv{
   margin-top: 70px;
   width: 50%;
-  padding-top: 25px;
+  padding-top: 30px;
   float:right;
   background-color: #6A5ACD;
 }
-.inline{
-  display: inline;
-}
-#selectDate{
-  margin-top: 25px;
-  width: 100%;
-  float:right;
-  position: relative;
-  background-color: #FFF9F9;
-  height: 300px;
-}
-
-#arrowFront, #arrowBack {
-  color: black;
-  width: 10%;
-  height: 5rem;
-  border-radius: 0px;
+#arrowBack {
+  width: 15%;
   background-color: transparent;
   background-image: url("./left-arrow.png");
   background-repeat: no-repeat;
   background-size: contain;
+  height: 40px;
   border: 0px;
+  float: left;
 }
 #arrowFront{
  -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
+  background-color: transparent;
+  background-image: url("./left-arrow.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 15%;
+  height: 40px;
+  border: 0px;
   float: right;
+}
+#divTitle{
+  text-align: center;
+  width: 70%;
+  float: left;
+}
+#header{
+  height: 60px;
+  padding-left: 20px;
+  padding-right: 20px; 
+}
+#selectDate{
+  width: 100%;
+  float:right;
+  position: relative;
+  background-color: #FFF9F9;
+  height: 300px;
 }
 </style>
