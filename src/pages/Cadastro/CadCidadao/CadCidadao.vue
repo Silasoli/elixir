@@ -50,7 +50,7 @@
 </template>
 
 <script>
-//  import jsPDF from 'jspdf';
+// import jsPDF from 'jspdf';
 
 export default {
   name: 'CadUsu',
@@ -163,3 +163,5 @@ export default {
     text-align: left;
 }
 </style>
+
+       

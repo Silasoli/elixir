@@ -22,38 +22,39 @@
               <button id="arrowFront" class=""></button>
             </div>
         </div>
-        <div id="selectDate" >
-          <button id="selectComponent"></button> 
-          <button id="selectComponent"></button> 
-          <button id="selectComponent"></button> 
-          <button id="selectComponent"></button> 
-          <button id="selectComponent"></button> 
-          <button id="selectComponent"></button> 
-          <button id="selectComponent"></button> 
-          <button id="selectComponent"></button> 
-          <button id="selectComponent"></button> 
-          <button id="selectComponent"></button> 
-          <button id="selectComponent"></button> 
-          <button id="selectComponent"></button> 
-          <button id="selectComponent"></button> 
-          <button id="selectComponent"></button> 
-          <button id="selectComponent"></button> 
-          <button id="selectComponent"></button> 
-          <button id="selectComponent"></button> 
-          <button id="selectComponent"></button> 
-          <button id="selectComponent"></button> 
-          <button id="selectComponent"></button> 
-          <button id="selectComponent"></button> 
-          <button id="selectComponent"></button> 
-          <button id="selectComponent"></button> 
-          <button id="selectComponent"></button> 
-          <button id="selectComponent"></button> 
-          <button id="selectComponent"></button> 
-          <button id="selectComponent"></button> 
-          <button id="selectComponent"></button> 
-          <button id="selectComponent"></button> 
-          <button id="selectComponent"></button> 
-        </div>  
+        <div id="selectDate">
+          <div id="divDay">
+            <button class="days">Domingo</button> 
+            <button class="days">Segunda</button> 
+            <button class="days">Terça</button> 
+            <button class="days">Quarta</button> 
+            <button class="days">Quinta</button> 
+            <button class="days">Sexta</button>
+            <button class="days">Sabado</button> 
+          </div>
+          <button value="1" v-for="item in 30" :key="item" :class="'selectComponent'+item" id="selectComponent">{{item}}</button> 
+        </div> 
+            <b-button id="btnSave1" class="saveBtn"    @click="salvar" variant="primary">Salvar</b-button>
+      </div>
+      <div id="mainDivHorario">
+        <div id="header">
+          <div id="btnBack">
+              <button id="arrowBack" class=""></button>
+          </div>  
+          <div id="divTitle">
+            <h4 class="">Selecione um horario</h4>
+          </div> 
+           <div id="btnFront">
+              <button id="arrowFront" class=""></button>
+            </div>
+        </div>
+        <div id="selectDate">
+          <div id="divDay">
+           
+          </div>
+          <button value="1" v-for="item in 30" :key="item" :class="'selectComponent'+item" id="selectComponent">{{item}}</button> 
+        </div> 
+            <b-button id="btnSave1" class="saveBtn"    @click="salvar" variant="primary">Salvar</b-button>
       </div>
   </div>
 </template>
@@ -62,6 +63,7 @@
  export default {
     data() {
       return {
+        dayFiel: '',
         selected: null,
         options: [
           { value: null, text: 'Selecione um Posto' },
@@ -69,21 +71,43 @@
           { value: 2, text: 'Posto 3' },
           { value: 3, text: 'Posto 4' },
           { value: 4, text: 'Posto 5', disabled: true }
+        ],
+        form: [
+
         ]
       }
+    },
+    methods:{
+    //     AgenDose1: function(){
+    //         this.form.push({
+    //         nome:this.dayFiel,
+    //         data:this.selected,
+    //         id: this.form.length + 1 });
+    //         console.log(this.form)
+    // },
+    salvar: function(){
+        document.getElementById('mainDivHorario').style.display = "block";
+        document.getElementById('mainDiv').style.display = "none";
+        var dNow = new Date();
+        var hora =  dNow.getHours() + ':'
+        var minutos =dNow.setMinutes(dNow.getMinutes());
+        // minutos = minutos+(dNow.setMinutes(0));
+        var localdate = hora + minutos;
+        console.log(localdate)
     }
   }
+ }
 </script>
 
 <style>
 #selectLocal{
-  width: 25%;
+  width: 20%;
   float: right;
   margin-right: 30px;
 }
 #mainDiv{
   margin-top: 70px;
-  width: 50%;
+  width: 900px;
   padding-top: 30px;
   float:right;
   background-color: #6A5ACD;
@@ -122,17 +146,42 @@
   padding-right: 20px; 
 }
 #selectDate{
-  width: 100%;
   float:right;
   position: relative;
   background-color: #FFF9F9;
-  height: 70%;
-  padding: 10px;
+  height: 390x;
+  padding: 16px;
+  padding-left: 18px;
 }
 #selectComponent{
-  width: 100px;
+  width: 110px;
   height: 50px;
-  background-color: black;
+  background-color: #CCBD5A;
   margin: 5px;
+  position: relative;
+  color: black;
+  margin-left: 8px;
+  border: 0px;
+}
+#selectComponent::after{
+  background-color: black;
+  
+}
+.days{
+  width: 110px;
+  height: 50px;
+  margin: 5px;  
+  font-weight: bolder;
+  border: 0px;
+  pointer-events: none;
+  margin-left: 8px;
+}
+#mainDivHorario{
+  margin-top: 70px;
+  width: 900px;
+  padding-top: 30px;
+  float:right;
+  background-color: #6A5ACD;
+  display: none;
 }
 </style>
