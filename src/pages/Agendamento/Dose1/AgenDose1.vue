@@ -55,7 +55,8 @@
           <div id="hours">
             <button v-for="item in 30" :key="item" :id="'selectComponentH'+item" class="selectComponent" @click="selectHours(`${item}`)">{{item}}</button> 
           </div>
-        </div> 
+        </div>
+            <b-button class="returnBtn"  @click="voltar" variant="primary">Voltar</b-button>
             <b-button id="btnSave1" class="saveBtn"   variant="primary">Salvar</b-button>
       </div>
   </div>
@@ -96,6 +97,10 @@
         // minutos = minutos+(dNow.setMinutes(0));
         // var localdate = hora + minutos;
         // console.log(localdate)
+    },
+    voltar: function() {
+        document.getElementById('mainDivHorario').style.display = "none";
+        document.getElementById('mainDiv').style.display = "block";
     },
     selectData:function(id) {
        let btn = document.getElementById('selectComponentD'+id)
