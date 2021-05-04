@@ -162,7 +162,7 @@
 #mainDiv{
   width: 50%;
   padding-top: 30px;
-  position: absolute;
+  position: relative;
   top: 140px; bottom: 0;
   left: 0; right: 0;
   margin: auto;
@@ -183,14 +183,20 @@
   height: 42%;
   padding-top: 30px;
   display: none;
+ 
+}
+.selectHour{
+  width: 22% !important;
+  padding: 5px;
+  margin-left: 15px;
+}
+#hours{
   background-color:white;
   border-color: #6A5ACD !important;
   border: solid;
   border-radius: 5px;
-}
-.selectHour{
-  width: 22% !important;
-  margin: 10px;
-  margin-left: 15px;
+  height: 40%;
+  padding: 5px;
+
 }
 </style>
