@@ -48,9 +48,9 @@ router.route('/cidadaos')
         
         //set fields
         cidadao.nomeCompleto = req.body.nomeCompleto;
-        // cidadao.dataNascimento = req.body.dataNascimento;
-        // cidadao.CPF = req.body.CPF;
-        // cidadao.tel = req.body.tel;
+        cidadao.dataNascimento = req.body.dataNascimento;
+        cidadao.CPF = req.body.CPF;
+        cidadao.tel = req.body.tel;
         cidadao.email = req.body.email;
         cidadao.senha = req.body.senha;
         
@@ -95,9 +95,9 @@ router.route('/cidadaos/:cidadao_id')
             
             //Atualizar campos
             cidadaos.nomeCompleto = req.body.nomeCompleto;
-            // cidadaos.dataNascimento = req.body.dataNascimento;
-            // cidadaos.CPF = req.body.CPF;
-            // cidadaos.tel = req.body.tel;
+            cidadaos.dataNascimento = req.body.dataNascimento;
+            cidadaos.CPF = req.body.CPF;
+            cidadaos.tel = req.body.tel;
             cidadaos.email = req.body.email;
             cidadaos.senha = req.body.senha;
             //Salvar

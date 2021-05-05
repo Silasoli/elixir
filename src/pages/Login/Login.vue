@@ -14,8 +14,8 @@
                <div v-if="!registerActive" class="card login" v-bind:class="{ error: emptyFields }">
                   <h1>Logar</h1>
                   <form class="form-group">
-                     <input v-model="emailLogin" type="email" class="form-control" placeholder="Email" required>
-                     <input v-model="passwordLogin" type="password" class="form-control" placeholder="Senha" required>
+                     <input v-model="emailField" type="email" class="form-control" placeholder="Email" required>
+                     <input v-model="passwordField" type="password" class="form-control" placeholder="Senha" required>
                      <input type="submit" class="btn btn-primary" @click="doLogin">
                      <p>Não tem uma conta? <a href="#" @click="IrCadCidadao">Criar</a>
                      </p>
@@ -38,22 +38,28 @@ export default {
     name: 'NavBar.vue',
     data() {
         return{
-        registerActive: false,
-        emailLogin: "",
-        passwordLogin: "",
-        emailReg: "",
-        passwordReg: "",
-        confirmReg: "",
-        emptyFields: false
-        }
-    },
+        emailField: "",
+        passwordField: "",
+        emptyFields: false,
+        Login:[
+           {
+
+           }
+        ]
+      }
+   },
     
     methods: {
         doLogin() {
-            if (this.emailLogin === "" || this.passwordLogin === "") {
+            if (this.emailField === "" || this.passwordField === "") {
                 this.emptyFields = true;
             } else {
-                alert("You are now logged in");
+                this.Login.push({
+                  email: this.emailField,
+                  senha:this.passwordField,
+                  id: this.Login.length + 1 });
+                  console.log(this.Login[1]);
+               // window.location.href = "http://localhost:8080/#/home";
             }
         },
           IrCadCidadao: function() {

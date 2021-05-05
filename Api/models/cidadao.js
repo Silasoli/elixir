@@ -3,9 +3,9 @@ var Schema = mongoose.Schema;
 
 var CidadaoSchema = new Schema({
     nomeCompleto:String,
-    // dataNascimento:String,
-    // CPF:String,
-    // tel:String,
+    dataNascimento:String,
+    CPF:String,
+    tel:String,
     email:String,
     senha:String
 });
