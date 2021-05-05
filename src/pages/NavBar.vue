@@ -2,7 +2,7 @@
 <div>
   <div>
     <b-navbar id="nav">
-      <h1 id="titleNav" href="#">NavBar</h1>
+      <h1 id="titleNav" href="#" @click="IrLogin">Elixir</h1>
       <b-button id="sideMenu" v-b-toggle.sidebar-right></b-button>
     </b-navbar>
   </div>
@@ -26,8 +26,11 @@ export default {
      IrCadCidadao: function() {
       window.location.href = "http://localhost:8080/#/cadcidadao";
     },
-    IrHome: function() {
+    IrLogin: function() {
       window.location.href = "http://localhost:8080/#/";
+    },
+    IrHome: function() {
+      window.location.href = "http://localhost:8080/#/home";
     },
     IrDose1: function() {
       window.location.href = "http://localhost:8080/#/agendose1";
@@ -66,5 +69,8 @@ export default {
   color: black;
   width: 100%;
   border-radius: 0px;
+}
+#titleNav{
+  margin-top: 10px;
 }
 </style>
