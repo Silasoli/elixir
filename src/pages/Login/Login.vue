@@ -17,7 +17,7 @@
                      <input v-model="emailField" type="email" class="form-control" placeholder="Email" required>
                      <input v-model="passwordField" type="password" class="form-control" placeholder="Senha" required>
                      <input type="submit" class="btn btn-primary" @click="doLogin">
-                     <p>Não tem uma conta? <a href="#" @click="IrCadCidadao">Criar</a>
+                     <p>Não tem uma conta? <a href="#" @click="CadCidadaoNew">Criar</a>
                      </p>
                      <!-- <p><a href="#">Forgot your password?</a></p> -->
                   </form>
@@ -62,7 +62,7 @@ export default {
                // window.location.href = "http://localhost:8080/#/home";
             }
         },
-          IrCadCidadao: function() {
+          CadCidadaoNew: function() {
             window.location.href = "http://localhost:8080/#/cadcidadao";
         },
     }
