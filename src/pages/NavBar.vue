@@ -2,7 +2,7 @@
 <div>
   <div>
     <b-navbar id="nav">
-      <h1 id="titleNav" href="#">NavBar</h1>
+      <h1 id="titleNav" href="#">Elixir</h1>
       <b-button id="sideMenu" v-b-toggle.sidebar-right></b-button>
     </b-navbar>
   </div>

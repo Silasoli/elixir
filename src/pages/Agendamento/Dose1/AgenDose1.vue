@@ -7,7 +7,7 @@
       </div>
       <div id="localDrop">
         <div id="selectLocal">
-          <b-form-select v-model="selected" :options="options" size="sm" class="mt-3" valeu=""></b-form-select>
+          <b-form-select v-model="selected" :options="options" size="sm " class="mt-3" valeu=""></b-form-select>
           <!-- <div class="mt-3">Selected: <strong>{{ selected }}</strong></div> -->
         </div>
       </div>
@@ -20,7 +20,7 @@
       <div id="mainDivHorario">
         <div id="header"> 
           <div id="divTitle">
-            <h4 class="">Selecione um horario</h4>
+            <h4 class="title">Selecione um horario:</h4>
           </div> 
         </div>
         <div id="selectDate">
@@ -40,11 +40,21 @@
             <el-time-select class="selectHour" readonly v-model="value9" @focus="gethour('10:30')"></el-time-select>
             <el-time-select class="selectHour" readonly v-model="value10" @focus="gethour('10:45')"></el-time-select>
             <el-time-select class="selectHour" readonly v-model="value11" @focus="gethour('11:00')"></el-time-select>
-            <el-time-select class="selectHour" readonly v-model="value12" @focus="gethour('11:15')"></el-time-select>
+            <el-time-select class="selectHour" readonly v-model="value12" 
+            @focus="gethour('11:15')"></el-time-select>
+             <el-time-select class="selectHour" readonly v-model="value13" 
+            @focus="gethour('11:30')"></el-time-select>
+             <el-time-select class="selectHour" readonly v-model="value14" 
+            @focus="gethour('11:45')"></el-time-select>
+            <el-time-select class="selectHour" readonly v-model="value15" 
+            @focus="gethour('12:00')"></el-time-select>
+            <el-time-select class="selectHour" readonly v-model="value16" 
+            @focus="gethour('12:15')"></el-time-select>
+             
           </div>
         </div>
-            <b-button class="returnBtn"  @click="voltar" variant="primary">Voltar</b-button>
-            <b-button id="btnSave1" class="saveBtn"   variant="primary">Salvar</b-button>
+            <b-button class="returnBtn" id="returnBtn"  @click="voltar" variant="primary">Voltar</b-button>
+            <b-button id="btnSave2" class="saveBtn"   variant="primary">Salvar</b-button>
       </div>
   </div>
 </template>
@@ -68,10 +78,10 @@
         value10:'10:45',
         value11:'11:00',
         value12:'11:15',
-        // value13:'11:15',
-        // value14:'11:30',
-        // value15:'11:45',
-        // value16:'12:00',
+        value13:'11:30',
+        value14:'11:45',
+        value15:'12:00',
+        value16:'12:15',
         // value17:'12:15',
         // value18:'12:30',
         // value19:'12:45',
@@ -151,6 +161,10 @@
 </script>
 
 <style>
+
+*{
+  box-sizing: border-box;
+}
 /* Style TELA 1 */
 #selectLocal{
   width: 23%;
@@ -199,4 +213,356 @@
   padding: 5px;
 
 }
+/*Tela de 320*/
+@media(min-width:320px){
+    div#titlePage  {
+    text-align: center;
+    position: absolute;
+    top: -100px  ;
+}
+div#selectLocal{
+  position: relative;
+  top: 200px;
+  left: -70px;
+  width: 100%;
+ 
+}
+div#selectDate{
+  position: relative;
+  top: -130px;
+  left: -55px;
+  margin: 10px;
+  width: 190px;
+}
+#btnSave1{
+  position: relative !important;
+  top: -140px;
+  left: 40px !important;
+ 
+}
+/*Tela 2 responsiva 320px*/
+ 
+div#hours{
+  position: relative;
+  top:10px ;
+  left: 10px;
+  display: grid;
+  grid-template-columns: 100px 100px;
+  grid-column-gap: 5px ;
+  margin: 10px;
+  width: 240px;
+ }
+ .selectHour{
+   width: 105px !important;
+   margin: 10px  !important;
+ }
+ div#divTitle{
+   position: relative;
+   top: -150px;
+  text-align: center; 
+}
+#btnSave2{
+  position: relative !important;
+  top: -130px;
+  margin-bottom: 10px  !important;
+
+}
+#returnBtn{
+  position: relative !important;
+  top: -130px !important;
+  margin-bottom: 10px  !important;
+}
+
+}
+/*Tela de 375*/
+@media(min-width:375px) {
+ 
+div#titlePage  {
+    text-align: center;
+    position: absolute;
+    top: -100px  ;
+}
+
+div#selectLocal{
+  position: relative;
+  top: 220px;
+  left: -70px;
+  width: 100%;
+}
+div#selectDate{
+  position: relative;
+  top: -120px;
+  left: -30px;
+  margin: 10px;
+  width: 200px;
+}
+#btnSave1{
+  position: relative;
+  top: -120px;
+ left: 70px;
+}
+/*Tela 2 responsiva 375px*/
+ 
+div#hours{
+  position: relative;
+  top:0px ;
+  left: 10px;
+  display: grid;
+  grid-template-columns: 100px 100px;
+  grid-column-gap: 5px ;
+  margin: 10px;
+  width: 240px;
+ }
+ .selectHour{
+   width: 105px !important;
+   margin: 10px  !important;
+ }
+ div#divTitle{
+   position: relative;
+   top: -150px;
+  text-align: center; 
+}
+#btnSave2{
+  position: relative !important;
+  top: -120px;
+  margin: 10px  !important;
+
+}
+#returnBtn{
+  position: relative !important;
+  top: -120px !important;
+  margin-bottom: 30px  !important;
+  
+}
+
+}
+/*Tela de 425*/
+@media(min-width:425px){
+  div#titlePage  {
+    text-align: center;
+    position: absolute;
+    top: -100px  ;
+}
+
+div#selectLocal{
+  position: relative;
+  top: 220px;
+  left: -70px;
+  width: 100%;
+}
+div#selectDate{
+  position: relative;
+  top: -120px;
+  left: -24px;
+  margin: 10px;
+  width: 190px;
+}
+#btnSave1{
+  position: relative;
+  top: -120px;
+ left: 70px;
+}
+}
+/*Tela de 768*/
+@media(min-width:768px){
+
+ div#titlePage  {
+    text-align: center;
+    position: absolute;
+    top: -100px  ;
+}
+div#selectLocal{
+  position: relative;
+  top: 200px;
+  left: -210px;
+  width: 50%;
+ 
+}
+div#selectDate{
+  position: relative;
+  top: -130px;
+  left: -70px;
+  margin: 10px;
+  width: 500px;
+}
+#btnSave1{
+  position: relative !important;
+  top: -140px;
+  left: 40px !important;
+}
+/*Tela 2 responsiva 768*/
+ 
+div#hours{
+  position: relative;
+  top:0px ;
+  left: 35px;
+  display: grid;
+  grid-template-columns: 150px 150px 150px;
+  grid-template-rows: 50px 50px 50px ;
+  grid-column-gap: 20px;
+  grid-row-gap: 0px;
+  margin: 10px;
+  width: 500px;
+ }
+ .selectHour{
+   width: 105px !important;
+   margin: 0px 0px 0px 20px  !important;
+ }
+ div#divTitle{
+   position: relative;
+   top: -150px;
+  text-align: center; 
+}
+#btnSave2{
+  position: relative !important;
+  top: -120px;
+  margin: 10px  !important;
+
+}
+#returnBtn{
+  position: relative !important;
+  top: -120px !important;
+  margin-bottom: 30px  !important;
+  
+}
+
+}
+/*Tela de 1024*/
+@media(min-width:1024px){
+
+ div#titlePage  {
+    text-align: left;
+    position: absolute;
+    top: -125px ;
+    left: -150px;
+}
+div#selectLocal{
+  position: relative;
+  top: -170px;
+  left: 150px;
+  width: 50%;
+ 
+}
+div#selectDate{
+  position: relative;
+  top: -130px;
+  left: -70px;
+  margin: 10px;
+  width: 700px;
+}
+#btnSave1{
+  position: relative !important;
+  top: -140px;
+  left: 40px !important;
+}
+/*Tela 2 responsiva 1024*/
+ 
+div#hours{
+  position: relative;
+  top:0px ;
+  left: 35px;
+  display: grid;
+  grid-template-columns: 150px 150px 150px;
+  grid-template-rows: 50px 50px 50px ;
+  grid-column-gap: 20px;
+  grid-row-gap: 0px;
+  margin: 10px;
+  width: 600px;
+  
+ }
+ .selectHour{
+   width: 105px !important;
+   margin: 0px 0px 0px 50px  !important;
+   
+ }
+ div#divTitle{
+   position: relative;
+   top: -150px;
+  text-align: center; 
+}
+#btnSave2{
+  position: relative !important;
+  top: -120px;
+  left: -40px;
+  margin: 10px  !important;
+
+}
+#returnBtn{
+  position: relative !important;
+  top: -120px !important;
+  margin-bottom: 30px  !important;
+  
+}
+
+}
+/*Tela de 1440*/
+@media(min-width:1281px){
+
+ div#titlePage  {
+    text-align: left;
+    position: absolute;
+    top: -125px ;
+    left: -150px;
+}
+div#selectLocal{
+  position: relative;
+  top: -170px;
+  left: 150px;
+  width: 50%;
+ 
+}
+div#selectDate{
+  position: relative;
+  top: -130px;
+  left: -70px;
+  margin: 10px;
+  width: 800px;
+}
+#btnSave1{
+  position: relative !important;
+  top: -140px;
+  left: 40px !important;
+}
+/*Tela 2 responsiva 1440*/
+ 
+div#hours{
+  position: relative;
+  top:0px ;
+  left: 35px;
+  display: grid;
+  grid-template-columns: 150px 150px 150px 150px 150px ;
+  grid-template-rows: 50px 50px 50px 50px ;
+  grid-column-gap: 20px;
+  grid-row-gap: 0px;
+  margin: 10px;
+  width: 880px;
+  
+ }
+ .selectHour{
+   width: 105px !important;
+   margin: 0px 0px 0px 50px  !important;
+   align-self: flex-start;
+   
+ }
+ div#divTitle{
+   position: relative;
+   top: -150px;
+  text-align: center; 
+}
+#btnSave2{
+  position: relative !important;
+  top: -120px;
+  left: -40px;
+  margin: 10px  !important;
+
+}
+#returnBtn{
+  position: relative !important;
+  top: -120px !important;
+  margin-bottom: 30px  !important;
+  
+}
+
+}
+
 </style>
