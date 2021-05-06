@@ -150,7 +150,7 @@
  }
 </script>
 
-<style>
+<style scoped>
 /* Style TELA 1 */
 #selectLocal{
   width: 23%;
@@ -198,5 +198,19 @@
   height: 40%;
   padding: 5px;
 
+}
+.saveBtn{
+   float: right;
+    margin-top: 10px !important;
+    margin: 5px;
+    background-color: #F45267 !important;
+    border: none !important;
+}
+.returnBtn{
+    float: left;
+    margin-top: 10px !important;
+    margin: 5px;
+    background-color: #F45267 !important;
+    border: none !important;
 }
 </style>
