@@ -24,6 +24,7 @@ Vue.use(ElementUI);
 
 
 //import for routes
+import Login from './pages/Login/Login.vue'
 import Home from './pages/Home/Home.vue'
 import CadCidadao from './pages/Cadastro/CadCidadao/CadCidadao.vue'
 import AgenDose1 from './pages/Agendamento/Dose1/AgenDose1.vue'
@@ -31,7 +32,8 @@ import AgenDose2 from './pages/Agendamento/Dose2/AgenDose2.vue'
 
 
 const routes = [
-  { path:'/', component: Home},
+  { path:'/', component: Login},
+  { path:'/Home', component: Home},
   { path:'/CadCidadao', component: CadCidadao},
   { path:'/AgenDose1', component: AgenDose1},
   { path:'/AgenDose2', component: AgenDose2},

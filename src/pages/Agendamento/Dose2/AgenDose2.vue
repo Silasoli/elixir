@@ -1,16 +1,32 @@
 <template>
   <div id="mainDiv">
     <div id="titlePage">
-      <h3>Agendamentos do dia</h3>
-      <h3>04/05/2021</h3>
+      <h3 id="title">Agendamentos do dia</h3>
+      <h3 id="dataDoDia">05/05/2021</h3>
     </div>
-    <div id="search">
-      <b-form-input id="date1" type="date" v-model="date1"></b-form-input>
-      <b-form-input id="date2" type="date" v-model="date2"></b-form-input>
-      <b-button id="searchBtn"></b-button>
+    <div id="filtro">
+        <div id="filtro2">
+            <div id="searchDiv">
+              <b-button id="searchBtn"></b-button>
+            </div>
+      </div>
+      <div id="filtroInicio">
+          <label for="">Fim</label>
+          <b-form-input class="date" id="date1" type="date" v-model="date1"></b-form-input>
+      </div>
+      <div id="filtroFim">
+          <label for="">Inicio</label>
+          <b-form-input class="date" id="date2" type="date" v-model="date2"></b-form-input>
+      </div>
     </div>
     <div id="table">
- 
+      <!-- <input type="text">
+      <input type="text">
+      <input type="text">
+      <input type="text">
+      <input type="text">
+      <input type="text"> -->
+      <button></button>
     </div>
   </div>
 </template>
@@ -66,25 +82,71 @@
 </script>
 
 <style>
-#tablePrincipal{
+#mainDiv{
   width: 60%;
   height: 40%;
   padding-top: 30px;
   position: absolute;
-  top: 0px; bottom: 0;
+  top: -180px; bottom: 0;
   left: 0; right: 0;
   margin: auto;
-  background-color: white;
+  /* background-color: white; */
 }
 #searchBtn{
+  margin-top: 17px;
   width: 40px;
   height: 40px;
-  position: absolute;
-  right: 30px;
+  position: relative;
+  /* bottom:0px; */
   border: none !important;
   background-color: transparent;
   background-image: url("./pngegg.png");
   background-repeat: repeat-x;
   background-size: contain;
+}
+#filtroInicio{
+  width: 26%;
+  display: inline;
+  float: right;
+  padding: 5px;
+  margin: 10px;
+}
+#filtroFim{
+  width: 26%;
+  display: inline;
+  float: right;
+  padding: 5px;
+  margin: 10px;
+}
+#filtro2{
+  width: 5%;
+  display: inline;
+  float: right;
+  padding: 5px;
+  margin: 10px;
+}
+#searchDiv{
+  width: 26%;
+  display: inline;
+  float: right;
+  padding: 5px;
+  margin: 10px;
+}
+#filtro{
+  width: 100%;
+}
+#title{
+  float: left;
+}
+#dataDoDia{
+  position: absolute;
+  right: 0px;
+}
+#titlePage{
+  margin-bottom: 40px;
+}
+#table{
+  display: inline;
+  background-color: black;
 }
 </style>
