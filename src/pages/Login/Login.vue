@@ -85,7 +85,7 @@ input {
    height: 80vh;
 }
 .wallpaper-login {
-    margin-top: 93px;
+    margin-top: 76px;
     background: url('https://docs.google.com/uc?export=download&id=1hc7I5hhzrzJq9LKXv_xPcsQefSfL0xaT')
     no-repeat center center;
     background-size: cover;
@@ -100,6 +100,7 @@ h1 {
     animation-name: errorShake;
     animation-duration: 0.3s;
 }
+
 
 @keyframes errorShake {
    0% {
@@ -117,5 +118,16 @@ h1 {
    100% {
       transform: translateX(0);
    }
+}
+@media(max-width:1440px){
+   .wallpaper-login {
+    margin-top: 66px;
+    background: url('https://docs.google.com/uc?export=download&id=1hc7I5hhzrzJq9LKXv_xPcsQefSfL0xaT')
+    no-repeat center center;
+    background-size: cover;
+    height: 92%;
+    position: absolute;
+    width: 100%;
+}
 }
 </style>

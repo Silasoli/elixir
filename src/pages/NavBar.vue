@@ -2,7 +2,7 @@
 <div>
   <div>
     <b-navbar id="nav">
-      <h1 id="titleNav" href="#" @click="IrLogin">Elixir</h1>
+      <h1 id="titleNav" href="http://localhost:8080/#/" @click="IrLogin">Elixir</h1>
       <b-button id="sideMenu" v-b-toggle.sidebar-right></b-button>
     </b-navbar>
   </div>
@@ -13,6 +13,7 @@
       <b-button class="btnSideBar" @click="IrDose2">Agendar Segunda Dose</b-button>
       <b-button class="btnSideBar" @click="IrCadCidadao">Cadastrar Cidadão</b-button>
       <b-button class="btnSideBar" @click="IrHome">Home</b-button>
+     
     </div>
   </b-sidebar>
   </div>
@@ -25,7 +26,7 @@ export default {
   methods:{
      IrCadCidadao: function() {
       window.location.href = "http://localhost:8080/#/cadcidadao";
-    },
+    }, 
     IrLogin: function() {
       window.location.href = "http://localhost:8080/#/";
     },
@@ -61,9 +62,7 @@ export default {
   background-repeat: repeat-x;
   background-size: contain;
 }
-#sidebar-right{
-  
-}
+
 .btnSideBar{
   background: #F8F9FA;
   color: black;

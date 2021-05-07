@@ -81,72 +81,7 @@
   }
 </script>
 
-<style>
-#mainDiv{
-  width: 60%;
-  height: 40%;
-  padding-top: 30px;
-  position: absolute;
-  top: -180px; bottom: 0;
-  left: 0; right: 0;
-  margin: auto;
-  /* background-color: white; */
-}
-#searchBtn{
-  margin-top: 17px;
-  width: 40px;
-  height: 40px;
-  position: relative;
-  /* bottom:0px; */
-  border: none !important;
-  background-color: transparent;
-  background-image: url("./pngegg.png");
-  background-repeat: repeat-x;
-  background-size: contain;
-}
-#filtroInicio{
-  width: 26%;
-  display: inline;
-  float: right;
-  padding: 5px;
-  margin: 10px;
-}
-#filtroFim{
-  width: 26%;
-  display: inline;
-  float: right;
-  padding: 5px;
-  margin: 10px;
-}
-#filtro2{
-  width: 5%;
-  display: inline;
-  float: right;
-  padding: 5px;
-  margin: 10px;
-}
-#searchDiv{
-  width: 26%;
-  display: inline;
-  float: right;
-  padding: 5px;
-  margin: 10px;
-}
-#filtro{
-  width: 100%;
-}
-#title{
-  float: left;
-}
-#dataDoDia{
-  position: absolute;
-  right: 0px;
-}
-#titlePage{
-  margin-bottom: 40px;
-}
-#table{
-  display: inline;
-  background-color: black;
-}
+<style scoped>
+
+
 </style>

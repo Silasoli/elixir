@@ -3,7 +3,7 @@
       <!-- TELA 1 -->
       <div id="mainDiv">
         <div id="titlePage">
-       <h3>Olá, escolha uma data:</h3>
+       <h4>Olá, escolha uma data:</h4>
       </div>
       <div id="localDrop">
         <div id="selectLocal">
@@ -12,7 +12,7 @@
         </div>
       </div>
         <div id="selectDate">
-           <v-date-picker v-model='selectedDate'  :value="null" color="purple" is-dark is-expanded @dayclick="getday"/>
+           <v-date-picker v-model='selectedDate'  :value="null"  id="Date2" color="purple" is-dark is-expanded @dayclick="getday"/>
         </div> 
             <b-button id="btnSave1" class="saveBtn"    @click="salvar" variant="primary">Salvar</b-button>
       </div>
@@ -53,7 +53,8 @@
              
           </div>
         </div>
-            <b-button class="returnBtn" id="returnBtn"  @click="voltar" variant="primary">Voltar</b-button>
+            <b-button class="returnBtn" id="returnBtn1"  @click="voltar" variant="primary">Voltar</b-button>
+            
             <b-button id="btnSave2" class="saveBtn"   variant="primary">Salvar</b-button>
       </div>
   </div>
@@ -160,7 +161,7 @@
  }
 </script>
 
-<style>
+<style scoped>
 
 *{
   box-sizing: border-box;
@@ -223,21 +224,22 @@
 div#selectLocal{
   position: relative;
   top: 200px;
-  left: -70px;
+  left: -50px;
   width: 100%;
  
 }
 div#selectDate{
   position: relative;
   top: -130px;
-  left: -55px;
+  left: -69.7px;
   margin: 10px;
-  width: 190px;
+  width: 170%;
 }
 #btnSave1{
+   background-color: #F45267 !important;
   position: relative !important;
-  top: -140px;
-  left: 40px !important;
+  top: -130px;
+  left: 86%!important;
  
 }
 /*Tela 2 responsiva 320px*/
@@ -245,12 +247,13 @@ div#selectDate{
 div#hours{
   position: relative;
   top:10px ;
-  left: 10px;
+  left: 30px;
   display: grid;
   grid-template-columns: 100px 100px;
   grid-column-gap: 5px ;
   margin: 10px;
   width: 240px;
+ 
  }
  .selectHour{
    width: 105px !important;
@@ -263,14 +266,17 @@ div#hours{
 }
 #btnSave2{
   position: relative !important;
-  top: -130px;
-  margin-bottom: 10px  !important;
+  top: -120px;
+   background-color: #F45267 !important;
+   left: 70px;
+ 
 
 }
-#returnBtn{
-  position: relative !important;
-  top: -130px !important;
-  margin-bottom: 10px  !important;
+#returnBtn1{
+  position: relative ;
+  top: -120px ;
+   background-color: #F45267 !important;
+ 
 }
 
 }
@@ -291,22 +297,22 @@ div#selectLocal{
 }
 div#selectDate{
   position: relative;
-  top: -120px;
-  left: -30px;
+  top: -110px;
+  left: -50%;
   margin: 10px;
-  width: 200px;
+  width: 189%;
 }
 #btnSave1{
   position: relative;
-  top: -120px;
- left: 70px;
+  top: -113px;
+  left: 180px !important;
 }
 /*Tela 2 responsiva 375px*/
  
 div#hours{
   position: relative;
-  top:0px ;
-  left: 10px;
+  top:-20px ;
+  left: 20%;
   display: grid;
   grid-template-columns: 100px 100px;
   grid-column-gap: 5px ;
@@ -324,11 +330,12 @@ div#hours{
 }
 #btnSave2{
   position: relative !important;
-  top: -120px;
+  top: -135px;
+  left: 90px;
   margin: 10px  !important;
 
 }
-#returnBtn{
+#returnBtn1{
   position: relative !important;
   top: -120px !important;
   margin-bottom: 30px  !important;
@@ -350,18 +357,56 @@ div#selectLocal{
   left: -70px;
   width: 100%;
 }
-div#selectDate{
+#Date2{
+ width: 100% !important;
   position: relative;
-  top: -120px;
-  left: -24px;
-  margin: 10px;
-  width: 190px;
+  top: -20px;
+  left: 1.1%;
+  margin: 0px;
 }
+
 #btnSave1{
   position: relative;
-  top: -120px;
- left: 70px;
+  top: -115px;
+ left: 100% !important;
 }
+/*Tela 2 responsiva 425*/
+ 
+div#hours{
+  position: relative;
+  top:-20px ;
+  left: 20%;
+  display: grid;
+  grid-template-columns: 100px 100px;
+  grid-column-gap: 20px ;
+  margin: 10px;
+  width: 280px;
+ }
+ .selectHour{
+   width: 115px !important;
+   margin: 10px  !important;
+   font-size: 13pt;
+   
+ }
+ div#divTitle{
+   position: relative;
+   top: -150px;
+  text-align: center; 
+}
+#btnSave2{
+  position: relative !important;
+  top: -135px;
+  left: 90px;
+  margin: 10px  !important;
+
+}
+#returnBtn1{
+  position: relative !important;
+  top: -120px !important;
+  margin-bottom: 30px  !important;
+  
+}
+
 }
 /*Tela de 768*/
 @media(min-width:768px){
@@ -375,7 +420,7 @@ div#selectLocal{
   position: relative;
   top: 200px;
   left: -210px;
-  width: 50%;
+  width: 60%;
  
 }
 div#selectDate{
@@ -388,7 +433,7 @@ div#selectDate{
 #btnSave1{
   position: relative !important;
   top: -140px;
-  left: 40px !important;
+  left: 330px !important;
 }
 /*Tela 2 responsiva 768*/
  
@@ -400,13 +445,13 @@ div#hours{
   grid-template-columns: 150px 150px 150px;
   grid-template-rows: 50px 50px 50px ;
   grid-column-gap: 20px;
-  grid-row-gap: 0px;
-  margin: 10px;
+  grid-row-gap: 10px;
+  margin: 0px;
   width: 500px;
  }
  .selectHour{
-   width: 105px !important;
-   margin: 0px 0px 0px 20px  !important;
+   width: 115px !important;
+   margin: 0px 0px 0px 15px  !important;
  }
  div#divTitle{
    position: relative;
@@ -415,11 +460,12 @@ div#hours{
 }
 #btnSave2{
   position: relative !important;
-  top: -120px;
+  top: -135px;
+  left: 300px;
   margin: 10px  !important;
 
 }
-#returnBtn{
+#returnBtn1{
   position: relative !important;
   top: -120px !important;
   margin-bottom: 30px  !important;
@@ -439,21 +485,21 @@ div#hours{
 div#selectLocal{
   position: relative;
   top: -170px;
-  left: 150px;
-  width: 50%;
+  left: 100px;
+  width: 50%;       
  
 }
-div#selectDate{
+  #Date2{
   position: relative;
-  top: -130px;
+  top: -40px;
   left: -70px;
   margin: 10px;
-  width: 700px;
+  width: 770px !important;
 }
 #btnSave1{
   position: relative !important;
-  top: -140px;
-  left: 40px !important;
+  top: -150px;
+  left: 500px !important;
 }
 /*Tela 2 responsiva 1024*/
  
@@ -471,7 +517,7 @@ div#hours{
   
  }
  .selectHour{
-   width: 105px !important;
+   width: 117px !important;
    margin: 0px 0px 0px 50px  !important;
    
  }
@@ -482,12 +528,12 @@ div#hours{
 }
 #btnSave2{
   position: relative !important;
-  top: -120px;
-  left: -40px;
+  top: -135px;
+  left: 420px;
   margin: 10px  !important;
 
 }
-#returnBtn{
+#returnBtn1{
   position: relative !important;
   top: -120px !important;
   margin-bottom: 30px  !important;
@@ -495,7 +541,7 @@ div#hours{
 }
 
 }
-/*Tela de 1440*/
+/*Tela de 1281*/
 @media(min-width:1281px){
 
  div#titlePage  {
@@ -507,23 +553,25 @@ div#hours{
 div#selectLocal{
   position: relative;
   top: -170px;
-  left: 150px;
+  left: 70px;
   width: 50%;
  
 }
-div#selectDate{
+ #Date2{
   position: relative;
-  top: -130px;
+  top: -40px;
   left: -70px;
   margin: 10px;
-  width: 800px;
+  width: 180% !important;
 }
 #btnSave1{
   position: relative !important;
-  top: -140px;
-  left: 40px !important;
+  top: -180px;
+  left: 650px !important;
+  padding: 10px;
+  font-size: 14pt;
 }
-/*Tela 2 responsiva 1440*/
+/*Tela 2 responsiva 1281*/
  
 div#hours{
   position: relative;
@@ -539,7 +587,7 @@ div#hours{
   
  }
  .selectHour{
-   width: 105px !important;
+   width: 125px !important;
    margin: 0px 0px 0px 50px  !important;
    align-self: flex-start;
    
@@ -551,12 +599,12 @@ div#hours{
 }
 #btnSave2{
   position: relative !important;
-  top: -120px;
-  left: -40px;
+  top: -135.3px;
+  left: 690px;
   margin: 10px  !important;
 
 }
-#returnBtn{
+#returnBtn1{
   position: relative !important;
   top: -120px !important;
   margin-bottom: 30px  !important;
