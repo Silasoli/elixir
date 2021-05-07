@@ -258,14 +258,19 @@ left: -45%;
      width: 180%;
     padding: 20px;
 }
+#btnSave3{
+    position: relative;
+    top: 20px;
+    left: 55%;
+}
 #btnSave4{
     position: relative;
     left: 58%;
-    top: -3px !important;
+    top: 10px !important;
 }
 #returnBtn2{
     position: relative;
-     top: -50px !important;
+     top: -36px !important;
      left: -48%;
    
 }
@@ -338,7 +343,6 @@ div#senha2{
     position: relative;
      top: 0vh !important;
      left: -10%;
-   
 }
 
 }
