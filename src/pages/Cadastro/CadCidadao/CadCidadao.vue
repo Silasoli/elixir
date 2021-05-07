@@ -23,17 +23,17 @@
                 </div>
         </div>     
         <div id="CadUsu2" class="cad">
-            <h3  id="formtitle" class="titleForm">Complete o cadastro:</h3>
+            <h3  id="formtitle2" class="titleForm">Complete o cadastro:</h3>
                 <div id="email">
-                    <h4 class="titleInput2">Email</h4>    
+                    <h4 class="titleInput2">Email:</h4>    
                     <b-form-input class="email" type="email" v-model="emailField" placeholder="Email"></b-form-input>
                 </div>
                 <div id="senha">
-                    <h4 class="titleInput2">Senha</h4>    
+                    <h4 class="titleInput2">Senha:</h4>    
                     <b-form-input  class="senha" type="password" v-model="senhaField" placeholder="Senha"></b-form-input>
                 </div>
                 <div id="senha2">
-                    <h4 class="titleInput2">Confirme a sua senha</h4>    
+                    <h4 class="titleInput2">Confirme a sua senha:</h4>    
                     <b-form-input class="senha2" type="password" v-model="confirmSenhaField" placeholder="Confirme a senha"></b-form-input>
                 </div>
                 <div>
@@ -222,10 +222,13 @@ div#telefone{
 @media (min-width: 320px){
 /*tela 2*/
  h3#formtitle2{
+     position: relative;
+     top: 0px !important;
     margin:20px 0px 0px -40px;
-    padding: 0px;
     text-align: left;
     font-size: 18pt;
+    
+    
 }
 .titleInput2{
     font-size: 15pt;
