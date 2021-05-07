@@ -51,8 +51,9 @@ export default {
     
     methods: {
         doLogin() {
-            if (this.emailField === "" || this.passwordField === "") {
+            if (this.emailField.length < 5 || this.passwordField < 5) {
                 this.emptyFields = true;
+                this.$swal("Preencha todos os campos corretamente")
             } else {
                 this.Login.push({
                   email: this.emailField,

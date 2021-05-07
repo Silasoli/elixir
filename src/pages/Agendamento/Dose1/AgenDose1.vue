@@ -8,7 +8,6 @@
       <div id="localDrop">
         <div id="selectLocal">
           <b-form-select v-model="selected" :options="options" size="sm" class="mt-3" valeu=""></b-form-select>
-          <!-- <div class="mt-3">Selected: <strong>{{ selected }}</strong></div> -->
         </div>
       </div>
         <div id="selectDate">
