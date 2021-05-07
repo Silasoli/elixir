@@ -4,22 +4,22 @@
             <h3 class="titleForm">Para começar realize o cadastro</h3>
                 <div>
                     <h4 class="titleInput">Nome Completo</h4>    
-                    <b-form-input id="name" type="text" v-model="nomeField" placeholder="Nome completo"></b-form-input>
+                    <b-form-input id="name" type="text" v-model="nomeField" placeholder="Nome completo" required></b-form-input>
                 </div>
                 <div>
                     <h4 class="titleInput">Data de Nascimento</h4>    
-                    <b-form-input  id="data" type="date" v-model="dataField" placeholder="Data de Nascimento"></b-form-input>
+                    <b-form-input  id="data" type="date" v-model="dataField" placeholder="Data de Nascimento" required></b-form-input>
                 </div>
                 <div>
                     <h4 class="titleInput">CPF</h4>    
-                    <b-form-input id="CPF" type="text" v-model="CPFField" placeholder="CPF"></b-form-input>
+                    <b-form-input id="CPF" type="text" v-model="CPFField" placeholder="CPF" v-mask="'###.###.###-##'" required></b-form-input>
                 </div>
                 <div>
                     <h4 class="titleInput">Telefone</h4>    
-                    <b-form-input id="telefone" type="text" v-model="telefoneField" placeholder="Telefone"></b-form-input>
+                    <b-form-input id="telefone" type="text" v-model="telefoneField" placeholder="Telefone" v-mask="'(##) # ####-####'" required></b-form-input>
                 </div>
                 <div>
-                    <b-button  id="btnSave" class="saveBtn" @click="salvar" variant="primary">Salvar</b-button>
+                    <b-button  id="btnSave" class="saveBtn" @click="salvar1" variant="primary">Salvar</b-button>
                 </div>
         </div>     
         <div id="CadUsu2" class="cad">
@@ -30,14 +30,14 @@
                 </div>
                 <div>
                     <h4 class="titleInput">Senha</h4>    
-                    <b-form-input  id="senha" type="password" v-model="senhaField" placeholder="Senha"></b-form-input>
+                    <b-form-input minlength="5"  id="senha" type="password" v-model="senhaField" placeholder="Senha"></b-form-input>
                 </div>
                 <div>
                     <h4 class="titleInput">Confirme a sua senha</h4>    
-                    <b-form-input id="senha2" type="password" v-model="confirmSenhaField" placeholder="Confirme a senha"></b-form-input>
+                    <b-form-input minlength="5" id="senha2" type="password" v-model="confirmSenhaField" placeholder="Confirme a senha"></b-form-input>
                 </div>
                 <div>
-                    <b-button id="btnSave1" class="saveBtn"    @click="cadastrarUsuario" variant="primary">Salvar</b-button>
+                    <b-button id="btnSave1" class="saveBtn"    @click="salvar2" variant="primary">Salvar</b-button>
                     <b-button class="returnBtn"  @click="voltar" variant="primary">Voltar</b-button>
                 </div>
                 <div>
@@ -72,33 +72,49 @@ export default {
   },
   components: {
     //   Cidadao,
+    //   jsPDF,
   },
   methods:{
     cadastrarUsuario: function(){
-      this.cidadaos.push({
-        nome:this.nomeField,
-        data:this.dataField,
-        CPF:this.CPFField, 
-        telefone: this.telefoneField,
-        email: this.emailField,
-        senha:this.senhaField,
-        confirmSenha:this.senhaField,
-        id: this.cidadaos.length + 1 });
-      if (this.nomeField!='') {
-          console.log(this.cidadaos)
-        //   this.gerarPDF();
-            // this.nomeField = '',
-            // this.dataField = '',
-            // this.CPFField = '',
-            // this.telefoneField ='',
-            // this.emailField ='',
-            // this.senhaField ='',
-            // this.confirmSenhaField=''
-      }
+        if (this.nomeField === ''|| this.dataField < 8 || this.CPFField < 11 || this.telefoneField < 11
+            || this.emailField === ''|| this.senhaField < 5 || this.confirmSenhaField < 5) {
+                this.$swal("Campos Vazios ou inválidos")
+        } else{
+                this.cidadaos.push({
+                nome:this.nomeField,
+                data:this.dataField,
+                CPF:this.CPFField, 
+                telefone: this.telefoneField,
+                email: this.emailField,
+                senha:this.senhaField,
+                confirmSenha:this.senhaField,
+                id: this.cidadaos.length + 1 });
+                console.log(this.cidadaos)
+                this.nomeField = '',
+                this.dataField = '',
+                this.CPFField = '',
+                this.telefoneField ='',
+                this.emailField ='',
+                this.senhaField ='',
+                this.confirmSenhaField=''
+                this.gerarPDF();
+        }
     },
-    salvar: function(){
-        document.getElementById('CadUsu2').style.display = "block";
-        document.getElementById('CadUsu').style.display = "none";
+    salvar1: function(){
+        if (this.nomeField === ''|| this.dataField < 8 || this.CPFField < 11 || this.telefoneField < 11) {
+                this.$swal("Preencha todos os campos corretamente")
+
+        } else{
+            document.getElementById('CadUsu2').style.display = "block";
+            document.getElementById('CadUsu').style.display = "none";
+        }
+    },
+    salvar2: function(){
+        if (this.emailField === ''|| this.senhaField < 5 || this.confirmSenhaField < 5) {
+                this.$swal("Preencha todos os campos corretamente")
+        } else{
+           this.cadastrarUsuario();
+        }
     },
     voltar: function(){
         document.getElementById('CadUsu2').style.display = "none";
@@ -113,7 +129,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 #main{
     max-width: 100%;
     text-align: center;
@@ -162,6 +178,8 @@ export default {
     padding: 5px;
     text-align: left;
 }
-</style>
+
+</style>>
+
 
        
