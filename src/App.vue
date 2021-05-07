@@ -2,19 +2,19 @@
   <div id="app">
     <NavBar></NavBar>
     <router-view></router-view>
-    
+    <Footer id="footer"></Footer>
   </div>
 </template>
 
 <script>
 import NavBar from './pages/NavBar.vue'
-
+import Footer from './pages/Footer.vue'
 
 export default {
   name: 'App',
   components: {
     NavBar,
-    
+    Footer
   }
 }
 </script>
@@ -30,5 +30,10 @@ export default {
   text-align: center;
   background: #E5E5E5;
   color: #2c3e50; */
+}
+@media(max-width:425px){
+  #footer{
+    display: none;
+  }
 }
 </style>
