@@ -11,6 +11,12 @@ import jsPDF from 'jspdf';
 import VCalendar from 'v-calendar';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+import VueMaterial from 'vue-material'
+import 'vue-material/dist/vue-material.min.css'
+import 'vue-material/dist/theme/default.css'
+import VueMask from 'v-mask';
+import VueSweetalert2 from 'vue-sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
 // import axios from 'axios'
 // import VueAxios from 'vue-axios'
 
@@ -21,6 +27,10 @@ Vue.use(VueRouter)
 Vue.use(jsPDF)
 Vue.use(VCalendar)
 Vue.use(ElementUI);
+Vue.use(VueMask);
+Vue.use(VueSweetalert2);
+Vue.use(VueMaterial)
+
 
 
 //import for routes
@@ -29,6 +39,9 @@ import Home from './pages/Home/Home.vue'
 import CadCidadao from './pages/Cadastro/CadCidadao/CadCidadao.vue'
 import AgenDose1 from './pages/Agendamento/Dose1/AgenDose1.vue'
 import AgenDose2 from './pages/Agendamento/Dose2/AgenDose2.vue'
+
+
+
 
 
 const routes = [
@@ -49,6 +62,9 @@ new Vue({
   jsPDF,
   VCalendar,
   ElementUI,
+  VueMaterial,
+  VueMask,
+  VueSweetalert2,
   render: h => h(App),
 }).$mount('#app')
 
