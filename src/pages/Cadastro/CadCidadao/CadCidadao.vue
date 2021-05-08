@@ -2,24 +2,24 @@
     <div id="main">
         <div id="CadUsu" class="cad">
             <h3 class="titleForm">Para começar realize o cadastro</h3>
-                <div>
-                    <h4 class="titleInput">Nome Completo</h4>    
-                    <b-form-input id="name" type="text" v-model="nomeField" placeholder="Nome completo" required></b-form-input>
+                <div id="name">
+                    <h4 class="titleInput1">Nome Completo</h4>    
+                    <b-form-input class="name" type="text" v-model="nomeField" placeholder="Nome completo" required></b-form-input>
+                </div>
+                <div id="data">
+                    <h4 class="titleInput1">Data de Nascimento</h4>    
+                    <b-form-input  class="data" type="date" v-model="dataField" placeholder="Data de Nascimento" required></b-form-input>
+                </div>
+                <div id="CPF">
+                    <h4 class="titleInput1">CPF</h4>    
+                    <b-form-input class="CPF" type="text" v-model="CPFField" placeholder="CPF" v-mask="'###.###.###-##'" required></b-form-input>
+                </div>
+                <div id="telefone">
+                    <h4 class="titleInput1">Telefone</h4>    
+                    <b-form-input class="telefone" type="text" v-model="telefoneField" placeholder="Telefone" v-mask="'(##) # ####-####'" required></b-form-input>
                 </div>
                 <div>
-                    <h4 class="titleInput">Data de Nascimento</h4>    
-                    <b-form-input  id="data" type="date" v-model="dataField" placeholder="Data de Nascimento" required></b-form-input>
-                </div>
-                <div>
-                    <h4 class="titleInput">CPF</h4>    
-                    <b-form-input id="CPF" type="text" v-model="CPFField" placeholder="CPF" v-mask="'###.###.###-##'" required></b-form-input>
-                </div>
-                <div>
-                    <h4 class="titleInput">Telefone</h4>    
-                    <b-form-input id="telefone" type="text" v-model="telefoneField" placeholder="Telefone" v-mask="'(##) # ####-####'" required></b-form-input>
-                </div>
-                <div>
-                    <b-button  id="btnSave" class="saveBtn" @click="salvar1" variant="primary">Salvar</b-button>
+                    <b-button  id="btnSave3" class="saveBtn" @click="salvar1" variant="primary">Salvar</b-button>
                 </div>
         </div>     
         <div id="CadUsu2" class="cad">
@@ -28,17 +28,17 @@
                     <h4 class="titleInput2">Email:</h4>    
                     <b-form-input class="email" type="email" v-model="emailField" placeholder="Email"></b-form-input>
                 </div>
-                <div>
-                    <h4 class="titleInput">Senha</h4>    
-                    <b-form-input minlength="5"  id="senha" type="password" v-model="senhaField" placeholder="Senha"></b-form-input>
+                <div id="senha">
+                    <h4 class="titleInput2">Senha</h4>    
+                    <b-form-input minlength="5"  class="senha" type="password" v-model="senhaField" placeholder="Senha"></b-form-input>
+                </div>
+                <div id="senha2">
+                    <h4 class="titleInput2">Confirme a sua senha</h4>    
+                    <b-form-input minlength="5" class="senha2" type="password" v-model="confirmSenhaField" placeholder="Confirme a senha"></b-form-input>
                 </div>
                 <div>
-                    <h4 class="titleInput">Confirme a sua senha</h4>    
-                    <b-form-input minlength="5" id="senha2" type="password" v-model="confirmSenhaField" placeholder="Confirme a senha"></b-form-input>
-                </div>
-                <div>
-                    <b-button id="btnSave1" class="saveBtn"    @click="salvar2" variant="primary">Salvar</b-button>
-                    <b-button class="returnBtn"  @click="voltar" variant="primary">Voltar</b-button>
+                    <b-button id="btnSave4" class="saveBtn"    @click="salvar2" variant="primary">Salvar</b-button>
+                    <b-button id="returnBtn2" class="returnBtn"  @click="voltar" variant="primary">Voltar</b-button>
                 </div>
                 <div>
                 <!-- <div id="list" v-for="cidadao in cidadaos" :key="cidadao.id">
@@ -49,7 +49,7 @@
     </div>   
 </template>
 
-<script>
+<script scoped>
 // import jsPDF from 'jspdf';
 
 export default {
@@ -137,6 +137,7 @@ export default {
     position: relative;
     left: 0; right: 0;
     margin: auto;
+    background-color: #E5E5E5;
 }
 #CadUsu{
     
@@ -306,7 +307,7 @@ left: -45%;
 @media (min-width: 768px ){
     #btnSave3{
     position: relative;
-    top: 0px;
+    top: 8px;
     left: 75%;
 }
 #btnSave4{

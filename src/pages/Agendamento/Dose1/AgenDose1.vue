@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="mainDiv2">
       <!-- TELA 1 -->
       <div id="mainDiv">
         <div id="titlePage">
@@ -17,46 +17,49 @@
             <b-button id="btnSave1" class="saveBtn"    @click="salvar" variant="primary">Salvar</b-button>
       </div>
       <!-- TELA 2 -->
-      <div id="mainDivHorario">
-        <div id="header"> 
-          <div id="divTitle">
-            <h4 class="title">Selecione um horario:</h4>
-          </div> 
-        </div>
-        <div id="selectDate">
-          <div id="divDay">
-           
+      
+        <div id="mainDivHorario">
+          <div id="header">
+            <div id="divTitle">
+              <h4 class="title">Selecione um horario:</h4>
+            </div>
           </div>
-          <div id="hours">
-            <!-- <button v-for="item in 30" :key="item" :id="'selectComponentH'+item" class="selectComponent" @click="selectHours(`${item}`)">{{item}}</button>  -->
-            <el-time-select class="selectHour" readonly v-model="value1" id="oi" @focus="gethour('8:30');"></el-time-select>
-            <el-time-select class="selectHour" readonly v-model="value2" @focus="gethour('8:45')"></el-time-select>
-            <el-time-select class="selectHour" readonly v-model="value3" @focus="gethour('9:00')"></el-time-select> 
-            <el-time-select class="selectHour" readonly v-model="value5" @focus="gethour('9:15')"></el-time-select>
-            <el-time-select class="selectHour" readonly v-model="value5" @focus="gethour('9:30')"></el-time-select>
-            <el-time-select class="selectHour" readonly v-model="value6" @focus="gethour('9:45')"></el-time-select>
-            <el-time-select class="selectHour" readonly v-model="value7" @focus="gethour('10:00')"></el-time-select>
-            <el-time-select class="selectHour" readonly v-model="value8" @focus="gethour('10:15')"></el-time-select>
-            <el-time-select class="selectHour" readonly v-model="value9" @focus="gethour('10:30')"></el-time-select>
-            <el-time-select class="selectHour" readonly v-model="value10" @focus="gethour('10:45')"></el-time-select>
-            <el-time-select class="selectHour" readonly v-model="value11" @focus="gethour('11:00')"></el-time-select>
-            <el-time-select class="selectHour" readonly v-model="value12" 
-            @focus="gethour('11:15')"></el-time-select>
-             <el-time-select class="selectHour" readonly v-model="value13" 
-            @focus="gethour('11:30')"></el-time-select>
-             <el-time-select class="selectHour" readonly v-model="value14" 
-            @focus="gethour('11:45')"></el-time-select>
-            <el-time-select class="selectHour" readonly v-model="value15" 
-            @focus="gethour('12:00')"></el-time-select>
-            <el-time-select class="selectHour" readonly v-model="value16" 
-            @focus="gethour('12:15')"></el-time-select>
-             
+          <div id="selectDate">
+            <div id="divDay">
+        
+            </div>
+            <div id="hours">
+              <!-- <button v-for="item in 30" :key="item" :id="'selectComponentH'+item" class="selectComponent" @click="selectHours(``)">{{item}}</button>  -->
+              <el-time-select class="selectHour" readonly v-model="value1" id="oi" @focus="gethour('8:30');"></el-time-select>
+              <el-time-select class="selectHour" readonly v-model="value2" @focus="gethour('8:45')"></el-time-select>
+              <el-time-select class="selectHour" readonly v-model="value3" @focus="gethour('9:00')"></el-time-select>
+              <el-time-select class="selectHour" readonly v-model="value5" @focus="gethour('9:15')"></el-time-select>
+              <el-time-select class="selectHour" readonly v-model="value5" @focus="gethour('9:30')"></el-time-select>
+              <el-time-select class="selectHour" readonly v-model="value6" @focus="gethour('9:45')"></el-time-select>
+              <el-time-select class="selectHour" readonly v-model="value7" @focus="gethour('10:00')"></el-time-select>
+              <el-time-select class="selectHour" readonly v-model="value8" @focus="gethour('10:15')"></el-time-select>
+              <el-time-select class="selectHour" readonly v-model="value9" @focus="gethour('10:30')"></el-time-select>
+              <el-time-select class="selectHour" readonly v-model="value10" @focus="gethour('10:45')"></el-time-select>
+              <el-time-select class="selectHour" readonly v-model="value11" @focus="gethour('11:00')"></el-time-select>
+              <el-time-select class="selectHour" readonly v-model="value12"
+              @focus="gethour('11:15')"></el-time-select>
+               <el-time-select class="selectHour" readonly v-model="value13"
+              @focus="gethour('11:30')"></el-time-select>
+               <el-time-select class="selectHour" readonly v-model="value14"
+              @focus="gethour('11:45')"></el-time-select>
+              <el-time-select class="selectHour" readonly v-model="value15"
+              @focus="gethour('12:00')"></el-time-select>
+              <el-time-select class="selectHour" readonly v-model="value16"
+              @focus="gethour('12:15')"></el-time-select>
+        
+            </div>
           </div>
+              <b-button class="returnBtn" id="returnBtn1"  @click="voltar" variant="primary">Voltar</b-button>
+        
+              <b-button id="btnSave2" class="saveBtn"   variant="primary">Salvar</b-button>
+              <div id="complet"></div>
         </div>
-            <b-button class="returnBtn" id="returnBtn1"  @click="voltar" variant="primary">Voltar</b-button>
-            
-            <b-button id="btnSave2" class="saveBtn"   variant="primary">Salvar</b-button>
-      </div>
+         
   </div>
 </template>
 
@@ -166,6 +169,12 @@
 *{
   box-sizing: border-box;
 }
+#mainDiv2{
+  width: 100%;
+  overflow-x:hidden !important;
+  background-color:#E5E5E5 !important;
+  height:110vh !important;
+}
 /* Style TELA 1 */
 #selectLocal{
   width: 23%;
@@ -181,6 +190,7 @@
   top: 140px; bottom: 0;
   left: 0; right: 0;
   margin: auto;
+  
 }
 /* style TELA 2 */
 #divTitle{
@@ -216,6 +226,12 @@
 }
 /*Tela de 320*/
 @media(min-width:320px){
+  #mainDiv2{
+  background-color:#E5E5E5 !important;
+  max-height:260% !important;
+  overflow-x:hidden !important;
+}
+
     div#titlePage  {
     text-align: center;
     position: absolute;
@@ -228,12 +244,15 @@ div#selectLocal{
   width: 100%;
  
 }
-div#selectDate{
+#selectDate{
   position: relative;
   top: -130px;
   left: -69.7px;
   margin: 10px;
-  width: 170%;
+  width: 150%;
+}
+#Date2{
+  width: 120% !important;
 }
 #btnSave1{
    background-color: #F45267 !important;
@@ -243,7 +262,7 @@ div#selectDate{
  
 }
 /*Tela 2 responsiva 320px*/
- 
+
 div#hours{
   position: relative;
   top:10px ;
@@ -256,7 +275,7 @@ div#hours{
  
  }
  .selectHour{
-   width: 105px !important;
+   width: 110px !important;
    margin: 10px  !important;
  }
  div#divTitle{
@@ -277,6 +296,15 @@ div#hours{
   top: -120px ;
    background-color: #F45267 !important;
  
+}
+#complet{
+  z-index: -1;
+  position: relative;
+  top: -255px;
+  left: -100px;
+  width: 185.2%;
+  background-color: #E5E5E5;
+  height: 50vh;
 }
 
 }
@@ -300,7 +328,12 @@ div#selectDate{
   top: -110px;
   left: -50%;
   margin: 10px;
-  width: 189%;
+  width: 176%;
+}
+#Date2{
+  position: relative;
+  left: 5%;
+  width: 100% !important;
 }
 #btnSave1{
   position: relative;
@@ -315,12 +348,12 @@ div#hours{
   left: 20%;
   display: grid;
   grid-template-columns: 100px 100px;
-  grid-column-gap: 5px ;
+  grid-column-gap: 20px ;
   margin: 10px;
-  width: 240px;
+  width: 260px;
  }
  .selectHour{
-   width: 105px !important;
+   width: 108px !important;
    margin: 10px  !important;
  }
  div#divTitle{
@@ -340,6 +373,15 @@ div#hours{
   top: -120px !important;
   margin-bottom: 30px  !important;
   
+}
+#complet{
+ 
+  position: relative;
+  top: -284.8px;
+  left: -100px;
+  width: 177.5%;
+  background-color: #E5E5E5;
+  height: 50vh;
 }
 
 }
@@ -361,7 +403,7 @@ div#selectLocal{
  width: 100% !important;
   position: relative;
   top: -20px;
-  left: 1.1%;
+  left: 4.1%;
   margin: 0px;
 }
 
@@ -405,6 +447,15 @@ div#hours{
   top: -120px !important;
   margin-bottom: 30px  !important;
   
+}
+#complet{
+ 
+  position: relative;
+  top: -284.8px;
+  left: -100px;
+  width: 172%;
+  background-color: #E5E5E5;
+  height: 52vh;
 }
 
 }
@@ -470,6 +521,15 @@ div#hours{
   top: -120px !important;
   margin-bottom: 30px  !important;
   
+}
+#complet{
+ 
+  position: relative;
+  top: -284.8px;
+  left: -100px;
+  width: 142%;
+  background-color: #E5E5E5;
+  height: 52vh;
 }
 
 }
@@ -539,7 +599,15 @@ div#hours{
   margin-bottom: 30px  !important;
   
 }
-
+#complet{
+ 
+  position: relative;
+  top: -284.8px;
+  left: -100px;
+  width: 142%;
+  background-color: #E5E5E5;
+  height: 52vh;
+}
 }
 /*Tela de 1281*/
 @media(min-width:1281px){

@@ -35,5 +35,6 @@ export default {
   #footer{
     display: none;
   }
+ 
 }
 </style>
