@@ -35,13 +35,13 @@
               </md-field>
                       </md-table-toolbar>
                       <md-table-row slot="md-table-row" slot-scope="{ item }">
-              <md-table-cell   md-label="Horário" md-sort-by="horario" md-numeric>{{ item.horario }}</md-table-cell>
-              <md-table-cell md-label="Nome Completo" md-sort-by="nome_Completo">{{ item.nome_Completo }}</md-table-cell>
-              <md-table-cell md-label="CPF" md-sort-by="CPF">{{ item.CPF }}</md-table-cell>
-              <md-table-cell md-label="Dose" md-sort-by="dose">{{ item.dose }}</md-table-cell>
-              <md-table-cell md-label="Vacina" md-sort-by="title">{{ item.vacina }}</md-table-cell>
-              <md-table-cell md-label="Vacinado" md-sort-by="vacinado">{{ item.vacinado }}</md-table-cell>
-              <md-table-cell md-label="2º dose" md-sort-by="vacinado">
+              <md-table-cell  class="table" id="hora" md-label="Horário" md-sort-by="horario" md-numeric>{{ item.horario }}</md-table-cell>
+              <md-table-cell class="table" md-label="Nome Completo" md-sort-by="nome_Completo">{{ item.nome_Completo }}</md-table-cell>
+              <md-table-cell class="table" md-label="CPF" md-sort-by="CPF">{{ item.CPF }}</md-table-cell>
+              <md-table-cell class="table" md-label="Dose" md-sort-by="dose">{{ item.dose }}</md-table-cell>
+              <md-table-cell class="table" md-label="Vacina" md-sort-by="title">{{ item.vacina }}</md-table-cell>
+              <md-table-cell class="table"  md-label="Vacinado" md-sort-by="vacinado">{{ item.vacinado }}</md-table-cell>
+              <md-table-cell class="table" md-label="2º dose" md-sort-by="vacinado">
                   <button id="btn2dose" @click="Marcar2Dose(`${item.id}`)">Marcado</button>
               </md-table-cell>
                       </md-table-row>
@@ -372,10 +372,8 @@
    }
    
   }
-@media screen and (min-width:48em){
+@media screen and (min-width:768px){
  
-
-
   #tableDiv{
     width: 160%;
     position: absolute;
@@ -397,6 +395,10 @@
      top: -100px;
      left: 0%;
    }
+ #hora{
+   width: -10px;
+ }
+ 
    
 }
   
