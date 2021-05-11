@@ -1,25 +1,25 @@
 <template>
     <div id="main">
         <div id="CadUsu" class="cad">
-            <h3 id="formtitle" class="titleForm">Para começar realize o cadastro:</h3>
+            <h3 class="titleForm">Para começar realize o cadastro</h3>
                 <div id="name">
-                    <h4 class="titleInput1">Nome Completo:</h4>    
-                    <b-form-input class="name" type="text" v-model="nomeField" placeholder="Nome completo"></b-form-input>
+                    <h4 class="titleInput1">Nome Completo</h4>    
+                    <b-form-input class="name" type="text" v-model="nomeField" placeholder="Nome completo" required></b-form-input>
                 </div>
                 <div id="data">
-                    <h4 class="titleInput1">Data de Nascimento:</h4>    
-                    <b-form-input  class="data" type="date" v-model="dataField" placeholder="Data de Nascimento"></b-form-input>
+                    <h4 class="titleInput1">Data de Nascimento</h4>    
+                    <b-form-input  class="data" type="date" v-model="dataField" placeholder="Data de Nascimento" required></b-form-input>
                 </div>
                 <div id="CPF">
-                    <h4 class="titleInput1">CPF:</h4>    
-                    <b-form-input  class="CPF" type="text" v-model="CPFField" placeholder="CPF"></b-form-input>
+                    <h4 class="titleInput1">CPF</h4>    
+                    <b-form-input class="CPF" type="text" v-model="CPFField" placeholder="CPF" v-mask="'###.###.###-##'" required></b-form-input>
                 </div>
                 <div id="telefone">
-                    <h4 class="titleInput1">Telefone:</h4>    
-                    <b-form-input class="telefone" type="text" v-model="telefoneField" placeholder="Telefone"></b-form-input>
+                    <h4 class="titleInput1">Telefone</h4>    
+                    <b-form-input class="telefone" type="text" v-model="telefoneField" placeholder="Telefone" v-mask="'(##) # ####-####'" required></b-form-input>
                 </div>
-                <div id="button1">
-                    <b-button  id="btnSave3" class="saveBtn" @click="salvar" variant="primary">Salvar</b-button>
+                <div>
+                    <b-button  id="btnSave3" class="saveBtn" @click="salvar1" variant="primary">Salvar</b-button>
                 </div>
         </div>     
         <div id="CadUsu2" class="cad">
@@ -29,28 +29,26 @@
                     <b-form-input class="email" type="email" v-model="emailField" placeholder="Email"></b-form-input>
                 </div>
                 <div id="senha">
-                    <h4 class="titleInput2">Senha:</h4>    
-                    <b-form-input  class="senha" type="password" v-model="senhaField" placeholder="Senha"></b-form-input>
+                    <h4 class="titleInput2">Senha</h4>    
+                    <b-form-input minlength="5"  class="senha" type="password" v-model="senhaField" placeholder="Senha"></b-form-input>
                 </div>
                 <div id="senha2">
-                    <h4 class="titleInput2">Confirme a sua senha:</h4>    
-                    <b-form-input class="senha2" type="password" v-model="confirmSenhaField" placeholder="Confirme a senha"></b-form-input>
+                    <h4 class="titleInput2">Confirme a sua senha</h4>    
+                    <b-form-input minlength="5" class="senha2" type="password" v-model="confirmSenhaField" placeholder="Confirme a senha"></b-form-input>
                 </div>
                 <div>
-                    <b-button id="btnSave4" class="saveBtn"    @click="cadastrarUsuario" variant="primary">Salvar</b-button>
+                    <b-button id="btnSave4" class="saveBtn"    @click="salvar2" variant="primary">Salvar</b-button>
                     <b-button id="returnBtn2" class="returnBtn"  @click="voltar" variant="primary">Voltar</b-button>
                 </div>
                 <div>
-                <!-- <div id="list" v-for="cidadao in cidadaos" :key="cidadao.id">
-                    <Cidadao :cidadao="cidadao"></Cidadao>
-                </div> -->
                 </div>
         </div>
     </div>   
 </template>
 
 <script>
-// import jsPDF from 'jspdf';
+import api from '/src/services/api'
+
 
 export default {
   name: 'CadUsu',
@@ -63,7 +61,7 @@ export default {
      emailField:'',
      senhaField:'',
      confirmSenhaField:'',
-      cidadaos: [
+      cidadao: [
         {
           
         }
@@ -71,44 +69,64 @@ export default {
     }
   },
   components: {
-    //   Cidadao,
   },
   methods:{
     cadastrarUsuario: function(){
-      this.cidadaos.push({
-        nome:this.nomeField,
-        data:this.dataField,
-        CPF:this.CPFField, 
-        telefone: this.telefoneField,
-        email: this.emailField,
-        senha:this.senhaField,
-        confirmSenha:this.senhaField,
-        id: this.cidadaos.length + 1 });
-      if (this.nomeField!='') {
-          console.log(this.cidadaos)
-        //   this.gerarPDF();
-            // this.nomeField = '',
-            // this.dataField = '',
-            // this.CPFField = '',
-            // this.telefoneField ='',
-            // this.emailField ='',
-            // this.senhaField ='',
-            // this.confirmSenhaField=''
-      }
+        if (this.nomeField === ''|| this.dataField < 8 || this.CPFField < 11 || this.telefoneField < 11
+            || this.emailField === ''|| this.senhaField < 5 || this.confirmSenhaField < 5) {
+                this.$swal("Campos Vazios ou inválidos")
+        } else{
+                const nome = this.nomeField;
+                const data = this.dataField;
+                const CPF = this.CPFField;
+                const telefone = this.telefoneField;
+                const email = this.emailField;
+                const senha = this.senhaField;
+                const senhaConfirm = this.confirmSenhaField;
+                if (senha===senhaConfirm) {
+                        api.post('http://localhost:3000/api/v1/register',{
+                    nomeCompleto: nome,
+                    dataNascimento: data,
+                    CPF: CPF,
+                    tel: telefone,
+                    email: email,
+                    password:senha,
+                })
+                    .then((res) => {
+                    if(res.status==201){
+                        console.log(res.data.cidadao)
+                        this.$swal("Cadastrado com sucesso!")
+                        window.location.href = "http://localhost:8080/#/";
+                    }
+                    })
+                    .catch((err) => {
+                    this.$swal("Cidadão não cadastrado")
+                });  
+                } else{
+                     this.$swal("Senha e Confirme a sua senha não correspondem")
+                }
+        }
     },
-    salvar: function(){
-        document.getElementById('CadUsu2').style.display = "block";
-        document.getElementById('CadUsu').style.display = "none";
+    salvar1: function(){
+        if (this.nomeField === ''|| this.dataField < 8 || this.CPFField < 11 || this.telefoneField < 11) {
+                this.$swal("Preencha todos os campos corretamente")
+
+        } else{
+            document.getElementById('CadUsu2').style.display = "block";
+            document.getElementById('CadUsu').style.display = "none";
+        }
+    },
+    salvar2: function(){
+        if (this.emailField === ''|| this.senhaField < 5 || this.confirmSenhaField < 5) {
+                this.$swal("Preencha todos os campos corretamente")
+        } else{
+           this.cadastrarUsuario();
+        }
     },
     voltar: function(){
         document.getElementById('CadUsu2').style.display = "none";
         document.getElementById('CadUsu').style.display = "block";
     },
-    // gerarPDF: function(){
-    //     var doc = new jsPDF()
-    //     doc.text('Recibo de cadastro', 85,10)
-    //     doc.output('dataurlnewwindow');
-    // },
     }
 }
 </script>
@@ -118,9 +136,11 @@ export default {
     max-width: 100%;
     text-align: center;
     width: 100%;
+    height: 100vh;
     position: relative;
     left: 0; right: 0;
     margin: auto;
+    background-color: #E5E5E5;
 }
 #CadUsu{
     
@@ -176,6 +196,12 @@ export default {
     text-align: left;
 }
 @media (max-width:801px){
+    .titleForm{
+    margin-left: -40px;
+    padding: 5px;
+    text-align: left;
+    font-size: 14pt;
+}
     h3#formtitle{
     margin-left: -40px;
     padding: 0px;
@@ -218,6 +244,13 @@ div#telefone{
     width: 180%;
     padding: 20px;
 }
+#btnSave3{
+    position: relative;
+    top: 0px;
+    left: 40%;
+    background-color: #F45267 !important;
+}
+
 }
 @media (min-width: 320px){
 /*tela 2*/
@@ -226,7 +259,7 @@ div#telefone{
      top: 0px !important;
     margin:20px 0px 0px -40px;
     text-align: left;
-    font-size: 18pt;
+    font-size: 15pt;
     
     
 }
@@ -290,7 +323,7 @@ left: -45%;
 @media (min-width: 768px ){
     #btnSave3{
     position: relative;
-    top: 0px;
+    top: 8px;
     left: 75%;
 }
 #btnSave4{

@@ -1,87 +1,561 @@
 <template>
   <div id="mainDiv">
-    <div id="titlePage">
-      <h3 id="title">Agendamentos do dia</h3>
-      <h3 id="dataDoDia">05/05/2021</h3>
+    <div>
+        <div id="titlePage">
+      <h3 id="title">Agendamentos do dia:</h3>
+      <h3 id="dataDoDia">06/05/2021</h3>
     </div>
-    <div id="filtro">
-        <div id="filtro2">
+    <div id="filtro"> 
+      <div id="filtro2">
             <div id="searchDiv">
               <b-button id="searchBtn"></b-button>
             </div>
-      </div>
+        </div>
       <div id="filtroInicio">
-          <label for="">Fim</label>
+          <label for="">Início</label>
           <b-form-input class="date" id="date1" type="date" v-model="date1"></b-form-input>
       </div>
       <div id="filtroFim">
-          <label for="">Inicio</label>
+          <label for="">Fim</label>
           <b-form-input class="date" id="date2" type="date" v-model="date2"></b-form-input>
       </div>
     </div>
-    <div id="table">
-      <!-- <input type="text">
-      <input type="text">
-      <input type="text">
-      <input type="text">
-      <input type="text">
-      <input type="text"> -->
-      <button></button>
     </div>
-  </div>
+   
+      
+        <div id="tableDiv">
+        
+              <md-table v-model="searched" md-sort="nome_Completo" md-sort-order="asc" md-card md-fixed-header>
+                      <md-table-toolbar id="pesquisa">
+              <div class="md-toolbar-section-start">
+                <h1 class="md-title">Agendamentos</h1>
+              </div>
+              <md-field id="search" md-clearable class="md-toolbar-section-end">
+                <md-input placeholder="Pesquisar por nome" v-model="search" @input="searchOnTable" />
+              </md-field>
+                      </md-table-toolbar>
+                      <md-table-row slot="md-table-row" slot-scope="{ item }">
+              <md-table-cell  class="table" id="hora" md-label="Horário" md-sort-by="horario" md-numeric>{{ item.horario }}</md-table-cell>
+              <md-table-cell class="table" id="nome" md-label="Nome Completo" md-sort-by="nome_Completo">{{ item.nome_Completo }}</md-table-cell>
+              <md-table-cell class="table" id="cpf" md-label="CPF" md-sort-by="CPF">{{ item.CPF }}</md-table-cell>
+              <md-table-cell class="table" id="dose" md-label="Dose" md-sort-by="dose">{{ item.dose }}</md-table-cell>
+              <md-table-cell class="table" id="vacina" md-label="Vacina" md-sort-by="title">{{ item.vacina }}</md-table-cell>
+              <md-table-cell class="table" id="tag" md-label="Vacinado" md-sort-by="vacinado">{{ item.vacinado }}</md-table-cell>
+              <md-table-cell class="table" id="dose2" md-label="2º dose" md-sort-by="vacinado">
+                  <button id="btn2dose" @click="Marcar2Dose(`${item.id}`)">Marcado</button>
+              </md-table-cell>
+                      </md-table-row>
+                    </md-table>
+            </div>
+      </div>
+      
+    
+    
 </template>
 
 
 <script>
-  export default {
-    data() {
-      return {
-        // Note `isActive` is left out and will not appear in the rendered table
-        fields: ['Horário', 'Nome_Completo', 'CPF','Dose','Vacina','Checked','_2º_Dose'],
-        items: [
-          { 
-            Horário: '10:15', 
-            Nome_Completo: 'Daenerys Targaryen', 
-            CPF: '554.753.790-09', 
-            Dose: '1º Dose',
-            Vacina:'Astrazeneca',
-            Checked:'',
-            _2º_Dose:'Pendente ', 
-          },
-          { 
-            Horário: '10:30', 
-            Nome_Completo: 'Jon Snow', 
-            CPF: '730.026.910-97', 
-            Dose: '1º Dose',
-            Vacina:'CoronaVac',
-            Checked:'',
-            _2º_Dose:'Pendente ',  
-          },
-          { 
-            Horário: '10:45', 
-            Nome_Completo: 'Arya Stark', 
-            CPF: '916.551.380-06', 
-            Dose: '1º Dose',
-            Vacina:'Astrazeneca',
-            Checked:'',
-            _2º_Dose:'Pendente ',  
-          },
-          { 
-            Horário: '11:00', 
-            Nome_Completo: 'Sansa Stark', 
-            CPF: '213.359.600-31', 
-            Dose: '1º Dose',
-            Vacina:'CoronaVac',
-            Checked:'',
-            _2º_Dose:'Pendente ',  
-          }
-        ]
-      }
+  const toLower = text => {
+    return text.toString().toLowerCase()
+  }
+
+  const searchByName = (items, term) => {
+    if (term) {
+      return items.filter(item => toLower(item.nome_Completo).includes(toLower(term)))
     }
+
+    return items
+  }
+  export default {
+    Name: 'TableSearch',
+    data: () => ({
+      search: null,
+      searched: [],
+      users: [
+        {
+          id:'1',
+          horario: '08:00',
+          nome_Completo: "Heloisa",
+          CPF: "427.395.724-84",
+          dose: "1º",
+          vacina: "Astrazeneca",
+          vacinado: "Sim"
+        },
+        { 
+          id:'2',
+          horario: '08:15',
+          nome_Completo: "Luiza Marli da Cunha",
+          CPF: "516.338.571-23",
+          dose: "2º",
+          vacina: "CoronaVac",
+          vacinado: "Não"
+        },
+        {
+          id:'3',
+          horario: '08:30',
+          nome_Completo: "Giovana Tânia Luna Bernardes",
+          CPF: "713.407.663-61",
+          dose: "1º",
+          vacina: "Astrazeneca",
+          vacinado: "Não"
+        },
+        {
+          id:'4',
+          horario: '08:45',
+          nome_Completo: "Renata Lúcia Caroline Cavalcanti",
+          CPF: "439.877.292-87",
+          dose: "1º",
+          vacina: "CoronaVac",
+          vacinado: "Não"
+
+        },
+        {
+          id:'5',
+          horario: '09:00',
+          nome_Completo: "Samuel Bernardo Silveira",
+          CPF: "017.148.059-72",
+          dose: "2º",
+          vacina: "Astrazeneca",
+          vacinado: "Não"
+        },
+        
+      ]
+    }),
+    methods: {
+      newUser () {
+        window.alert('Noop')
+      },
+      searchOnTable () {
+        this.searched = searchByName(this.users, this.search)
+      },
+      Marcar2Dose: function(item){
+        console.log(this.users[item - 1])
+        console.log(item)
+      }
+    },
+    created () {
+      this.searched = this.users
+    },
   }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+   #tableDiv{
+    width: 120%;
+    position: absolute;
+    top: 260px; bottom: 0;
+    left: 0; right: 0;
+    margin: auto;
+  }
+  .md-field {
+    max-width: 300px;
+  }
+  .md-table {
+     border: solid;
+    border-width: 2px;
+    font-size: 16px;
+    color: black;
+  }
+  .md-table-toolbar{
+     border: solid;
+    border-width: 2px;
+    font-size: 16px;
+    color: black;
+  }
+  .md-input{
+    font-size: 16px;
+    color: black;
+  }
+  .md-table-cell {
+    border: solid;
+    border-width: 2px;
+    font-size: 16px;
+    color: black;
+    
+   
+  }
+  .md-table-row{
+    border: solid;
+    border-width: 2px;
+    font-size: 26px !important;
+    color: black;
+  }
+  thead{
+    border: solid;
+    border-width: 2px;
+    font-size: 26px !important;
+    color: black;
+  }
+  #mainDiv{
+  width: 60%;
+  height: 40%;
+  padding-top: 30px;
+  position: relative;
+  left: 0; right: 0;
+  margin: auto;
+  }
+  #filtro{
+    width: 100%;
+  }
+  #title{
+    float: left;
+  }
+  #dataDoDia{
+    position: absolute;
+    right: 0px;
+  }
+  #titlePage{
+    margin-bottom: 40px;  
+  }
+  #searchDiv{
+    width: 100%;
+    display: inline;
+    float: right;
+    padding: 5px;
+    margin: 10px;
+  }
+  #searchBtn{
+    width: 40px;
+    height: 40px;
+    border: none !important;
+    background-color: transparent;
+    background-image: url("./pngegg.png");
+    background-repeat: repeat-x;
+    background-size: contain;
+  }
+  #filtro{
+    width: 30%;
+    display: inline;
+  }
+  #filtroInicio{
+    display: inline;
+    float: right;
+    padding: 5px;
+    margin: 10px;
+    margin-right: 0px;
+  }
+  #filtroFim{
+    display: inline;
+    float: right;
+    padding: 5px;
+    margin: 10px;
+    margin-right: 0px;
+  }
+  #filtro2{
+    display: inline;
+    float: right;
+    padding: 5px;
+    margin: 10px;
+    margin-right: -25px;
+    padding-right: 0px;
+  }
+  #btn2dose{
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    background-color: green;
+    font-weight: bolder;
+  }
+  @media screen and (min-width:20em){
+    
+   #title{
+     position: relative;
+     top: -60px;
+     left: -24%;
+   }
+   #dataDoDia{
+     position: absolute;
+     right: -30%;
+   } 
+   #searchBtn{
+     position: relative;
+     top: -30px;
+     left: 100%;
+   }
+    
+   #filtroInicio{
+      position: relative;
+      top: -150px !important;
+   }
+   #filtroFim{
+     position: relative;
+     top: -170px;
+   }
+    #tableDiv{
+    width: 160%;
+    position: absolute;
+    top: 280px; bottom: 0;
+    left: -30%; right: 0;
+    margin: auto;
+      
+    }
+   
+#mainDiv{
+       height: 150vh !important;
+       width: 60%;
+       background-color: #E5E5E5;
+     }
+     #pesquisa{
+       width: 280%;
+       
+     }
+     #search{
+       position: relative;
+       top: 0px;
+       left: -30%;
+       
+     }
+     #hora{
+       width: 10%;
+       text-align: start;
+     }
+     #dose2{
+       width: 1%;
+     }
+    .table{
+      width: 10%;
+    }
+  }
+  @media  screen and (min-width:375px){
+   #title{
+     position: relative;
+     top: -60px;
+     left: -24%;
+   }
+   #dataDoDia{
+     position: absolute;
+     right: -30%;
+   } 
+   #searchBtn{
+     position: relative;
+     top: -30px;
+     left: 100%;
+   }
+   #filtroInicio{
+      position: relative;
+      top: -150px !important;
+   }
+   #filtroFim{
+     position: relative;
+     top: -170px;
+   }
+   
+   #tableDiv{
+    width: 160%;
+    position: absolute;
+    top: 260px; bottom: 0;
+    left: -30%; right: 0;
+    margin: auto;
+  }
+     #mainDiv{
+       height: 150vh !important;
+       width: 60%;
+       background-color: #E5E5E5;
+     }
+    #pesquisa{
+       width: 280%;
+       
+     }
+     #search{
+       position: relative;
+       top: 0px;
+       left: -50%;
+       
+     }
+     #hora{
+       width: 10%;
+       text-align: start;
+     }
+     #dose2{
+       width: 1%;
+     }
+    .table{
+      width: 10%;
+    }
+  }
+  @media screen and (min-width:425px){
+#tableDiv{
+    width: 160%;
+    position: absolute;
+    top: 260px; bottom: 0;
+    left: -30%; right: 0;
+    margin: auto;
+  }
+    #filtroInicio{
+      position: relative;
+      top: -150px !important;
+      left: -15%;
+   }
+   #filtroFim{
+     position: relative;
+     top: -170px;
+     left: -15%;
+   }
+   #pesquisa{
+       width: 280%;
+       
+     }
+     #search{
+       position: relative;
+       top: 0px;
+       left: -55%;
+       
+     }
+     #hora{
+       width: 10%;
+       text-align: start;
+     }
+     #dose2{
+       width: 1%;
+     }
+    .table{
+      width: 10%;
+    }
+  
+  }
+@media screen and (min-width:768px){
+ 
+  #tableDiv{
+    width: 160%;
+    position: absolute;
+    top: 260px; bottom: 0;
+    left: -30%; right: 0;
+    margin: auto;
+  }
+  #searchDiv{
+    position: relative;
+    top: 80px;
+  }
+    #filtroInicio{
+      position: relative;
+      top: -3px !important;
+      left: -40%;
+   }
+   #filtroFim{
+     position: relative;
+     top: -100px;
+     left: 0%;
+   }
+   #pesquisa{
+       width: 113.4%;
+       
+     }
+     #search{
+       position: relative;
+       top: 0px;
+       left: -2%;
+       
+     }
+     #hora{
+       width: -10%;
+       text-align: start;
+     }
+     #dose2{
+       width: 1%;
+     }
+    .table{
+      width: 10%;
+    }
+   
+}
+@media screen and (min-width:1024px){
+ 
+  #tableDiv{
+    width: 160%;
+    position: absolute;
+    top: 230px; bottom: 0;
+    left: -30%; right: 0;
+    margin: auto;
+  }
+  #searchDiv{
+    position: relative;
+    top: 80px;
+  }
+    #filtroInicio{
+      position: relative;
+      top: 40px !important;
+      left: -40%;
+   }
+   #filtroFim{
+     position: relative;
+     top: -1px;
+     left: 30%;
+   }
+   #pesquisa{
+       width: 100%;
+       
+     }
+     #search{
+       position: relative;
+       top: 0px;
+       left: -2%;
+       
+     }
+     #hora{
+       width: -10%;
+       text-align: start;
+     }
+     #dose2{
+       width: 1%;
+     }
+    .table{
+      width: 2%;
+    }
+}
+@media screen and (min-width:1281px){
+ #mainDiv{
+   height: 120vh !important;
+ }
+  #tableDiv{
+    width: 130%;
+    position: absolute;
+    top: 170px; bottom: 0;
+    left: -10%; right: 0;
+    margin: auto;
+  }
+   #filtro{
+    position: relative;
+    top: -50px;
+  }
+
+  #searchDiv{
+    position: relative;
+    left: -110%;
+    top: 80px;
+  }
+ 
+    #filtroInicio{
+      position: relative;
+      top: 40px !important;
+      left: -40%;
+   }
+   #filtroFim{
+     position: relative;
+     top: 40px;
+     left: 20%;
+   }
+   #pesquisa{
+       width: 100%;
+       
+     }
+     #search{
+       position: relative;
+       top: 0px;
+       left: -2%;
+       
+     }
+     #hora{
+       width: -10%;
+       text-align: start;
+     }
+     #dose2{
+       width: 1%;
+     }
+    .table{
+      width: 2%;
+    }
+}
 
 
 </style>
+
