@@ -36,12 +36,12 @@
                       </md-table-toolbar>
                       <md-table-row slot="md-table-row" slot-scope="{ item }">
               <md-table-cell  class="table" id="hora" md-label="Horário" md-sort-by="horario" md-numeric>{{ item.horario }}</md-table-cell>
-              <md-table-cell class="table" md-label="Nome Completo" md-sort-by="nome_Completo">{{ item.nome_Completo }}</md-table-cell>
-              <md-table-cell class="table" md-label="CPF" md-sort-by="CPF">{{ item.CPF }}</md-table-cell>
-              <md-table-cell class="table" md-label="Dose" md-sort-by="dose">{{ item.dose }}</md-table-cell>
-              <md-table-cell class="table" md-label="Vacina" md-sort-by="title">{{ item.vacina }}</md-table-cell>
-              <md-table-cell class="table"  md-label="Vacinado" md-sort-by="vacinado">{{ item.vacinado }}</md-table-cell>
-              <md-table-cell class="table" md-label="2º dose" md-sort-by="vacinado">
+              <md-table-cell class="table" id="nome" md-label="Nome Completo" md-sort-by="nome_Completo">{{ item.nome_Completo }}</md-table-cell>
+              <md-table-cell class="table" id="cpf" md-label="CPF" md-sort-by="CPF">{{ item.CPF }}</md-table-cell>
+              <md-table-cell class="table" id="dose" md-label="Dose" md-sort-by="dose">{{ item.dose }}</md-table-cell>
+              <md-table-cell class="table" id="vacina" md-label="Vacina" md-sort-by="title">{{ item.vacina }}</md-table-cell>
+              <md-table-cell class="table" id="tag" md-label="Vacinado" md-sort-by="vacinado">{{ item.vacinado }}</md-table-cell>
+              <md-table-cell class="table" id="dose2" md-label="2º dose" md-sort-by="vacinado">
                   <button id="btn2dose" @click="Marcar2Dose(`${item.id}`)">Marcado</button>
               </md-table-cell>
                       </md-table-row>
@@ -272,6 +272,7 @@
      top: -30px;
      left: 100%;
    }
+    
    #filtroInicio{
       position: relative;
       top: -150px !important;
@@ -295,17 +296,27 @@
        background-color: #E5E5E5;
      }
      #pesquisa{
-       width: 736%;
+       width: 280%;
        
      }
      #search{
        position: relative;
        top: 0px;
-       left: -79%;
+       left: -30%;
        
      }
+     #hora{
+       width: 10%;
+       text-align: start;
+     }
+     #dose2{
+       width: 1%;
+     }
+    .table{
+      width: 10%;
+    }
   }
-  @media  screen and (min-width:23em){
+  @media  screen and (min-width:375px){
    #title{
      position: relative;
      top: -60px;
@@ -341,18 +352,28 @@
        width: 60%;
        background-color: #E5E5E5;
      }
-     #pesquisa{
-       width: 736%;
+    #pesquisa{
+       width: 280%;
        
      }
      #search{
        position: relative;
        top: 0px;
-       left: -79%;
+       left: -50%;
        
      }
+     #hora{
+       width: 10%;
+       text-align: start;
+     }
+     #dose2{
+       width: 1%;
+     }
+    .table{
+      width: 10%;
+    }
   }
-  @media   screen and (min-width:26em){
+  @media screen and (min-width:425px){
 #tableDiv{
     width: 160%;
     position: absolute;
@@ -370,7 +391,27 @@
      top: -170px;
      left: -15%;
    }
-   
+   #pesquisa{
+       width: 280%;
+       
+     }
+     #search{
+       position: relative;
+       top: 0px;
+       left: -55%;
+       
+     }
+     #hora{
+       width: 10%;
+       text-align: start;
+     }
+     #dose2{
+       width: 1%;
+     }
+    .table{
+      width: 10%;
+    }
+  
   }
 @media screen and (min-width:768px){
  
@@ -395,12 +436,126 @@
      top: -100px;
      left: 0%;
    }
- #hora{
-   width: -10px;
- }
- 
+   #pesquisa{
+       width: 113.4%;
+       
+     }
+     #search{
+       position: relative;
+       top: 0px;
+       left: -2%;
+       
+     }
+     #hora{
+       width: -10%;
+       text-align: start;
+     }
+     #dose2{
+       width: 1%;
+     }
+    .table{
+      width: 10%;
+    }
    
 }
-  
+@media screen and (min-width:1024px){
+ 
+  #tableDiv{
+    width: 160%;
+    position: absolute;
+    top: 230px; bottom: 0;
+    left: -30%; right: 0;
+    margin: auto;
+  }
+  #searchDiv{
+    position: relative;
+    top: 80px;
+  }
+    #filtroInicio{
+      position: relative;
+      top: 40px !important;
+      left: -40%;
+   }
+   #filtroFim{
+     position: relative;
+     top: -1px;
+     left: 30%;
+   }
+   #pesquisa{
+       width: 100%;
+       
+     }
+     #search{
+       position: relative;
+       top: 0px;
+       left: -2%;
+       
+     }
+     #hora{
+       width: -10%;
+       text-align: start;
+     }
+     #dose2{
+       width: 1%;
+     }
+    .table{
+      width: 2%;
+    }
+}
+@media screen and (min-width:1281px){
+ #mainDiv{
+   height: 120vh !important;
+ }
+  #tableDiv{
+    width: 130%;
+    position: absolute;
+    top: 170px; bottom: 0;
+    left: -10%; right: 0;
+    margin: auto;
+  }
+   #filtro{
+    position: relative;
+    top: -50px;
+  }
+
+  #searchDiv{
+    position: relative;
+    left: -110%;
+    top: 80px;
+  }
+ 
+    #filtroInicio{
+      position: relative;
+      top: 40px !important;
+      left: -40%;
+   }
+   #filtroFim{
+     position: relative;
+     top: 40px;
+     left: 20%;
+   }
+   #pesquisa{
+       width: 100%;
+       
+     }
+     #search{
+       position: relative;
+       top: 0px;
+       left: -2%;
+       
+     }
+     #hora{
+       width: -10%;
+       text-align: start;
+     }
+     #dose2{
+       width: 1%;
+     }
+    .table{
+      width: 2%;
+    }
+}
+
+
 </style>
 
