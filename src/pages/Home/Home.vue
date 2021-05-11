@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="prin">
       <div id="cabecalho">
         <h1>Olá, {{nome}}</h1>
       </div>
@@ -75,5 +75,21 @@ export default {
     margin: 25px;
     margin-left: 0px;
     font-size: 20px;
+  }
+  @media screen and (min-width:320px){
+     #divInfo{ 
+  width: 100%;
+  padding-top: 15px;
+  position: relative;
+  top: 0;
+  bottom: 100px !important;
+  left: 0; 
+  right: 20;
+  margin: auto;
+  background-color: #6A5ACD;
+  }
+  #prin{
+    height: 120vh;
+  }
   }
 </style>
