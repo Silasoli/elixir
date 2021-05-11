@@ -13,7 +13,7 @@
             <div class="col-lg-4 col-md-6 col-sm-8 mx-auto">
                <div v-if="!registerActive" class="card login" v-bind:class="{ error: emptyFields }">
                   <h1>Logar</h1>
-                  <form class="form-group">
+                  <form class="form-group" @submit.prevent="">
                      <input v-model="emailField" type="email" class="form-control" placeholder="Email" required>
                      <input v-model="passwordField" type="password" class="form-control" placeholder="Senha" required>
                      <input type="submit" class="btn btn-primary" @click="doLogin">
@@ -34,6 +34,8 @@
 </template>
 
 <script>
+import api from '/src/services/api'
+
 export default {
     name: 'NavBar.vue',
     data() {
@@ -55,12 +57,34 @@ export default {
                 this.emptyFields = true;
                 this.$swal("Preencha todos os campos corretamente")
             } else {
+                  const email1 = this.emailField;
+                  const senha1 = this.passwordField;
                 this.Login.push({
                   email: this.emailField,
                   senha:this.passwordField,
                   id: this.Login.length + 1 });
                   console.log(this.Login[1]);
-               // window.location.href = "http://localhost:8080/#/home";
+              
+               api.post('http://localhost:3000/api/v1/login',{
+                  email: email1,
+                  password:senha1,
+               })
+                .then((res) => {
+                   if(res.status==201){
+                      console.log(res.data.cidadao)
+                     this.$swal("Logado com sucesso!")
+                     window.location.href = "http://localhost:8080/#/home";
+                     localStorage.setItem('cNome',res.data.cidadao.nomeCompleto);
+                     localStorage.setItem('cData',res.data.cidadao.dataNascimento);
+                     localStorage.setItem('cDD1',res.data.cidadao.dataDose1);
+                     localStorage.setItem('cHD1',res.data.cidadao.horaDose1);
+                     localStorage.setItem('cDD2',res.data.cidadao.dataDose2);
+                     localStorage.setItem('cHD2',res.data.cidadao.horaDose2);
+                   }
+                })
+                .catch((err) => {
+                  this.$swal("Email ou senha invalidos")
+               });
             }
         },
           CadCidadaoNew: function() {

@@ -41,16 +41,14 @@
                     <b-button id="returnBtn2" class="returnBtn"  @click="voltar" variant="primary">Voltar</b-button>
                 </div>
                 <div>
-                <!-- <div id="list" v-for="cidadao in cidadaos" :key="cidadao.id">
-                    <Cidadao :cidadao="cidadao"></Cidadao>
-                </div> -->
                 </div>
         </div>
     </div>   
 </template>
 
-<script scoped>
-// import jsPDF from 'jspdf';
+<script>
+import api from '/src/services/api'
+
 
 export default {
   name: 'CadUsu',
@@ -63,7 +61,7 @@ export default {
      emailField:'',
      senhaField:'',
      confirmSenhaField:'',
-      cidadaos: [
+      cidadao: [
         {
           
         }
@@ -71,8 +69,6 @@ export default {
     }
   },
   components: {
-    //   Cidadao,
-    //   jsPDF,
   },
   methods:{
     cadastrarUsuario: function(){
@@ -80,24 +76,35 @@ export default {
             || this.emailField === ''|| this.senhaField < 5 || this.confirmSenhaField < 5) {
                 this.$swal("Campos Vazios ou inválidos")
         } else{
-                this.cidadaos.push({
-                nome:this.nomeField,
-                data:this.dataField,
-                CPF:this.CPFField, 
-                telefone: this.telefoneField,
-                email: this.emailField,
-                senha:this.senhaField,
-                confirmSenha:this.senhaField,
-                id: this.cidadaos.length + 1 });
-                console.log(this.cidadaos)
-                this.nomeField = '',
-                this.dataField = '',
-                this.CPFField = '',
-                this.telefoneField ='',
-                this.emailField ='',
-                this.senhaField ='',
-                this.confirmSenhaField=''
-                this.gerarPDF();
+                const nome = this.nomeField;
+                const data = this.dataField;
+                const CPF = this.CPFField;
+                const telefone = this.telefoneField;
+                const email = this.emailField;
+                const senha = this.senhaField;
+                const senhaConfirm = this.confirmSenhaField;
+                if (senha===senhaConfirm) {
+                        api.post('http://localhost:3000/api/v1/register',{
+                    nomeCompleto: nome,
+                    dataNascimento: data,
+                    CPF: CPF,
+                    tel: telefone,
+                    email: email,
+                    password:senha,
+                })
+                    .then((res) => {
+                    if(res.status==201){
+                        console.log(res.data.cidadao)
+                        this.$swal("Cadastrado com sucesso!")
+                        window.location.href = "http://localhost:8080/#/";
+                    }
+                    })
+                    .catch((err) => {
+                    this.$swal("Cidadão não cadastrado")
+                });  
+                } else{
+                     this.$swal("Senha e Confirme a sua senha não correspondem")
+                }
         }
     },
     salvar1: function(){
@@ -120,11 +127,6 @@ export default {
         document.getElementById('CadUsu2').style.display = "none";
         document.getElementById('CadUsu').style.display = "block";
     },
-    // gerarPDF: function(){
-    //     var doc = new jsPDF()
-    //     doc.text('Recibo de cadastro', 85,10)
-    //     doc.output('dataurlnewwindow');
-    // },
     }
 }
 </script>

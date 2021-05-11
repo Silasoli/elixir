@@ -9,11 +9,9 @@
   <div>
   <b-sidebar id="sidebar-right" title="Menu"  bg-variant="light" right shadow>
     <div class="px-3 py-2">
+      <b-button class="btnSideBar" @click="IrHome">Home</b-button>
       <b-button class="btnSideBar" @click="IrDose1">Agendar Primeira Dose</b-button>
       <b-button class="btnSideBar" @click="IrDose2">Agendar Segunda Dose</b-button>
-      <b-button class="btnSideBar" @click="IrCadCidadao">Cadastrar Cidadão</b-button>
-      <b-button class="btnSideBar" @click="IrHome">Home</b-button>
-     
     </div>
   </b-sidebar>
   </div>
@@ -24,9 +22,6 @@
 export default {
   name: 'NavBar.vue',
   methods:{
-     IrCadCidadao: function() {
-      window.location.href = "http://localhost:8080/#/cadcidadao";
-    }, 
     IrLogin: function() {
       window.location.href = "http://localhost:8080/#/";
     },
