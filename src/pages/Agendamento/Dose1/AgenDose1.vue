@@ -300,11 +300,11 @@ div#hours{
 #complet{
   z-index: -1;
   position: relative;
-  top: -255px;
+  top: -275px;
   left: -100px;
   width: 185.2%;
   background-color: #E5E5E5;
-  height: 50vh;
+  height: 51vh;
 }
 
 }
@@ -377,7 +377,7 @@ div#hours{
 #complet{
  
   position: relative;
-  top: -284.8px;
+  top: -294.8px;
   left: -100px;
   width: 177.5%;
   background-color: #E5E5E5;
@@ -451,7 +451,7 @@ div#hours{
 #complet{
  
   position: relative;
-  top: -284.8px;
+  top: -286.8px;
   left: -100px;
   width: 172%;
   background-color: #E5E5E5;
@@ -526,8 +526,8 @@ div#hours{
  
   position: relative;
   top: -284.8px;
-  left: -100px;
-  width: 142%;
+  left: -153px;
+  width: 166%;
   background-color: #E5E5E5;
   height: 52vh;
 }
@@ -604,9 +604,9 @@ div#hours{
   position: relative;
   top: -284.8px;
   left: -100px;
-  width: 142%;
+  width: 143%;
   background-color: #E5E5E5;
-  height: 52vh;
+  height: 53vh;
 }
 }
 /*Tela de 1281*/

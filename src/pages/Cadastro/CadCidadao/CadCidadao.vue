@@ -134,6 +134,7 @@ export default {
     max-width: 100%;
     text-align: center;
     width: 100%;
+    height: 100vh;
     position: relative;
     left: 0; right: 0;
     margin: auto;
@@ -193,6 +194,12 @@ export default {
     text-align: left;
 }
 @media (max-width:801px){
+    .titleForm{
+    margin-left: -40px;
+    padding: 5px;
+    text-align: left;
+    font-size: 14pt;
+}
     h3#formtitle{
     margin-left: -40px;
     padding: 0px;
@@ -235,6 +242,13 @@ div#telefone{
     width: 180%;
     padding: 20px;
 }
+#btnSave3{
+    position: relative;
+    top: 0px;
+    left: 40%;
+    background-color: #F45267 !important;
+}
+
 }
 @media (min-width: 320px){
 /*tela 2*/
@@ -243,7 +257,7 @@ div#telefone{
      top: 0px !important;
     margin:20px 0px 0px -40px;
     text-align: left;
-    font-size: 18pt;
+    font-size: 15pt;
     
     
 }

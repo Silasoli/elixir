@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <div  id="mainDiv">
+  <div id="mainDiv">
+    <div>
         <div id="titlePage">
-      <h3 id="title">Agendamentos do dia</h3>
+      <h3 id="title">Agendamentos do dia:</h3>
       <h3 id="dataDoDia">06/05/2021</h3>
     </div>
     <div id="filtro"> 
@@ -12,40 +12,45 @@
             </div>
         </div>
       <div id="filtroInicio">
-          <label for="">Fim</label>
+          <label for="">Início</label>
           <b-form-input class="date" id="date1" type="date" v-model="date1"></b-form-input>
       </div>
       <div id="filtroFim">
-          <label for="">Inicio</label>
+          <label for="">Fim</label>
           <b-form-input class="date" id="date2" type="date" v-model="date2"></b-form-input>
       </div>
     </div>
     </div>
-    <div id="tableDiv">
-        <md-table v-model="searched" md-sort="nome_Completo" md-sort-order="asc" md-card md-fixed-header>
-      <md-table-toolbar>
-        <div class="md-toolbar-section-start">
-          <h1 class="md-title">Agendamentos</h1>
-        </div>
-        <md-field md-clearable class="md-toolbar-section-end">
-          <md-input placeholder="Pesquisar por nome" v-model="search" @input="searchOnTable" />
-        </md-field>
-      </md-table-toolbar>
-
-      <md-table-row slot="md-table-row" slot-scope="{ item }">
-        <md-table-cell md-label="Horário" md-sort-by="horario" md-numeric>{{ item.horario }}</md-table-cell>
-        <md-table-cell md-label="Nome Completo" md-sort-by="nome_Completo">{{ item.nome_Completo }}</md-table-cell>
-        <md-table-cell md-label="CPF" md-sort-by="CPF">{{ item.CPF }}</md-table-cell>
-        <md-table-cell md-label="Dose" md-sort-by="dose">{{ item.dose }}</md-table-cell>
-        <md-table-cell md-label="Vacina" md-sort-by="title">{{ item.vacina }}</md-table-cell>
-        <md-table-cell md-label="Vacinado" md-sort-by="vacinado">{{ item.vacinado }}</md-table-cell>
-        <md-table-cell md-label="2º dose" md-sort-by="vacinado">
-            <button id="btn2dose" @click="Marcar2Dose(`${item.id}`)">Marcado</button>
-        </md-table-cell>
-      </md-table-row>
-    </md-table>
-  </div>
-    </div>
+   
+      
+        <div id="tableDiv">
+        
+              <md-table v-model="searched" md-sort="nome_Completo" md-sort-order="asc" md-card md-fixed-header>
+                      <md-table-toolbar id="pesquisa">
+              <div class="md-toolbar-section-start">
+                <h1 class="md-title">Agendamentos</h1>
+              </div>
+              <md-field id="search" md-clearable class="md-toolbar-section-end">
+                <md-input placeholder="Pesquisar por nome" v-model="search" @input="searchOnTable" />
+              </md-field>
+                      </md-table-toolbar>
+                      <md-table-row slot="md-table-row" slot-scope="{ item }">
+              <md-table-cell   md-label="Horário" md-sort-by="horario" md-numeric>{{ item.horario }}</md-table-cell>
+              <md-table-cell md-label="Nome Completo" md-sort-by="nome_Completo">{{ item.nome_Completo }}</md-table-cell>
+              <md-table-cell md-label="CPF" md-sort-by="CPF">{{ item.CPF }}</md-table-cell>
+              <md-table-cell md-label="Dose" md-sort-by="dose">{{ item.dose }}</md-table-cell>
+              <md-table-cell md-label="Vacina" md-sort-by="title">{{ item.vacina }}</md-table-cell>
+              <md-table-cell md-label="Vacinado" md-sort-by="vacinado">{{ item.vacinado }}</md-table-cell>
+              <md-table-cell md-label="2º dose" md-sort-by="vacinado">
+                  <button id="btn2dose" @click="Marcar2Dose(`${item.id}`)">Marcado</button>
+              </md-table-cell>
+                      </md-table-row>
+                    </md-table>
+            </div>
+      </div>
+      
+    
+    
 </template>
 
 
@@ -70,7 +75,7 @@
         {
           id:'1',
           horario: '08:00',
-          nome_Completo: "Heloise Benedita Moreira",
+          nome_Completo: "Heloisa",
           CPF: "427.395.724-84",
           dose: "1º",
           vacina: "Astrazeneca",
@@ -113,6 +118,7 @@
           vacina: "Astrazeneca",
           vacinado: "Não"
         },
+        
       ]
     }),
     methods: {
@@ -134,8 +140,8 @@
 </script>
 
 <style lang="scss" scoped>
-  #tableDiv{
-    width: 60%;
+   #tableDiv{
+    width: 120%;
     position: absolute;
     top: 260px; bottom: 0;
     left: 0; right: 0;
@@ -165,6 +171,8 @@
     border-width: 2px;
     font-size: 16px;
     color: black;
+    
+   
   }
   .md-table-row{
     border: solid;
@@ -248,5 +256,149 @@
     background-color: green;
     font-weight: bolder;
   }
+  @media screen and (min-width:20em){
+    
+   #title{
+     position: relative;
+     top: -60px;
+     left: -24%;
+   }
+   #dataDoDia{
+     position: absolute;
+     right: -30%;
+   } 
+   #searchBtn{
+     position: relative;
+     top: -30px;
+     left: 100%;
+   }
+   #filtroInicio{
+      position: relative;
+      top: -150px !important;
+   }
+   #filtroFim{
+     position: relative;
+     top: -170px;
+   }
+    #tableDiv{
+    width: 160%;
+    position: absolute;
+    top: 280px; bottom: 0;
+    left: -30%; right: 0;
+    margin: auto;
+      
+    }
+   
+#mainDiv{
+       height: 150vh !important;
+       width: 60%;
+       background-color: #E5E5E5;
+     }
+     #pesquisa{
+       width: 736%;
+       
+     }
+     #search{
+       position: relative;
+       top: 0px;
+       left: -79%;
+       
+     }
+  }
+  @media  screen and (min-width:23em){
+   #title{
+     position: relative;
+     top: -60px;
+     left: -24%;
+   }
+   #dataDoDia{
+     position: absolute;
+     right: -30%;
+   } 
+   #searchBtn{
+     position: relative;
+     top: -30px;
+     left: 100%;
+   }
+   #filtroInicio{
+      position: relative;
+      top: -150px !important;
+   }
+   #filtroFim{
+     position: relative;
+     top: -170px;
+   }
+   
+   #tableDiv{
+    width: 160%;
+    position: absolute;
+    top: 260px; bottom: 0;
+    left: -30%; right: 0;
+    margin: auto;
+  }
+     #mainDiv{
+       height: 150vh !important;
+       width: 60%;
+       background-color: #E5E5E5;
+     }
+     #pesquisa{
+       width: 736%;
+       
+     }
+     #search{
+       position: relative;
+       top: 0px;
+       left: -79%;
+       
+     }
+  }
+  @media   screen and (min-width:26em){
+#tableDiv{
+    width: 160%;
+    position: absolute;
+    top: 260px; bottom: 0;
+    left: -30%; right: 0;
+    margin: auto;
+  }
+    #filtroInicio{
+      position: relative;
+      top: -150px !important;
+      left: -15%;
+   }
+   #filtroFim{
+     position: relative;
+     top: -170px;
+     left: -15%;
+   }
+   
+  }
+@media screen and (min-width:48em){
+ 
+
+
+  #tableDiv{
+    width: 160%;
+    position: absolute;
+    top: 260px; bottom: 0;
+    left: -30%; right: 0;
+    margin: auto;
+  }
+  #searchDiv{
+    position: relative;
+    top: 80px;
+  }
+    #filtroInicio{
+      position: relative;
+      top: -3px !important;
+      left: -40%;
+   }
+   #filtroFim{
+     position: relative;
+     top: -100px;
+     left: 0%;
+   }
+   
+}
+  
 </style>
 
