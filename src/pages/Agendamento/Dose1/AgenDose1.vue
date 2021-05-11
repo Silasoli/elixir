@@ -3,7 +3,7 @@
       <!-- TELA 1 -->
       <div id="mainDiv">
         <div id="titlePage">
-       <h3>Preencha o formulário abaixo:</h3>
+       <h3>Selecione data , posto e horário:</h3>
       </div>
       <div>
       </div>
@@ -23,7 +23,7 @@
         </div>
       </div>
         <div id="selectDate">
-           <v-date-picker mode="date" v-model='selectedDate'  :value="null" color="purple" is-dark is-expanded />
+           <v-date-picker class="Data" mode="date" v-model='selectedDate'  :value="null" color="purple" is-dark is-expanded />
         </div> 
             <b-button id="btnSave1" class="saveBtn"    @click="salvar" variant="primary">Salvar</b-button>
       </div>
@@ -92,18 +92,27 @@
   height:110vh !important;
 }
 /* Style TELA 1 */
-#selectLocal{
+#titlePage{
+  text-align: center;
   width: 100%;
-  margin-top: 30px;
+  float: left;
+  display: flex;
+  flex-wrap: wrap;
+  
+}
+#selectDate{
+  width: 120% !important;
 }
 .selectLocalItem{
-  width: 40%;
-  float: right;
+  position: relative;
+  left: 50%;
+  top: 70px;
 }
+
 .selectHours{
-  width: 40% !important;
-  margin-bottom: 30px;
-  float: left;
+  position: relative;
+  left: 120%;
+  top: 28px;
 }
 #mainDiv{
   width: 50%;
@@ -112,473 +121,142 @@
   top: 140px; bottom: 0;
   left: 0; right: 0;
   margin: auto;
-  
 }
-/* style TELA 2 */
-#divTitle{
-  text-align: center;
-  width: 100%;
-  float: left;
+#btnSave1{
+  position: relative;
+  top: -100px !important;
+ 
 }
-#mainDivHorario{
-  position: absolute;
-  top: 140px; bottom: 0;
-  left: 0; right: 0;
-  margin: auto;
-}
+
+
+
 /*Tela de 320*/
-@media(min-width:320px){
+@media screen and (min-width:280px){
   #mainDiv2{
   background-color:#E5E5E5 !important;
   max-height:260% !important;
   overflow-x:hidden !important;
 }
 
-    div#titlePage  {
-    text-align: center;
-    position: absolute;
-    top: -100px  ;
-}
-div#selectLocal{
-  position: relative;
-  top: 200px;
-  left: -50px;
-  width: 100%;
- 
-}
-#selectDate{
-  position: relative;
-  top: -130px;
-  left: -69.7px;
-  margin: 10px;
-  width: 150%;
-}
-#Date2{
-  width: 120% !important;
-}
-#btnSave1{
-   background-color: #F45267 !important;
-  position: relative !important;
-  top: -130px;
-  left: 86%!important;
- 
-}
-/*Tela 2 responsiva 320px*/
-
-div#hours{
-  position: relative;
-  top:10px ;
-  left: 30px;
-  display: grid;
-  grid-template-columns: 100px 100px;
-  grid-column-gap: 5px ;
-  margin: 10px;
-  width: 240px;
- 
- }
- .selectHour{
-   width: 110px !important;
-   margin: 10px  !important;
- }
- div#divTitle{
-   position: relative;
-   top: -150px;
-  text-align: center; 
-}
-#btnSave2{
-  position: relative !important;
-  top: -120px;
-   background-color: #F45267 !important;
-   left: 70px;
- 
-
-}
-#returnBtn1{
-  position: relative ;
-  top: -120px ;
-   background-color: #F45267 !important;
- 
-}
-#complet{
-  z-index: -1;
-  position: relative;
-  top: -275px;
-  left: -100px;
-  width: 185.2%;
-  background-color: #E5E5E5;
-  height: 51vh;
-}
-
-}
-/*Tela de 375*/
-@media(min-width:375px) {
- 
 div#titlePage  {
     text-align: center;
     position: absolute;
     top: -100px  ;
 }
-
-div#selectLocal{
+#selectDate{
+  
   position: relative;
-  top: 220px;
-  left: -70px;
+  left: -38%;
+  top: -30px;
+  width: 175% !important;
+}
+.selectLocalItem{
+  position: relative;
+  left: -30%;
+  top: 0px;
+  width: 120%;
+}
+
+.selectHours{
+  position: relative;
+  left: -30%;
+  top: 298px;
   width: 100%;
 }
-div#selectDate{
-  position: relative;
-  top: -110px;
-  left: -50%;
-  margin: 10px;
-  width: 176%;
-}
-#Date2{
-  position: relative;
-  left: 5%;
-  width: 100% !important;
-}
 #btnSave1{
-  position: relative;
-  top: -113px;
-  left: 180px !important;
-}
-/*Tela 2 responsiva 375px*/
- 
-div#hours{
-  position: relative;
-  top:-20px ;
-  left: 20%;
-  display: grid;
-  grid-template-columns: 100px 100px;
-  grid-column-gap: 20px ;
-  margin: 10px;
-  width: 260px;
- }
- .selectHour{
-   width: 108px !important;
-   margin: 10px  !important;
- }
- div#divTitle{
-   position: relative;
-   top: -150px;
-  text-align: center; 
-}
-#btnSave2{
+   background-color: #F45267 !important;
   position: relative !important;
-  top: -135px;
-  left: 90px;
-  margin: 10px  !important;
-
-}
-#returnBtn1{
-  position: relative !important;
-  top: -120px !important;
-  margin-bottom: 30px  !important;
-  
-}
-#complet{
+  top: -10px !important;
+  left: 80%!important;
  
-  position: relative;
-  top: -294.8px;
-  left: -100px;
-  width: 177.5%;
-  background-color: #E5E5E5;
-  height: 50vh;
 }
 
 }
-/*Tela de 425*/
-@media(min-width:425px){
-  div#titlePage  {
+
+@media screen and (min-width:768px){
+  #mainDiv2{
+  background-color:#E5E5E5 !important;
+  max-height:260% !important;
+  overflow-x:hidden !important;
+}
+
+div#titlePage  {
     text-align: center;
     position: absolute;
     top: -100px  ;
 }
-
-div#selectLocal{
-  position: relative;
-  top: 220px;
-  left: -70px;
-  width: 100%;
-}
-#Date2{
- width: 100% !important;
-  position: relative;
-  top: -20px;
-  left: 4.1%;
-  margin: 0px;
-}
-
-#btnSave1{
-  position: relative;
-  top: -115px;
- left: 100% !important;
-}
-/*Tela 2 responsiva 425*/
- 
-div#hours{
-  position: relative;
-  top:-20px ;
-  left: 20%;
-  display: grid;
-  grid-template-columns: 100px 100px;
-  grid-column-gap: 20px ;
-  margin: 10px;
-  width: 280px;
- }
- .selectHour{
-   width: 115px !important;
-   margin: 10px  !important;
-   font-size: 13pt;
-   
- }
- div#divTitle{
-   position: relative;
-   top: -150px;
-  text-align: center; 
-}
-#btnSave2{
-  position: relative !important;
-  top: -135px;
-  left: 90px;
-  margin: 10px  !important;
-
-}
-#returnBtn1{
-  position: relative !important;
-  top: -120px !important;
-  margin-bottom: 30px  !important;
+#selectDate{
   
-}
-#complet{
- 
   position: relative;
-  top: -286.8px;
-  left: -100px;
-  width: 172%;
-  background-color: #E5E5E5;
-  height: 52vh;
+  left: -38%;
+  top: -30px;
+  width: 175% !important;
 }
-
-}
-/*Tela de 768*/
-@media(min-width:768px){
-
- div#titlePage  {
-    text-align: center;
-    position: absolute;
-    top: -100px  ;
-}
-div#selectLocal{
+.selectLocalItem{
   position: relative;
-  top: 200px;
-  left: -210px;
-  width: 60%;
- 
-}
-div#selectDate{
-  position: relative;
-  top: -130px;
-  left: -70px;
-  margin: 10px;
-  width: 500px;
-}
-#btnSave1{
-  position: relative !important;
-  top: -140px;
-  left: 330px !important;
-}
-/*Tela 2 responsiva 768*/
- 
-div#hours{
-  position: relative;
-  top:0px ;
-  left: 35px;
-  display: grid;
-  grid-template-columns: 150px 150px 150px;
-  grid-template-rows: 50px 50px 50px ;
-  grid-column-gap: 20px;
-  grid-row-gap: 10px;
-  margin: 0px;
-  width: 500px;
- }
- .selectHour{
-   width: 115px !important;
-   margin: 0px 0px 0px 15px  !important;
- }
- div#divTitle{
-   position: relative;
-   top: -150px;
-  text-align: center; 
-}
-#btnSave2{
-  position: relative !important;
-  top: -135px;
-  left: 300px;
-  margin: 10px  !important;
-
-}
-#returnBtn1{
-  position: relative !important;
-  top: -120px !important;
-  margin-bottom: 30px  !important;
-  
-}
-#complet{
- 
-  position: relative;
-  top: -284.8px;
-  left: -153px;
-  width: 166%;
-  background-color: #E5E5E5;
-  height: 52vh;
-}
-
-}
-/*Tela de 1024*/
-@media(min-width:1024px){
-
- div#titlePage  {
-    text-align: left;
-    position: absolute;
-    top: -125px ;
-    left: -150px;
-}
-div#selectLocal{
-  position: relative;
-  top: -170px;
-  left: 100px;
-  width: 50%;       
- 
-}
-  #Date2{
-  position: relative;
-  top: -40px;
-  left: -70px;
-  margin: 10px;
-  width: 770px !important;
-}
-#btnSave1{
-  position: relative !important;
-  top: -150px;
-  left: 500px !important;
-}
-/*Tela 2 responsiva 1024*/
- 
-div#hours{
-  position: relative;
-  top:0px ;
-  left: 35px;
-  display: grid;
-  grid-template-columns: 150px 150px 150px;
-  grid-template-rows: 50px 50px 50px ;
-  grid-column-gap: 20px;
-  grid-row-gap: 0px;
-  margin: 10px;
-  width: 600px;
-  
- }
- .selectHour{
-   width: 117px !important;
-   margin: 0px 0px 0px 50px  !important;
-   
- }
- div#divTitle{
-   position: relative;
-   top: -150px;
-  text-align: center; 
-}
-#btnSave2{
-  position: relative !important;
-  top: -135px;
-  left: 420px;
-  margin: 10px  !important;
-
-}
-#returnBtn1{
-  position: relative !important;
-  top: -120px !important;
-  margin-bottom: 30px  !important;
-  
-}
-#complet{
- 
-  position: relative;
-  top: -284.8px;
-  left: -100px;
-  width: 143%;
-  background-color: #E5E5E5;
-  height: 53vh;
-}
-}
-/*Tela de 1281*/
-@media(min-width:1281px){
-
- div#titlePage  {
-    text-align: left;
-    position: absolute;
-    top: -125px ;
-    left: -150px;
-}
-div#selectLocal{
-  position: relative;
-  top: -170px;
-  left: 70px;
+  left: -30%;
+  top: 0px;
   width: 50%;
- 
 }
- #Date2{
+
+.selectHours{
   position: relative;
+  left: 70%;
   top: -40px;
-  left: -70px;
-  margin: 10px;
-  width: 180% !important;
+  width: 60%;
 }
 #btnSave1{
+   background-color: #F45267 !important;
   position: relative !important;
-  top: -180px;
-  left: 650px !important;
-  padding: 10px;
-  font-size: 14pt;
-}
-/*Tela 2 responsiva 1281*/
+  top: -10px !important;
+  left: 105%!important;
  
-div#hours{
-  position: relative;
-  top:0px ;
-  left: 35px;
-  display: grid;
-  grid-template-columns: 150px 150px 150px 150px 150px ;
-  grid-template-rows: 50px 50px 50px 50px ;
-  grid-column-gap: 20px;
-  grid-row-gap: 0px;
-  margin: 10px;
-  width: 880px;
-  
- }
- .selectHour{
-   width: 125px !important;
-   margin: 0px 0px 0px 50px  !important;
-   align-self: flex-start;
-   
- }
- div#divTitle{
-   position: relative;
-   top: -150px;
-  text-align: center; 
 }
-#btnSave2{
-  position: relative !important;
-  top: -135.3px;
-  left: 690px;
-  margin: 10px  !important;
 
 }
-#returnBtn1{
-  position: relative !important;
-  top: -120px !important;
-  margin-bottom: 30px  !important;
+
+@media screen and (min-width:1281px){
+  #mainDiv2{
+  background-color:#E5E5E5 !important;
+  max-height:260% !important;
+  overflow-x:hidden !important;
+}
+
+div#titlePage  {
+    text-align: center;
+    position: absolute;
+    top: -100px  ;
+}
+#selectDate{
   
+  position: relative;
+  left: -10%;
+  top: -90px;
+  width: 125% !important;
+}
+.selectLocalItem{
+  position: relative;
+  left: -8%;
+  top: 0px;
+  width: 40%;
+}
+
+.selectHours{
+  position: relative;
+  left: 74%;
+  top: -40px;
+  width: 40%;
+}
+#selectLocal{
+  position: relative;
+  top: -60px;
+}
+#btnSave1{
+   background-color: #F45267 !important;
+  position: relative !important;
+  top: -60px !important;
+  left: 102%!important;
+ 
 }
 
 }

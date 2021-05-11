@@ -66,5 +66,6 @@ export default {
 }
 #titleNav{
   margin-top: 10px;
+  
 }
 </style>
