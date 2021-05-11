@@ -3,63 +3,30 @@
       <!-- TELA 1 -->
       <div id="mainDiv">
         <div id="titlePage">
-       <h4>Olá, escolha uma data:</h4>
+       <h3>Preencha o formulário abaixo:</h3>
+      </div>
+      <div>
       </div>
       <div id="localDrop">
         <div id="selectLocal">
-          <b-form-select v-model="selected" :options="options" size="sm " class="mt-3" valeu=""></b-form-select>
-          <!-- <div class="mt-3">Selected: <strong>{{ selected }}</strong></div> -->
+          <el-select class="selectLocalItem" v-model="value" placeholder="Selecione um local">
+            <el-option
+              v-for="item in options"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value">
+            </el-option>
+          </el-select>
+          <div>
+           <el-time-select class="selectHours" placeholder="Selecione um Horário" v-model="horaSelecionada" :picker-options="{  start: '08:30', step: '00:15', end: '18:30'}"></el-time-select>
+          </div>
         </div>
       </div>
         <div id="selectDate">
-           <v-date-picker v-model='selectedDate'  :value="null"  id="Date2" color="purple" is-dark is-expanded @dayclick="getday"/>
+           <v-date-picker mode="date" v-model='selectedDate'  :value="null" color="purple" is-dark is-expanded />
         </div> 
             <b-button id="btnSave1" class="saveBtn"    @click="salvar" variant="primary">Salvar</b-button>
       </div>
-      <!-- TELA 2 -->
-      
-        <div id="mainDivHorario">
-          <div id="header">
-            <div id="divTitle">
-              <h4 class="title">Selecione um horario:</h4>
-            </div>
-          </div>
-          <div id="selectDate">
-            <div id="divDay">
-        
-            </div>
-            <div id="hours">
-              <!-- <button v-for="item in 30" :key="item" :id="'selectComponentH'+item" class="selectComponent" @click="selectHours(``)">{{item}}</button>  -->
-              <el-time-select class="selectHour" readonly v-model="value1" id="oi" @focus="gethour('8:30');"></el-time-select>
-              <el-time-select class="selectHour" readonly v-model="value2" @focus="gethour('8:45')"></el-time-select>
-              <el-time-select class="selectHour" readonly v-model="value3" @focus="gethour('9:00')"></el-time-select>
-              <el-time-select class="selectHour" readonly v-model="value5" @focus="gethour('9:15')"></el-time-select>
-              <el-time-select class="selectHour" readonly v-model="value5" @focus="gethour('9:30')"></el-time-select>
-              <el-time-select class="selectHour" readonly v-model="value6" @focus="gethour('9:45')"></el-time-select>
-              <el-time-select class="selectHour" readonly v-model="value7" @focus="gethour('10:00')"></el-time-select>
-              <el-time-select class="selectHour" readonly v-model="value8" @focus="gethour('10:15')"></el-time-select>
-              <el-time-select class="selectHour" readonly v-model="value9" @focus="gethour('10:30')"></el-time-select>
-              <el-time-select class="selectHour" readonly v-model="value10" @focus="gethour('10:45')"></el-time-select>
-              <el-time-select class="selectHour" readonly v-model="value11" @focus="gethour('11:00')"></el-time-select>
-              <el-time-select class="selectHour" readonly v-model="value12"
-              @focus="gethour('11:15')"></el-time-select>
-               <el-time-select class="selectHour" readonly v-model="value13"
-              @focus="gethour('11:30')"></el-time-select>
-               <el-time-select class="selectHour" readonly v-model="value14"
-              @focus="gethour('11:45')"></el-time-select>
-              <el-time-select class="selectHour" readonly v-model="value15"
-              @focus="gethour('12:00')"></el-time-select>
-              <el-time-select class="selectHour" readonly v-model="value16"
-              @focus="gethour('12:15')"></el-time-select>
-        
-            </div>
-          </div>
-              <b-button class="returnBtn" id="returnBtn1"  @click="voltar" variant="primary">Voltar</b-button>
-        
-              <b-button id="btnSave2" class="saveBtn"   variant="primary">Salvar</b-button>
-              <div id="complet"></div>
-        </div>
-         
   </div>
 </template>
 
@@ -70,96 +37,45 @@
   },
     data() {
       return {
-        value1:'8:30',
-        value2:'8:45',
-        value3:'9:00',
-        value4:'9:15',
-        value5:'9:30',
-        value6:'9:45',
-        value7:'10:00',
-        value8:'10:15',
-        value9:'10:30',
-        value10:'10:45',
-        value11:'11:00',
-        value12:'11:15',
-        value13:'11:30',
-        value14:'11:45',
-        value15:'12:00',
-        value16:'12:15',
-        // value17:'12:15',
-        // value18:'12:30',
-        // value19:'12:45',
-        // value20:'13:00',
-        // value21:'13:15',
-        // value22:'13:30',
-        // value23:'13:45',
-        // value24:'14:00',
-        // value25:'14:15',
-        // value26:'14:30',
-        // value27:'14:45',
-        // value28:'15:00',
-        // value29:'15:15',
-        // value30:'15:30',
-        // value31:'15:45',
-        // value32:'16:00',
-        // value33:'16:15',
-        // value34:'16:30',
-        // value35:'16:45',
-        // value36:'17:00',
+        horaSelecionada: '',
+        selectedDate:'',
         dayFiel: '',
-        selected: null,
-        selectedDate: null,
-        options: [
-          { value: null, text: 'Selecione um Posto' },
-          { value: 1, text: 'Posto 2' },
-          { value: 2, text: 'Posto 3' },
-          { value: 3, text: 'Posto 4' },
-          { value: 4, text: 'Posto 5', disabled: true }
-        ],
-        form: [
+        value: '',
+         options: [{
+          value: 'Posto 1',
+          label: 'Posto 1'
+        }, {
+          value: 'Posto 2',
+          label: 'Posto 2',
+        }, {
+          value: 'Posto 3',
+          label: 'Posto 3'
+        }, {
+          value: 'Posto 4',
+          label: 'Posto 4'
+        }, {
+          value: 'Posto 5',
+          label: 'Posto 5'
+        }],
+        dataAgen1: [
 
         ]
       }
     },
     methods:{
-    //     AgenDose1: function(){
-    //         this.form.push({
-    //         nome:this.dayFiel,
-    //         data:this.selected,
-    //         id: this.form.length + 1 });
-    //         console.log(this.form)
-    // },
-    salvar: function(){
-        document.getElementById('mainDivHorario').style.display = "block";
-        document.getElementById('mainDiv').style.display = "none";
-    },
-    voltar: function() {
-        document.getElementById('mainDivHorario').style.display = "none";
-        document.getElementById('mainDiv').style.display = "block";
-    },
-    selectHours: function(id){
-      let btn = document.getElementById(id)
-      if (btn.style.backgroundColor!="#F45267") {
-          btn.style.backgroundColor="#F45267";
-      } else if(btn.style.backgroundColor=="#F45267"){
-          console.log('oi')
-          btn.style.backgroundColor="#E5E5E5"; 
-      }
-    },
-    // getday: function(){
-    //   //  this.form.push({
-    //   //       data:this.selected,
-    //   //       day:this.selectedDate,
-    //   //       id: this.form.length + 1 });
-    // },
-    gethour: function(value){
-        this.form.push({
-          hora:value,
-            data:this.selected,
-            day:this.selectedDate,
-            id: this.form.length + 1 });
-            console.log(this.form)
-    },
+        salvar: function(){
+          const ddata = this.selectedDate;
+          const data2 =  ddata.toString().substring(0, 15)
+            this.dataAgen1.push({
+            hora:this.horaSelecionada,
+            data: data2,
+            local:this.value,
+            id: this.dataAgen1.length + 1 });
+            console.log(this.dataAgen1)
+        },
+        traduDate: function(){
+          
+        }
   }
  }
 </script>
@@ -177,11 +93,17 @@
 }
 /* Style TELA 1 */
 #selectLocal{
-  width: 23%;
+  width: 100%;
+  margin-top: 30px;
+}
+.selectLocalItem{
+  width: 40%;
   float: right;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  /* margin-right: 30px; */
+}
+.selectHours{
+  width: 40% !important;
+  margin-bottom: 30px;
+  float: left;
 }
 #mainDiv{
   width: 50%;
@@ -203,26 +125,6 @@
   top: 140px; bottom: 0;
   left: 0; right: 0;
   margin: auto;
-  margin-top: 70px;
-  width: 60%;
-  height: 42%;
-  padding-top: 30px;
-  display: none;
- 
-}
-.selectHour{
-  width: 22% !important;
-  padding: 5px;
-  margin-left: 15px;
-}
-#hours{
-  background-color:white;
-  border-color: #6A5ACD !important;
-  border: solid;
-  border-radius: 5px;
-  height: 40%;
-  padding: 5px;
-
 }
 /*Tela de 320*/
 @media(min-width:320px){
