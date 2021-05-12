@@ -39,10 +39,8 @@
         <md-table-cell md-label="Dose" md-sort-by="dose">{{ item.dose }}</md-table-cell>
         <md-table-cell md-label="Vacina" md-sort-by="title">{{ item.vacina }}</md-table-cell>
         <md-table-cell md-label="Vacinado" md-sort-by="vacinado">{{ item.vacinado }}</md-table-cell>
-        <md-table-cell md-label="2º dose" md-sort-by="vacinado">
             <button id="btn2dose" @click="Marcar2Dose(`${item.id}`)">Marcado</button>
-        </md-table-cell>
-      </md-table-row>
+        </md-table-row>
     </md-table>
   </div>
     </div>

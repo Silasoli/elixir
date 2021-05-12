@@ -76,11 +76,13 @@ export default {
 <style scoped>
   #cabecalho{
     padding: 50px;
+    padding-bottom: 25px;
     margin-left: 20px;
   }
   #divInfo{ 
   width: 50%;
   padding-top: 15px;
+  padding-bottom: 20px;
   position: relative;
   top: 0; bottom: 0;
   left: 0; right: 20;
