@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import api from '/src/services/api'
+import api from '/src/services/api' 
 
 export default {
     name: 'NavBar.vue',

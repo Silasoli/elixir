@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="totalDiv">
       <!-- TELA 1 -->
       <div id="mainDiv">
         <div id="titlePage">
@@ -136,8 +136,17 @@ import jsPDF from 'jspdf';
             const VerifyLogin = localStorage.getItem('cId');
             if (VerifyLogin==null||VerifyLogin==undefined) {
                  window.location.href = "http://localhost:8080/#/";
-            }  
+            } else{
+              api.get(`http://localhost:3000/api/v1/cidadaos/${localStorage.getItem('cId')}`)
+                .then((res) => {
+                  const dataDose1 = res.data.dataDose1;
+                  const horaDose1 = res.data.horaDose1;
+                    if (dataDose1!='null' && horaDose1!='null') {
+                      document.getElementById('totalDiv').style.display = 'none';
+                    }  
+            });
         }
+ }
  }
  }
 </script>
