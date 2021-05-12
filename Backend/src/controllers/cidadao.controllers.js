@@ -41,3 +41,56 @@ exports.loginCidadao = async (req, res) => {
 exports.returnCidadaoProfile = async(req,res)=>{
     await res.json(req.cidadaoData);
 };
+
+exports.returnAllCidadaos =  async(req,res)=>{
+  Cidadao.find(function(error, cidadaos) {
+     if (error) {
+          res.send('Erro'+error);
+     }
+     res.json(cidadaos);
+  });
+};
+
+exports.returnOneCidadao =  async(req,res)=>{
+  Cidadao.findById(req.params.cidadao_id, function(error,cidadao){
+    if (error) {
+        res.send('Não encontrado');
+    }
+    res.json(cidadao);
+  });
+};
+
+exports.returnEditCidadao =  async(req,res)=>{
+  Cidadao.findById(req.params.cidadao_id, function(error,cidadao){
+    if (error) {
+        res.send('Não encontrado');
+    }
+    cidadao.dataDose1 = req.body.dataDose1;
+    cidadao.horaDose1 = req.body.horaDose1;
+    cidadao.local = req.body.local;
+
+    cidadao.save(function(error){
+        if (error) {
+            res.send('Erro ao atualizar o produto')
+        }
+        res.json({ message: 'Atualizado com sucesso'})
+    });
+  });
+};
+
+exports.returnEditCidadao2 =  async(req,res)=>{
+  Cidadao.findById(req.params.cidadao_id, function(error,cidadao){
+    if (error) {
+        res.send('Não encontrado');
+    }
+    cidadao.dataDose2 = req.body.dataDose2;
+    cidadao.horaDose2 = req.body.horaDose2;
+
+    cidadao.save(function(error){
+        if (error) {
+            res.send('Erro ao atualizar o produto')
+        }
+        res.json({ message: 'Atualizado com sucesso'})
+    });
+  });
+};

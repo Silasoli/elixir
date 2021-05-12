@@ -8,7 +8,7 @@
                 </div>
                 <div>
                     <h4 class="titleInput">Data de Nascimento</h4>    
-                    <b-form-input  id="data" type="text" v-model="dataField" placeholder="Data de Nascimento" required></b-form-input>
+                    <b-form-input  id="data" type="text" v-mask="'##/##/####'" v-model="dataField" placeholder="Data de Nascimento" required></b-form-input>
                 </div>
                 <div>
                     <h4 class="titleInput">CPF</h4>    

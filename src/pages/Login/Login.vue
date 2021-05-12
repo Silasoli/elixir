@@ -26,7 +26,6 @@
                </div>
             </div>
          </div>
-
       </div>
    </div>
 
@@ -59,21 +58,16 @@ export default {
             } else {
                   const email1 = this.emailField;
                   const senha1 = this.passwordField;
-                this.Login.push({
-                  email: this.emailField,
-                  senha:this.passwordField,
-                  id: this.Login.length + 1 });
-                  console.log(this.Login[1]);
-              
                api.post('http://localhost:3000/api/v1/login',{
                   email: email1,
                   password:senha1,
                })
                 .then((res) => {
                    if(res.status==201){
-                      console.log(res.data.cidadao)
+                     //  console.log(res.data.cidadao)
                      this.$swal("Logado com sucesso!")
                      window.location.href = "http://localhost:8080/#/home";
+                     localStorage.setItem('cId',res.data.cidadao._id);
                      localStorage.setItem('cNome',res.data.cidadao.nomeCompleto);
                      localStorage.setItem('cData',res.data.cidadao.dataNascimento);
                      localStorage.setItem('cDD1',res.data.cidadao.dataDose1);

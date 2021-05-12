@@ -25,6 +25,10 @@ var CidadaoSchema = new Schema({
         type: String,
         default:'null'
     },
+    local:{
+        type: String,
+        default:'null'
+    },
     dataDose1:{
         type: String,
         default:'null'
@@ -83,6 +87,14 @@ CidadaoSchema.statics.findByCredentials =  async(email, password) =>{
     const isPasswordMatch = await bcrypt.compare(password, cidadao.password);
     if(!isPasswordMatch){
         throw new Error({ error:'Login invalido!'});
+    }
+    return cidadao;
+};
+
+CidadaoSchema.statics.findByEmail =  async(email) =>{
+    const cidadao = await Cidadao.findOne({ email });
+    if (!cidadao) {
+        throw new Error({ error:'Não encontrado'});
     }
     return cidadao;
 };
