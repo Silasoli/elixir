@@ -31,15 +31,20 @@
 </template>
 
 <script>
+import api from '/src/services/api'
+import jsPDF from 'jspdf';
+
 
  export default {
      components: {
   },
+   mounted() {
+      this.VerifySession();
+    },
     data() {
       return {
         horaSelecionada: '',
         selectedDate:'',
-        dayFiel: '',
         value: '',
          options: [{
           value: 'Posto 1',
@@ -64,19 +69,76 @@
     },
     methods:{
         salvar: function(){
-          const ddata = this.selectedDate;
-          const data2 =  ddata.toString().substring(0, 15)
-            this.dataAgen1.push({
-            hora:this.horaSelecionada,
-            data: data2,
-            local:this.value,
-            id: this.dataAgen1.length + 1 });
-            console.log(this.dataAgen1)
+          if (this.horaSelecionada===''||this.selectedDate===''|| this.value==='') {
+              this.$swal("Preencha todos campos")
+          }else{
+              const dataFinal = this.traduDate(this.selectedDate);
+              const HoraFinal = this.horaSelecionada;
+              this.dataAgen1.push({
+              hora:this.horaSelecionada,
+              data: dataFinal,
+              local:this.value,
+              id: this.dataAgen1.length + 1 });
+              console.log(this.dataAgen1)
+              api.put(`http://localhost:3000/api/v1/cidadaos/${localStorage.getItem('cId')}`,{
+                  dataDose1:  dataFinal,
+                  horaDose1:  HoraFinal,
+                  local:  this.value,
+              })
+              this.$swal("Agendado com sucesso")
+              this.gerarReciboAgen1();
+          }
         },
-        traduDate: function(){
-          
+        traduDate: function(dataRecebida){
+          const data2 =  dataRecebida.toString().substring(0, 15)
+          const mesEn = ['jan', 'feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
+          const mesPt = ['Jan', 'Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+
+              const date = data2.toLowerCase();;
+              const mes = date.substring(4,7);
+              const dia = date.substring(8,10);
+              const ano = date.substring(11,15);
+              const mesEnNum = mesEn.indexOf(mes)
+              const found = mesPt[mesEnNum]
+              const result = `${dia}/${found}/${ano}`;
+              return result;
+        },
+        getMes: function(mesRecebido){
+          const mesPt = ['Jan', 'Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+          const mesName = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto',
+          'Setembro','Outubro','Novembro','Dezembro']
+
+            const dia = mesRecebido.substring(0,3);
+            const mes = mesRecebido.substring(3,6);
+            const ano = mesRecebido.substring(6,11);
+            const mesPtIndex = mesPt.indexOf(mes)
+            const found = mesName[mesPtIndex]
+            const result = `${dia}${found}${ano}`;
+            return result;
+        },
+        gerarReciboAgen1: function(){
+            var doc = new jsPDF()
+            const DataV1 = this.traduDate(this.selectedDate);
+            const DataV2 = this.getMes(DataV1);
+            const DataV3 = DataV2.replace("/", " de ").replace("/", " de "); 
+            const Nome = localStorage.getItem('cNome');
+            
+            doc.text('Recibo de Agendamento', 75,10);
+            doc.text('Paciente: '+Nome,25,25);
+            doc.text('Dose: Primeira',25,35);
+            doc.text('Local: '+this.value,25,45);
+            doc.text('Data: '+DataV3,25,55);
+            doc.text('Horário: '+this.horaSelecionada,25,65);
+            doc.text('Chegar 15 minutos antes do horário marcado!',25,75);
+            doc.output('dataurlnewwindow');
+        },
+        VerifySession: function(){
+            const VerifyLogin = localStorage.getItem('cId');
+            if (VerifyLogin==null||VerifyLogin==undefined) {
+                 window.location.href = "http://localhost:8080/#/";
+            }  
         }
-  }
+ }
  }
 </script>
 

@@ -68,12 +68,14 @@ export default {
                      this.$swal("Logado com sucesso!")
                      window.location.href = "http://localhost:8080/#/home";
                      localStorage.setItem('cId',res.data.cidadao._id);
+                     localStorage.setItem('tipoUsuario',res.data.cidadao.tipoUsuario);
                      localStorage.setItem('cNome',res.data.cidadao.nomeCompleto);
                      localStorage.setItem('cData',res.data.cidadao.dataNascimento);
                      localStorage.setItem('cDD1',res.data.cidadao.dataDose1);
                      localStorage.setItem('cHD1',res.data.cidadao.horaDose1);
                      localStorage.setItem('cDD2',res.data.cidadao.dataDose2);
                      localStorage.setItem('cHD2',res.data.cidadao.horaDose2);
+                     document.location.reload(true);
                    }
                 })
                 .catch((err) => {

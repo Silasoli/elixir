@@ -13,6 +13,10 @@ var CidadaoSchema = new Schema({
         type:String,
         required: true
     },
+    tipoUsuario:{
+        type:String,
+        default:'cidadao'
+    },
     CPF:{
         type: String,
         required: true

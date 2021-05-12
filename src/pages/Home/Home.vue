@@ -1,7 +1,7 @@
 <template>
     <div>
       <div id="cabecalho">
-        <h1>Olá, {{nome}}</h1>
+        <h3>Olá, {{nome}}</h3>
       </div>
       <div id="divInfo">
         <div>
@@ -9,26 +9,30 @@
         </div>
         <div id="divD1" class="divsAgen">
           <h2 class="divTitleAgen">Primeira Dose</h2>
-            <p v-if="dataDose1==='' || dataDose1==='null'">Não agendada</p>
+            <p v-if="dataDose2=='null'">Não agendada</p>
             <p v-if="dataDose1!='null'">Data primeira dose: {{dataDose1}}</p>
             <p v-if="horaDose1!='null'">Hora primeira dose: {{horaDose1}}</p>
         </div>
         <div id="divD2" class="divsAgen">
           <h2 class="divTitleAgen">Segunda Dose</h2>
-            <p v-if="dataDose1==='' || dataDose1==='null'">Não agendada</p>
-            <p v-if="dataDose1!='null'">Data primeira dose: {{dataDose2}}</p>
-            <p v-if="horaDose1!='null'">Hora primeira dose: {{horaDose2}}</p>
+            <p v-if="dataDose2=='null'">Não agendada</p>
+            <p v-if="dataDose2!='null'">Data primeira dose: {{dataDose2}}</p>
+            <p v-if="horaDose2!='null'">Hora primeira dose: {{horaDose2}}</p>
         </div>
       </div>
     </div>
 </template>
 <script>
-
 export default {
     name: 'NavBar.vue',
+    mounted() {
+      this.VerifySession();
+    },
     data() {
         return{
+             id: localStorage.getItem('cId'),
              nome: localStorage.getItem('cNome'),
+             tipoDeUsuario: localStorage.getItem('tipoUsuario'),
              dataDose1: localStorage.getItem('cDD1'),
              horaDose1: localStorage.getItem('cHD1'),
              dataDose2: localStorage.getItem('cDD2'),
@@ -39,6 +43,12 @@ export default {
           CadCidadaoNew: function() {
             window.location.href = "http://localhost:8080/#/cadcidadao";
         },
+        VerifySession: function(){
+          const VerifyLogin = localStorage.getItem('cId');
+          if (VerifyLogin==null||VerifyLogin==undefined) {
+                window.location.href = "http://localhost:8080/#/";
+          }  
+        }
     }
 }
 </script>
@@ -66,7 +76,7 @@ export default {
     background-color: #FFF9F9;
     margin-top: 15px;
     border: solid;
-    min-height: 180px;
+    /* min-height: 180px; */
   }
   .divTitleAgen{
     text-align: center
