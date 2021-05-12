@@ -1,5 +1,6 @@
 <template>
-  <div id="totalDiv">
+  <div>
+    <div id="totalDiv">
       <!-- TELA 1 -->
       <div id="mainDiv">
         <div id="titlePage">
@@ -27,6 +28,13 @@
         </div> 
             <b-button id="btnSave1" class="saveBtn"    @click="salvar" variant="primary">Salvar</b-button>
       </div>
+  </div>
+  <div id="secondDiv">
+      <div id="secondDivContent">
+        <h3>Agendamento já realizado</h3>
+        <b-button id="secondDivBtn" @click="gerarReciboAgen1" variant="primary">Gerar Comprovante de Agendamento</b-button>
+      </div>
+  </div>
   </div>
 </template>
 
@@ -117,33 +125,45 @@ import jsPDF from 'jspdf';
             return result;
         },
         gerarReciboAgen1: function(){
-            var doc = new jsPDF()
-            const DataV1 = this.traduDate(this.selectedDate);
-            const DataV2 = this.getMes(DataV1);
-            const DataV3 = DataV2.replace("/", " de ").replace("/", " de "); 
-            const Nome = localStorage.getItem('cNome');
-            
-            doc.text('Recibo de Agendamento', 75,10);
-            doc.text('Paciente: '+Nome,25,25);
-            doc.text('Dose: Primeira',25,35);
-            doc.text('Local: '+this.value,25,45);
-            doc.text('Data: '+DataV3,25,55);
-            doc.text('Horário: '+this.horaSelecionada,25,65);
-            doc.text('Chegar 15 minutos antes do horário marcado!',25,75);
-            doc.output('dataurlnewwindow');
+           var doc = new jsPDF()
+           api.get(`http://localhost:3000/api/v1/cidadaos/${localStorage.getItem('cId')}`)
+                .then((res) => {
+                  const dataDose1 = res.data.dataDose1;
+                  const horaDose1 = res.data.horaDose1;
+                  const local = res.data.local;
+
+                  const Nome = localStorage.getItem('cNome');
+
+                  const DataV2 = this.getMes(dataDose1);
+                  const DataV3 = DataV2.replace("/", " de ").replace("/", " de "); 
+
+                  doc.text('Recibo de Agendamento', 75,10);
+                  doc.text('Paciente: '+Nome,25,25);
+                  doc.text('Dose: Primeira',25,35);
+                  doc.text('Local: '+local,25,45);
+                  doc.text('Data: '+DataV3,25,55);
+                  doc.text('Horário: '+horaDose1,25,65);
+                  doc.text('Chegar 15 minutos antes do horário marcado!',25,75);
+                  doc.output('dataurlnewwindow');
+            });
+          
         },
         VerifySession: function(){
             const VerifyLogin = localStorage.getItem('cId');
             if (VerifyLogin==null||VerifyLogin==undefined) {
                  window.location.href = "http://localhost:8080/#/";
-            } else{
+            } else {
               api.get(`http://localhost:3000/api/v1/cidadaos/${localStorage.getItem('cId')}`)
                 .then((res) => {
                   const dataDose1 = res.data.dataDose1;
                   const horaDose1 = res.data.horaDose1;
                     if (dataDose1!='null' && horaDose1!='null') {
                       document.getElementById('totalDiv').style.display = 'none';
-                    }  
+                      document.getElementById('secondDiv').style.display = 'block';
+                    }  else {
+                        document.getElementById('totalDiv').style.display = 'block';
+                      document.getElementById('secondDiv').style.display = 'none';
+                    }
             });
         }
  }
@@ -179,5 +199,20 @@ import jsPDF from 'jspdf';
     margin: 5px;
     background-color: #F45267 !important;
     border: none !important;
+}
+#secondDiv{
+  width: 100%;
+  padding-top: 30px;
+  position: relative;
+  top: 200px; bottom: 0;
+  left: 0px; right: 0px;
+  margin: auto;
+}
+#secondDivContent{
+  width: 60%;
+  float: right;
+}
+#secondDivBtn{
+  width: 36%;
 }
 </style>

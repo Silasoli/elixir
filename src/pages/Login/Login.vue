@@ -110,7 +110,7 @@ input {
     background: url('https://docs.google.com/uc?export=download&id=1hc7I5hhzrzJq9LKXv_xPcsQefSfL0xaT')
     no-repeat center center;
     background-size: cover;
-    height: 92%;
+    height: 89.5%;
     position: absolute;
     width: 100%;
 }
