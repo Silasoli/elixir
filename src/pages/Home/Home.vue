@@ -91,8 +91,8 @@ export default {
     text-align: center
   }
   .divsAgen{
-    display: inline-block;
-    width: 50%;
+    /* display: inline; */
+    width: 100%;
     padding: 20px;
     background-color: #FFF9F9;
     margin-top: 15px;
