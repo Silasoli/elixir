@@ -95,14 +95,6 @@ CidadaoSchema.statics.findByCredentials =  async(email, password) =>{
     return cidadao;
 };
 
-CidadaoSchema.statics.findByEmail =  async(email) =>{
-    const cidadao = await Cidadao.findOne({ email });
-    if (!cidadao) {
-        throw new Error({ error:'Não encontrado'});
-    }
-    return cidadao;
-};
-
 const Cidadao =  mongoose.model('Cidadao',CidadaoSchema);
 
 module.exports = Cidadao;

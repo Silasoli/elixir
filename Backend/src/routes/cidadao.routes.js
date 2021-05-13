@@ -13,6 +13,8 @@ router.post('/login', cidadaoController.loginCidadao);
 //
 router.get('/cidadaoProfile', auth, cidadaoController.returnCidadaoProfile);
 //
+router.put('/cidadaos/verifyExist', cidadaoController.returnverifyExist)
+
 router.get('/cidadaos', cidadaoController.returnAllCidadaos)
 
 router.get('/cidadaos/:cidadao_id', cidadaoController.returnOneCidadao)

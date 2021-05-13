@@ -26,13 +26,13 @@
         <div id="selectDate">
            <v-date-picker mode="date" v-model='selectedDate'  :value="null" color="purple" is-dark is-expanded />
         </div> 
-            <b-button id="btnSave1" class="saveBtn"    @click="salvar" variant="primary">Salvar</b-button>
+            <b-button id="btnSave1" class="saveBtn"    @click="verifyExist" variant="primary">Salvar</b-button>
       </div>
   </div>
   <div id="secondDiv">
       <div id="secondDivContent">
         <h3>Agendamento já realizado</h3>
-        <b-button id="secondDivBtn" @click="gerarReciboAgen1" variant="primary">Gerar Comprovante de Agendamento</b-button>
+        <b-button id="secondDivBtn" @click="gerarReciboAgen2" variant="primary">Gerar Comprovante de Agendamento</b-button>
       </div>
   </div>
   </div>
@@ -47,7 +47,7 @@ import jsPDF from 'jspdf';
      components: {
   },
    mounted() {
-      this.VerifySession();
+      // this.VerifySession();
     },
     data() {
       return {
@@ -76,25 +76,38 @@ import jsPDF from 'jspdf';
       }
     },
     methods:{
-        salvar: function(){
+        verifyExist: function(){
           if (this.horaSelecionada===''||this.selectedDate===''|| this.value==='') {
               this.$swal("Preencha todos campos")
           }else{
               const dataFinal = this.traduDate(this.selectedDate);
               const HoraFinal = this.horaSelecionada;
-              this.dataAgen1.push({
-              hora:this.horaSelecionada,
-              data: dataFinal,
-              local:this.value,
-              id: this.dataAgen1.length + 1 });
-              console.log(this.dataAgen1)
-              api.put(`http://localhost:3000/api/v1/cidadaos/${localStorage.getItem('cId')}`,{
-                  dataDose1:  dataFinal,
-                  horaDose1:  HoraFinal,
-                  local:  this.value,
-              })
-              this.$swal("Agendado com sucesso")
-              this.gerarReciboAgen1();
+              const local = this.value;
+              api.put(`http://localhost:3000/api/v1/cidadaos/verifyExist`,{
+                    local:  local,
+                    dataDose1:  dataFinal,
+                    horaDose1:  HoraFinal,
+                })
+                .then((res) => {
+                  api.put(`http://localhost:3000/api/v1/cidadaos/${localStorage.getItem('cId')}`,{
+                              dataDose1:  this.traduDate(this.selectedDate),
+                              horaDose1:  this.horaSelecionada,
+                              local:  this.value,
+                          })
+                      // this.$swal("Agendado com sucesso");
+                      this.gerarReciboAgen1();
+                      window.location.href = "http://localhost:8080/#/home"
+                      // document.location.reload(true);
+                    }).catch((res) => {
+                     this.$swal('Horario não disponivel');
+                    });
+             
+              // this.dataAgen1.push({
+              // hora:this.horaSelecionada,
+              // data: dataFinal,
+              // local:this.value,
+              // id: this.dataAgen1.length + 1 });
+              // console.log(this.dataAgen1)
           }
         },
         traduDate: function(dataRecebida){
@@ -125,6 +138,24 @@ import jsPDF from 'jspdf';
             return result;
         },
         gerarReciboAgen1: function(){
+           var doc = new jsPDF()
+                  const Nome = localStorage.getItem('cNome');
+                  
+
+                  const DataV1 = this.traduDate(this.selectedDate);
+                  const DataV2 = this.getMes(DataV1);
+                  const DataV3 = DataV2.replace("/", " de ").replace("/", " de "); 
+
+                  doc.text('Recibo de Agendamento', 75,10);
+                  doc.text('Paciente: '+Nome,25,25);
+                  doc.text('Dose: Primeira',25,35);
+                  doc.text('Local: '+this.value,25,45);
+                  doc.text('Data: '+DataV3,25,55);
+                  doc.text('Horário: '+this.horaSelecionada,25,65);
+                  doc.text('Chegar 15 minutos antes do horário marcado!',25,75);
+                  doc.output('dataurlnewwindow');         
+        },
+         gerarReciboAgen2: function(){
            var doc = new jsPDF()
            api.get(`http://localhost:3000/api/v1/cidadaos/${localStorage.getItem('cId')}`)
                 .then((res) => {
@@ -164,9 +195,9 @@ import jsPDF from 'jspdf';
                         document.getElementById('totalDiv').style.display = 'block';
                       document.getElementById('secondDiv').style.display = 'none';
                     }
-            });
+            });        
         }
- }
+      },
  }
  }
 </script>

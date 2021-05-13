@@ -94,3 +94,33 @@ exports.returnEditCidadao2 =  async(req,res)=>{
     });
   });
 };
+
+exports.returnverifyExist =  async(req,res)=>{
+  Cidadao.find(function(error, cidadaos) {
+     if (error) {
+          res.send('Erro'+error);
+     } else{
+          const local = req.body.local;
+          const data = req.body.dataDose1;
+          const hora = req.body.horaDose1;
+          const qtCidadaos = cidadaos.length;
+          console.log(local)
+          console.log(data)
+          for(i = 0; qtCidadaos>i;i++){
+            if(cidadaos[i].local===local){
+                  if(cidadaos[i].dataDose1===data){
+                    if(cidadaos[i].horaDose1===hora){
+                      return res.status(401).json({error:'Horario indisponivel'});
+                    }else{
+                      return res.status(200).json({message:'Horario disponivel 3'});
+                    }
+                  } else{
+                    return res.status(200).json({message:'Horario disponivel 2'});
+                  }
+            } else{
+              return res.status(200).json({message:'Horario disponivel 1'});
+            }
+          }
+     }
+  });
+};
