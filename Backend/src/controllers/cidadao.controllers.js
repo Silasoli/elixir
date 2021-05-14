@@ -97,6 +97,9 @@ exports.returnEditCidadao2 =  async(req,res)=>{
   });
 };
 
+
+//VERIFICAR HORARIOS
+
 exports.returnverifyExist =  async(req,res)=>{
     try {
       let isAgen = await Cidadao.find({ dadosagen1: req.body.dadosagen1 });
@@ -111,16 +114,48 @@ exports.returnverifyExist =  async(req,res)=>{
 } 
 
 exports.returnverifyExist2 =  async(req,res)=>{
-  try {
-    let isAgen = await Cidadao.find({ dadosagen2: req.body.dadosagen2 });
-    console.log(isAgen);
-    if (isAgen.length>=1) {
-        return res.status(401).json({message: 'Data está sendo usado'})
-    }
-    res.status(201).json({message:'Data não cadastrada' });
-} catch (err) {
-    res.status(400).json({ message:'Data cadastrada '+err});
-}
+    try {
+      let isAgen = await Cidadao.find({ dadosagen2: req.body.dadosagen2 });
+      console.log(isAgen);
+      if (isAgen.length>=1) {
+          return res.status(401).json({message: 'Data está sendo usado'})
+      }
+      res.status(201).json({message:'Data não cadastrada' });
+  } catch (err) {
+      res.status(400).json({ message:'Data cadastrada '+err});
+  }
 } 
 
+// ATUALIZAR STATUS DE VACINAÇÃO
 
+exports.attStatus1 =  async(req,res)=>{
+  Cidadao.findById(req.params.cidadao_id, function(error,cidadao){
+    if (error) {
+        res.send('Não encontrado');
+    }
+    cidadao.vacinado1 = req.body.vacinado1;
+                     
+    cidadao.save(function(error){
+        if (error) {
+            res.send('Erro ao atualizar o produto')
+        }
+        res.json({ message: 'Atualizado com sucesso'})
+    });
+  });
+};
+
+exports.attStatus2 =  async(req,res)=>{
+  Cidadao.findById(req.params.cidadao_id, function(error,cidadao){
+    if (error) {
+        res.send('Não encontrado');
+    }
+    cidadao.vacinado2 = req.body.vacinado2;
+                     
+    cidadao.save(function(error){
+        if (error) {
+            res.send('Erro ao atualizar o produto')
+        }
+        res.json({ message: 'Atualizado com sucesso'})
+    });
+  });
+};

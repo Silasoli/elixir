@@ -2,7 +2,7 @@
   <div>
     <div  id="mainDiv">
       <div id="titlePage">
-        <h3 id="title">Lista de Agendamentos</h3>
+        <h3 id="title">Agendamentos 1º dose</h3>
         <h3 id="dataDoDia">{{this.dateTransform()}}</h3>
       </div>
     </div>
@@ -17,18 +17,34 @@
           </md-field>
         </md-table-toolbar>
         <md-table-row slot="md-table-row" slot-scope="{ item }">
-          <md-table-cell class="md-table-cell" id="horariodiv" md-label="Horário" md-sort-by="horaDose1" md-numeric>{{ item.horaDose1 }}</md-table-cell>
-          <md-table-cell md-label="Nome Completo" md-sort-by="nomeCompleto">{{item.nomeCompleto}}</md-table-cell>
-          <md-table-cell md-label="CPF do Cidadão" md-sort-by="CPF">{{item.CPF}}</md-table-cell>
-          <md-table-cell md-label="Dose" md-sort-by="item.vacinado1">{{item.vacinado1}}</md-table-cell>
-          <md-table-cell md-label="Tipo Da Vacina" md-sort-by="dose">{{item.tipoVacina}}</md-table-cell>
-          <md-table-cell md-label="Aplicada" md-sort-by="title">{{'Aplicada'}}</md-table-cell>
+         <md-table-cell class="md-table-cell" id="horariodiv" md-label="Horário" md-sort-by="horaDose1" md-numeric>{{item.horaDose2}}</md-table-cell>
+            <md-table-cell md-label="Nome Completo" md-sort-by="nomeCompleto">{{item.nomeCompleto}}</md-table-cell>
+            <md-table-cell md-label="CPF do Cidadão" md-sort-by="CPF">{{item.CPF}}</md-table-cell>
+            <md-table-cell md-label="Tipo Da Vacina" md-sort-by="dose">{{item.tipoVacina}}</md-table-cell>
+             <md-table-cell md-label="Aplicada" md-sort-by="title">
+              <button class="btnNull" v-if="item.vacinado1==='null'" @click="changeIcon(item._id)"></button>
+              <button v-b-modal.modalPopover class="btnNotNull" v-else></button>
+            </md-table-cell>
           <md-table-cell md-label="Marcar 2 Dose" md-sort-by="title" class="md-table-cell-container">
             <button v-if="item.dataDose2==='null'" id="btn3dose" @click="irAgenDose(item._id,item.nomeCompleto)">Pendente</button>
             <button v-else id="btn2dose">Marcado</button>
           </md-table-cell>
         </md-table-row>
       </md-table>
+      <div>
+
+  <b-modal id="modalPopover" title="Modal with Popover" ok-only>
+    <p>
+      This
+      <b-button v-b-popover="'Popover inside a modal!'" title="Popover">Button</b-button>
+      triggers a popover on click.
+    </p>
+    <p>
+      This <a href="#" v-b-tooltip title="Tooltip in a modal!">Link</a> will show a tooltip on
+      hover.
+    </p>
+  </b-modal>
+</div>
     </div> 
     <div id="AgenDose2">
       <div id="mainDiv">
@@ -81,7 +97,7 @@ import jsPDF from 'jspdf';
   export default {
     Name: 'TableSearch',
       mounted() {
-      // this.VerifySession();
+      this.VerifySession();
       this.getDados();
        this.dadosAgen.push({
           nome: '',
@@ -235,6 +251,19 @@ import jsPDF from 'jspdf';
             const result = `${dia}${found}${ano}`;
             return result;
         },
+        changeIcon: function(id){
+        // console.log(id);
+        //   api.put(`http://localhost:3000/api/v1/cidadaos/stts1/${id}`,{
+        //           vacinado1:  'aplicada',
+        //   })
+        //   .then((res)=>{
+        //     this.$swal('Atualizado com sucesso');
+        //     setTimeout(() => {
+        //       document.location.reload(true);
+        //     }, 1000);
+        //   })
+        
+      }
     },
   }
 </script>
@@ -338,8 +367,24 @@ import jsPDF from 'jspdf';
 }
 #btnVoltar{
     margin-top: 10px !important;
-    margin: 5px;
-    
+    margin: 5px;   
+}
+.btnNull{
+  background-image: url('../ListaAgenDose/x-button.png');
+  background-color: transparent;
+  border: none;
+  background-size: cover;
+  width: 35px;
+  height: 36px;
+}
+.btnNotNull{
+  pointer-events: none;
+  background-image: url('../ListaAgenDose/v-button.png');
+  background-color: transparent;
+  border: none;
+  background-size: cover;
+  width: 35px;
+  height: 36px;
 }
 </style>
 

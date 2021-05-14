@@ -12,7 +12,8 @@
     <div class="px-3 py-2">
       <b-button v-if="tipoDeUsuario=='cidadao'" class="btnSideBar" @click="IrHome">Home</b-button>
       <b-button v-if="tipoDeUsuario=='cidadao'" class="btnSideBar" @click="IrDose1">Agendar Primeira Dose</b-button>
-      <b-button v-if="tipoDeUsuario=='aplicador'" class="btnSideBar" @click="IrDose2">Agendar Segunda Dose</b-button>
+      <b-button v-if="tipoDeUsuario==='aplicador'" class="btnSideBar" @click="IrDose2">Atendimentos 1º Dose</b-button>
+      <b-button v-if="tipoDeUsuario==='aplicador'" class="btnSideBar" @click="listaagendose">Atendimentos 2º Dose</b-button>
     </div>
   </b-sidebar>
   </div>
@@ -40,6 +41,9 @@ export default {
     },
     IrDose2: function() {
       window.location.href = "http://localhost:8080/#/agendose2";
+    },
+    listaagendose: function() {
+      window.location.href = "http://localhost:8080/#/listaagendose";
     },
     destruirSessao: function(){
        localStorage.clear();
