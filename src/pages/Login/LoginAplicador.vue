@@ -10,7 +10,7 @@
          <div class="row">
             <div class="col-lg-4 col-md-6 col-sm-8 mx-auto">
                <div v-if="!registerActive" class="card login" v-bind:class="{ error: emptyFields }">
-                  <h1>Óla, aplicador</h1>
+                  <h1>Olá, aplicador</h1>
                   <form class="form-group" @submit.prevent="">
                      <input v-model="emailField" type="email" class="form-control" placeholder="Email" required>
                      <input v-model="passwordField" type="password" class="form-control" placeholder="Senha" required>

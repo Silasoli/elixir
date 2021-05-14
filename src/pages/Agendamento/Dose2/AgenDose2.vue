@@ -20,10 +20,13 @@
          <md-table-cell class="md-table-cell" id="horariodiv" md-label="Horário" md-sort-by="horaDose1" md-numeric>{{item.horaDose2}}</md-table-cell>
             <md-table-cell md-label="Nome Completo" md-sort-by="nomeCompleto">{{item.nomeCompleto}}</md-table-cell>
             <md-table-cell md-label="CPF do Cidadão" md-sort-by="CPF">{{item.CPF}}</md-table-cell>
-            <md-table-cell md-label="Tipo Da Vacina" md-sort-by="dose">{{item.tipoVacina}}</md-table-cell>
+            <md-table-cell md-label="Tipo Da Vacina" md-sort-by="dose" >      
+              <b-form-select v-if="item.tipoVacina==='A definir'" b-form-select v-model="selecTypeVacina" :options="options2" size="sm" class="mt-3"></b-form-select>
+              <label v-else>{{item.tipoVacina}}</label>
+            </md-table-cell>
              <md-table-cell md-label="Aplicada" md-sort-by="title">
-              <button class="btnNull" v-if="item.vacinado1==='null'" @click="changeIcon(item._id)"></button>
-              <button v-b-modal.modalPopover class="btnNotNull" v-else></button>
+              <button   class="btnNull" v-if="item.vacinado1==='null'" @click="changeIcon(item._id)"></button>
+              <button  class="btnNotNull" v-else></button>
             </md-table-cell>
           <md-table-cell md-label="Marcar 2 Dose" md-sort-by="title" class="md-table-cell-container">
             <button v-if="item.dataDose2==='null'" id="btn3dose" @click="irAgenDose(item._id,item.nomeCompleto)">Pendente</button>
@@ -33,17 +36,6 @@
       </md-table>
       <div>
 
-  <b-modal id="modalPopover" title="Modal with Popover" ok-only>
-    <p>
-      This
-      <b-button v-b-popover="'Popover inside a modal!'" title="Popover">Button</b-button>
-      triggers a popover on click.
-    </p>
-    <p>
-      This <a href="#" v-b-tooltip title="Tooltip in a modal!">Link</a> will show a tooltip on
-      hover.
-    </p>
-  </b-modal>
 </div>
     </div> 
     <div id="AgenDose2">
@@ -134,6 +126,11 @@ import jsPDF from 'jspdf';
           value: 'Posto 5',
           label: 'Posto 5'
         }],
+        selecTypeVacina: null,
+        options2: [
+          { value: 'astrazeneca', text: 'Astrazeneca' },
+          { value: 'coronavac', text: 'Coronavac' },
+        ]
     }),
     methods: {
       verifyExist: function(){
@@ -149,6 +146,7 @@ import jsPDF from 'jspdf';
             })
             .then((res)=>{
                 api.put(`http://localhost:3000/api/v1/cidadaos/att2/${localStorage.getItem('cID2')}`,{
+                  
                           dadosagen2:  dadosagen,
                           dataDose2: dataFinal,
                           horaDose2: horaFinal,
@@ -252,17 +250,23 @@ import jsPDF from 'jspdf';
             return result;
         },
         changeIcon: function(id){
-        // console.log(id);
-        //   api.put(`http://localhost:3000/api/v1/cidadaos/stts1/${id}`,{
-        //           vacinado1:  'aplicada',
-        //   })
-        //   .then((res)=>{
-        //     this.$swal('Atualizado com sucesso');
-        //     setTimeout(() => {
-        //       document.location.reload(true);
-        //     }, 1000);
-        //   })
-        
+        console.log(id);
+        const vacina = this.selecTypeVacina;
+        console.log(vacina)
+        if (vacina===null) {
+          this.$swal('Selecione o tipo da vacina')
+        }else{
+         api.put(`http://localhost:3000/api/v1/cidadaos/stts1/${id}`,{
+                  tipoVacina: this.selecTypeVacina,
+                  vacinado1:  'aplicada',
+          })
+          .then((res)=>{
+            this.$swal('Atualizado com sucesso');
+            setTimeout(() => {
+              document.location.reload(true);
+            }, 1000);
+          }) 
+        }
       }
     },
   }

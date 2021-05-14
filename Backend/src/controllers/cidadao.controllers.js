@@ -133,6 +133,7 @@ exports.attStatus1 =  async(req,res)=>{
     if (error) {
         res.send('Não encontrado');
     }
+    cidadao.tipoVacina = req.body.tipoVacina;
     cidadao.vacinado1 = req.body.vacinado1;
                      
     cidadao.save(function(error){
