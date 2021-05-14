@@ -67,8 +67,8 @@ exports.returnEditCidadao =  async(req,res)=>{
     }
     cidadao.dataDose1 = req.body.dataDose1;
     cidadao.horaDose1 = req.body.horaDose1;
+    cidadao.dadosagen1 = req.body.dadosagen1;
     cidadao.local = req.body.local;
-
     cidadao.save(function(error){
         if (error) {
             res.send('Erro ao atualizar o produto')
@@ -85,7 +85,9 @@ exports.returnEditCidadao2 =  async(req,res)=>{
     }
     cidadao.dataDose2 = req.body.dataDose2;
     cidadao.horaDose2 = req.body.horaDose2;
-
+    cidadao.dadosagen2 = req.body.dadosagen2;
+    cidadao.local = req.body.local;
+                      
     cidadao.save(function(error){
         if (error) {
             res.send('Erro ao atualizar o produto')
@@ -96,31 +98,29 @@ exports.returnEditCidadao2 =  async(req,res)=>{
 };
 
 exports.returnverifyExist =  async(req,res)=>{
-  Cidadao.find(function(error, cidadaos) {
-     if (error) {
-          res.send('Erro'+error);
-     } else{
-          const local = req.body.local;
-          const data = req.body.dataDose1;
-          const hora = req.body.horaDose1;
-          const qtCidadaos = cidadaos.length;
-          console.log(local)
-          console.log(data)
-          for(i = 0; qtCidadaos>i;i++){
-            if(cidadaos[i].local===local){
-                  if(cidadaos[i].dataDose1===data){
-                    if(cidadaos[i].horaDose1===hora){
-                      return res.status(401).json({error:'Horario indisponivel'});
-                    }else{
-                      return res.status(200).json({message:'Horario disponivel 3'});
-                    }
-                  } else{
-                    return res.status(200).json({message:'Horario disponivel 2'});
-                  }
-            } else{
-              return res.status(200).json({message:'Horario disponivel 1'});
-            }
-          }
-     }
-  });
-};
+    try {
+      let isAgen = await Cidadao.find({ dadosagen1: req.body.dadosagen1 });
+      console.log(isAgen);
+      if (isAgen.length>=1) {
+          return res.status(401).json({message: 'Data está sendo usado'})
+      }
+      res.status(201).json({message:'Data não cadastrada' });
+  } catch (err) {
+      res.status(400).json({ message:'Data cadastrada '+err});
+  }
+} 
+
+exports.returnverifyExist2 =  async(req,res)=>{
+  try {
+    let isAgen = await Cidadao.find({ dadosagen2: req.body.dadosagen2 });
+    console.log(isAgen);
+    if (isAgen.length>=1) {
+        return res.status(401).json({message: 'Data está sendo usado'})
+    }
+    res.status(201).json({message:'Data não cadastrada' });
+} catch (err) {
+    res.status(400).json({ message:'Data cadastrada '+err});
+}
+} 
+
+

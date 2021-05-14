@@ -47,7 +47,7 @@ import jsPDF from 'jspdf';
      components: {
   },
    mounted() {
-      // this.VerifySession();
+      this.VerifySession();
     },
     data() {
       return {
@@ -80,34 +80,28 @@ import jsPDF from 'jspdf';
           if (this.horaSelecionada===''||this.selectedDate===''|| this.value==='') {
               this.$swal("Preencha todos campos")
           }else{
-              const dataFinal = this.traduDate(this.selectedDate);
-              const HoraFinal = this.horaSelecionada;
-              const local = this.value;
-              api.put(`http://localhost:3000/api/v1/cidadaos/verifyExist`,{
-                    local:  local,
-                    dataDose1:  dataFinal,
-                    horaDose1:  HoraFinal,
+            const dadosagen = (this.traduDate(this.selectedDate)+this.horaSelecionada+this.value);
+            const dataFinal = this.traduDate(this.selectedDate);
+            const horaFinal = this.horaSelecionada;
+            const localFinal = this.value;
+            api.put(`http://localhost:3000/api/v1/cidadaos/verifyExist`,{
+                          dadosagen1:  dadosagen,
+            })
+            .then((res)=>{
+                api.put(`http://localhost:3000/api/v1/cidadaos/att1/${localStorage.getItem('cId')}`,{
+                          dadosagen1:  dadosagen,
+                          dataDose1: dataFinal,
+                          horaDose1: horaFinal,
+                          local:  localFinal,
+                      })
+                  // this.$swal("Agendado com sucesso");
+                  this.gerarReciboAgen1();
+                  window.location.href = "http://localhost:8080/#/home"
+                  // document.location.reload(true);
                 })
-                .then((res) => {
-                  api.put(`http://localhost:3000/api/v1/cidadaos/${localStorage.getItem('cId')}`,{
-                              dataDose1:  this.traduDate(this.selectedDate),
-                              horaDose1:  this.horaSelecionada,
-                              local:  this.value,
-                          })
-                      // this.$swal("Agendado com sucesso");
-                      this.gerarReciboAgen1();
-                      window.location.href = "http://localhost:8080/#/home"
-                      // document.location.reload(true);
-                    }).catch((res) => {
-                     this.$swal('Horario não disponivel');
-                    });
-             
-              // this.dataAgen1.push({
-              // hora:this.horaSelecionada,
-              // data: dataFinal,
-              // local:this.value,
-              // id: this.dataAgen1.length + 1 });
-              // console.log(this.dataAgen1)
+            .catch((res)=>{
+              this.$swal('Horario indisponivel')
+            })
           }
         },
         traduDate: function(dataRecebida){

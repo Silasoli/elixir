@@ -11,6 +11,7 @@ const app =  express();
 
 const index = require('./routes/index');
 const cidadaoRoutes = require('./routes/cidadao.routes')
+const aplicadorRoutes = require('./routes/aplicador.routes')
 // declarar rotas
 
 app.use(express.urlencoded({ extended: true}));
@@ -22,7 +23,7 @@ app.use(cors());
 app.set('mongoose connection',mongooseConnection);
 
 app.use(index);
-app.use('/api/v1', cidadaoRoutes);
+app.use('/api/v1', cidadaoRoutes,aplicadorRoutes);
 //incluir   chamada das rotas
 
 module.exports = app;

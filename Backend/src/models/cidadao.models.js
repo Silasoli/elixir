@@ -27,6 +27,10 @@ var CidadaoSchema = new Schema({
     },
     tipoVacina:{
         type: String,
+        default:'A definir'
+    },
+    vacinado1:{
+        type: String,
         default:'null'
     },
     local:{
@@ -41,6 +45,14 @@ var CidadaoSchema = new Schema({
         type: String,
         default:'null',
     },
+    dadosagen1:{
+        type: String,
+        default:'null',
+    },
+    vacinado2:{
+        type: String,
+        default:'null'
+    },
     dataDose2:{
         type: String,
         default:'null'
@@ -48,6 +60,10 @@ var CidadaoSchema = new Schema({
     horaDose2:{
         type: String,
         default:'null'
+    },
+    dadosagen2:{
+        type: String,
+        default:'null',
     },
     email:{
         type: String,

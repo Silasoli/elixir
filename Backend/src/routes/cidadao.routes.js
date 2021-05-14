@@ -15,12 +15,14 @@ router.get('/cidadaoProfile', auth, cidadaoController.returnCidadaoProfile);
 //
 router.put('/cidadaos/verifyExist', cidadaoController.returnverifyExist)
 
+router.put('/cidadaos/verifyExist2', cidadaoController.returnverifyExist2)
+
 router.get('/cidadaos', cidadaoController.returnAllCidadaos)
 
 router.get('/cidadaos/:cidadao_id', cidadaoController.returnOneCidadao)
 
-router.put('/cidadaos/:cidadao_id', cidadaoController.returnEditCidadao)
+router.put('/cidadaos/att1/:cidadao_id', cidadaoController.returnEditCidadao)
 
-router.put('/cidadaos2/:cidadao_id', cidadaoController.returnEditCidadao2)
+router.put('/cidadaos/att2/:cidadao_id', cidadaoController.returnEditCidadao2)
 
 module.exports = router;
