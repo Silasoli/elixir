@@ -160,3 +160,21 @@ exports.attStatus2 =  async(req,res)=>{
     });
   });
 };
+
+
+
+exports.returnCidadaosAgen1 =  async(req,res)=>{
+  let isCidadaos = await Cidadao.find({ dadosagen1:{$ne:'null'}});
+        console.log(isCidadaos);
+    
+     res.json(isCidadaos);
+};
+
+exports.returnCidadaosAgen2 =  async(req,res)=>{
+  let isCidadaos = await Cidadao.find({ dadosagen2:{$ne:'null'}});
+        console.log(isCidadaos);
+    
+     res.json(isCidadaos);
+};
+
+

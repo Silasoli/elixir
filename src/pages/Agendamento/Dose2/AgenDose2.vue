@@ -7,17 +7,17 @@
       </div>
     </div>
      <div id="tableDiv">
-          <md-table v-model="users" md-sort="nomeCompleto" md-sort-order="asc" md-card md-fixed-header>
+          <md-table  v-model="users" md-sort="nomeCompleto" md-sort-order="asc" md-card md-fixed-header>
         <md-table-toolbar>
           <div class="md-toolbar-section-start">
             <h1 class="md-title">Agendamentos</h1>
           </div>
           <md-field md-clearable class="md-toolbar-section-end">
-            <md-input placeholder="Pesquisar por nome" v-model="search" @input="searchOnTable" />
+            <md-input placeholder="Pesquisar por nome" v-model="search" @click="searchOnTable" @keypress="searchOnTable" />
           </md-field>
         </md-table-toolbar>
         <md-table-row slot="md-table-row" slot-scope="{ item }">
-         <md-table-cell class="md-table-cell" id="horariodiv" md-label="Horário" md-sort-by="horaDose1" md-numeric>{{item.horaDose2}}</md-table-cell>
+         <md-table-cell class="md-table-cell" id="horariodiv" md-label="Horário" md-sort-by="horaDose1" md-numeric>{{item.horaDose1}}</md-table-cell>
             <md-table-cell md-label="Nome Completo" md-sort-by="nomeCompleto">{{item.nomeCompleto}}</md-table-cell>
             <md-table-cell md-label="CPF do Cidadão" md-sort-by="CPF">{{item.CPF}}</md-table-cell>
             <md-table-cell md-label="Tipo Da Vacina" md-sort-by="dose" >      
@@ -79,8 +79,9 @@ import jsPDF from 'jspdf';
     return text.toString().toLowerCase()
   }
   const searchByName = (items, term) => {
+    
   if (term) {
-    return items.filter(item => toLower(item.nomeCompleto).includes(toLower(term)))
+    return items.filter(item => toLower(item.nomeCompleto+'').includes(toLower(term)))
   }
   return items
 }
@@ -96,6 +97,7 @@ import jsPDF from 'jspdf';
     data: () => ({
       // dataDeHoje: this.data1,
       search: null,
+      searched: [],
       users: [
         {
         }
@@ -196,9 +198,15 @@ import jsPDF from 'jspdf';
           } 
       },
       getDados: function(){
-        api.get(`http://localhost:3000/api/v1/cidadaos`)
+         api.get(`http://localhost:3000/api/v1/cidadaos/agen1`)
         .then((res)=>{
-          this.users = res.data;
+          console.log(res.data)
+          if (res.data.length===0) {
+             this.$swal('Sem agendamentos')
+             document.getElementById('tableDiv').style.display= 'none';
+          }else{
+            this.users = res.data;
+          }
         });
       },
       irAgenDose: function(id,nome){
@@ -215,7 +223,10 @@ import jsPDF from 'jspdf';
           this.dadosAgen[1].id='';
       },
       searchOnTable () {
-        this.users = searchByName(this.users, this.search)
+        this.searched = searchByName(this.users, this.search)
+      },
+      created () {
+        this.searched = this.users;
       },
        traduDate: function(dataRecebida){
           const data2 =  dataRecebida.toString().substring(0, 15)

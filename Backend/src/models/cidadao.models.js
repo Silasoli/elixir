@@ -19,7 +19,8 @@ var CidadaoSchema = new Schema({
     },
     CPF:{
         type: String,
-        required: true
+        required: true,
+        // unique: true,
     },
     tel:{
         type: String,

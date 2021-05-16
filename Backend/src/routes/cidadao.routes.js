@@ -23,6 +23,14 @@ router.put('/cidadaos/verifyExist2', cidadaoController.returnverifyExist2)
 
 router.get('/cidadaos', cidadaoController.returnAllCidadaos)
 
+//Pegar Somento cidadãos agendados
+
+router.get('/cidadaos/agen1', cidadaoController.returnCidadaosAgen1)
+
+router.get('/cidadaos/agen2', cidadaoController.returnCidadaosAgen2)
+
+//Rotas pelo Id
+
 router.get('/cidadaos/:cidadao_id', cidadaoController.returnOneCidadao)
 
 router.put('/cidadaos/att1/:cidadao_id', cidadaoController.returnEditCidadao)
