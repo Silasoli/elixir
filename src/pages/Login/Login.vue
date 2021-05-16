@@ -1,6 +1,6 @@
 <template>
   <div>
-      <div id="app">
+      <div id="principal">
 
    <div class="login-page">
       <transition name="fade">
@@ -135,5 +135,31 @@ h1 {
    100% {
       transform: translateX(0);
    }
+}
+
+@media screen and (max-width:1440px)  {
+   .wallpaper-login {
+    margin-top: 60px;
+    background: url('https://docs.google.com/uc?export=download&id=1hc7I5hhzrzJq9LKXv_xPcsQefSfL0xaT')
+   }
+    h1 {
+    width: 100%;
+}
+}
+
+@media screen and (min-height: 900px){
+    .wallpaper-login {
+    margin-top: 99px;
+    background: url('https://docs.google.com/uc?export=download&id=1hc7I5hhzrzJq9LKXv_xPcsQefSfL0xaT')
+    no-repeat center center;
+    background-size: cover;
+    height: 92%;
+    position: absolute;
+    width: 100%;
+}
+.container{
+ position: relative;
+ top: -100px !important;
+}
 }
 </style>
