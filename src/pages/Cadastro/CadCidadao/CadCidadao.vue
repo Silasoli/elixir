@@ -9,7 +9,7 @@
 
                 <div id="data">
                     <h4 class="titleInput1">Data de Nascimento</h4>    
-                    <b-form-input  class="data" type="date" v-model="dataField" placeholder="Data de Nascimento" required></b-form-input>
+                    <b-form-input  class="data" type="text" v-model="dataField" placeholder="Data de Nascimento" v-mask="'##/##/####'" required></b-form-input>
 
                 </div>
                 <div id="CPF">
@@ -137,15 +137,15 @@ export default {
 #main{
     max-width: 100%;
     text-align: center;
-    width: 100%;
-    height: 100vh;
+    /* width: 100%; */
+    /* height: 100vh; */
     position: relative;
     left: 0; right: 0;
+    top: 100px;
     margin: auto;
     background-color: #E5E5E5;
 }
 #CadUsu{
-    
     position:relative !important;
     left:50%;
     top:-70px  !important ;
@@ -157,8 +157,9 @@ export default {
 #btnSave3{
     position: relative;
     top: 0px;
-    left: 40%;
+    left: 44.5% !important;
     background-color: #F45267 !important;
+    border: none;
 }
 /*Tela 2*/
 #CadUsu2{
@@ -197,73 +198,78 @@ export default {
     padding: 5px;
     text-align: left;
 }
-@media (max-width:801px){
-    .titleForm{
-    margin-left: -40px;
-    padding: 5px;
-    text-align: left;
-    font-size: 14pt;
-}
-    h3#formtitle{
-    margin-left: -40px;
-    padding: 0px;
-    text-align: left;
-    font-size: 18pt;
-}
-.titleInput1{
-    font-size: 15pt;
-    text-align: left;
-}
-div#name{
-  position: relative;
-  left: -45%;
-}
-.name{
-    width: 180%;
-    padding: 20px;
-}
-div#data{
-    position: relative;
-  left: -45%;
-}
-.data{
-    width: 180%;
-    padding: 20px;
-}
-div#CPF{
-  position: relative;
-  left: -45%;
-}
-.CPF{
-    width: 180%;
-    padding: 20px;
-}
-div#telefone{
-  position: relative;
-  left: -45%;
-}
-.telefone{
-    width: 180%;
-    padding: 20px;
-}
-#btnSave3{
-    position: relative;
-    top: 0px;
-    left: 40%;
-    background-color: #F45267 !important;
-}
 
+
+    @media (max-width:801px){
+
+    #main{
+        position: relative;
+        left: 0; right: 0;
+        top: -12px;
+    }   
+        .titleForm{
+        margin-left: -40px;
+        padding: 5px;
+        text-align: left;
+        font-size: 14pt;
+    }
+        h3#formtitle{
+        margin-left: -40px;
+        padding: 0px;
+        text-align: left;
+        font-size: 18pt;
+    }
+    .titleInput1{
+        font-size: 15pt;
+        text-align: left;
+    }
+    div#name{
+    position: relative;
+    left: -45%;
+    }
+    .name{
+        width: 180%;
+        padding: 20px;
+    }
+    div#data{
+        position: relative;
+    left: -45%;
+    }
+    .data{
+        width: 180%;
+        padding: 20px;
+    }
+    div#CPF{
+    position: relative;
+    left: -45%;
+    }
+    .CPF{
+        width: 180%;
+        padding: 20px;
+    }
+    div#telefone{
+    position: relative;
+    left: -45%;
+    }
+    .telefone{
+        width: 180%;
+        padding: 20px;
+    }
+    #btnSave3{
+        position: relative;
+        top: 0px;
+        left: 40%;
+        background-color: #F45267 !important;
+    }
 }
 @media (min-width: 320px){
-/*tela 2*/
+
  h3#formtitle2{
      position: relative;
      top: 0px !important;
     margin:20px 0px 0px -40px;
     text-align: left;
     font-size: 15pt;
-    
-    
 }
 .titleInput2{
     font-size: 15pt;
@@ -381,6 +387,7 @@ div#senha2{
 }
 
 }
+
 </style>
 
        

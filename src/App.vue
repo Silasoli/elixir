@@ -23,9 +23,7 @@ export default {
 #body{
   background-color:#E5E5E5;
 }
-#footer{
-  display: none;
-}
+
 #app {
   /* font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

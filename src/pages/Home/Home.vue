@@ -16,8 +16,8 @@
         <div id="divD2" class="divsAgen">
           <h2 class="divTitleAgen">Segunda Dose</h2>
             <p v-if="this.dadosUsuario[0].dataDose2=='null'">Não agendada</p>
-            <p v-if="this.dadosUsuario[0].dataDose2!='null'">Data primeira dose: {{this.dadosUsuario[0].dataDose2}}</p>
-            <p v-if="this.dadosUsuario[0].horaDose2!='null'">Hora primeira dose: {{this.dadosUsuario[0].horaDose2}}</p>
+            <p v-if="this.dadosUsuario[0].dataDose2!='null'">Data segunda dose: {{this.dadosUsuario[0].dataDose2}}</p>
+            <p v-if="this.dadosUsuario[0].horaDose2!='null'">Hora segunda dose: {{this.dadosUsuario[0].horaDose2}}</p>
         </div>
       </div>
     </div>
@@ -126,8 +126,8 @@ export default {
         #prin{
           height: 120vh;
         }
-
-  @media screen and (min-width:320px){
+   }
+  @media screen and (max-width:320px){
      #divInfo{ 
   width: 100%;
   padding-top: 15px;

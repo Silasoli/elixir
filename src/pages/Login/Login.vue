@@ -150,7 +150,6 @@ h1 {
 }
 }
 
-@media screen and (min-height: 900px){
 
 @media screen and (max-width:1440px)  {
    .wallpaper-login {
@@ -164,7 +163,7 @@ h1 {
 }
 
 }
-@media screen and (min-height: 812px){
+@media screen and (min-height: 900px){
 
     .wallpaper-login {
     margin-top: 99px;

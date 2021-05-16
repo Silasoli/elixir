@@ -2,38 +2,35 @@
   <div id="mainDiv2">
       <!-- TELA 1 -->
       <div id="mainDiv">
-        <div id="titlePage">
-       <h3>Selecione data , posto e horário:</h3>
-      </div>
-      <div>
-      </div>
-      <div id="localDrop">
-        <div id="selectLocal">
-          <el-select class="selectLocalItem" v-model="value" placeholder="Selecione um local">
-            <el-option
-              v-for="item in options"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value">
-            </el-option>
-          </el-select>
-          <div>
-           <el-time-select class="selectHours" placeholder="Selecione um Horário" v-model="horaSelecionada" :picker-options="{  start: '08:30', step: '00:15', end: '18:30'}"></el-time-select>
+          <div id="titlePage">
+            <h3>Selecione data , posto e horário:</h3>
+          </div>
+        <div id="localDrop">
+          <div id="selectLocal">
+            <el-select class="selectLocalItem" v-model="value" placeholder="Selecione um local">
+              <el-option
+                v-for="item in options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value">
+              </el-option>
+            </el-select>
+            <div>
+            <el-time-select class="selectHours" placeholder="Selecione um Horário" v-model="horaSelecionada" :picker-options="{  start: '08:30', step: '00:15', end: '18:30'}"></el-time-select>
+            </div>
           </div>
         </div>
+          <div id="selectDate">
+            <v-date-picker class="Data" mode="date" v-model='selectedDate'  :value="null" color="purple" is-dark is-expanded />
+          </div> 
+              <b-button id="btnSave1" class="saveBtn"    @click="verifyExist" variant="primary">Salvar</b-button>
       </div>
-        <div id="selectDate">
-           <v-date-picker class="Data" mode="date" v-model='selectedDate'  :value="null" color="purple" is-dark is-expanded />
-        </div> 
-            <b-button id="btnSave1" class="saveBtn"    @click="verifyExist" variant="primary">Salvar</b-button>
-      </div>
-  </div>
-  <div id="secondDiv">
+        <div id="secondDiv">
       <div id="secondDivContent">
         <h3>Agendamento já realizado</h3>
         <b-button id="secondDivBtn" @click="gerarReciboAgen2" variant="primary">Gerar Comprovante de Agendamento</b-button>
       </div>
-  </div>
+</div>
   </div>
 </template>
 
@@ -182,10 +179,10 @@ import jsPDF from 'jspdf';
                   const dataDose1 = res.data.dataDose1;
                   const horaDose1 = res.data.horaDose1;
                     if (dataDose1!='null' && horaDose1!='null') {
-                      document.getElementById('mainDiv2').style.display = 'none';
+                      document.getElementById('mainDiv').style.display = 'none';
                       document.getElementById('secondDiv').style.display = 'block';
                     }  else {
-                        document.getElementById('mainDiv2').style.display = 'block';
+                        document.getElementById('mainDiv').style.display = 'block';
                       document.getElementById('secondDiv').style.display = 'none';
                     }
             });        
@@ -196,57 +193,51 @@ import jsPDF from 'jspdf';
 </script>
 
 <style scoped>
-
-*{
-  box-sizing: border-box;
-}
-#mainDiv2{
+#selectLocal{
   width: 100%;
-  overflow-x:hidden !important;
-  background-color:#E5E5E5 !important;
-  height:110vh !important;
-}
-/* Style TELA 1 */
-#titlePage{
-  text-align: center;
-  width: 100%;
-  float: left;
-  display: flex;
-  flex-wrap: wrap;
-  
-}
-#selectDate{
-  width: 120% !important;
+  margin-top: 30px;
 }
 .selectLocalItem{
-  position: relative;
-  left: 50%;
-  top: 70px;
+  width: 40%;
+  float: right;
 }
-
 .selectHours{
-  position: relative;
-  left: 120%;
-  top: 28px;
+  width: 40% !important;
+  margin-bottom: 30px;
+  float: left;
 }
 #mainDiv{
   width: 50%;
   padding-top: 30px;
   position: relative;
-  top: 140px; bottom: 0;
+  top: 70px; bottom: 0;
   left: 0; right: 0;
   margin: auto;
 }
-#btnSave1{
-  position: relative;
-  top: -100px !important;
- 
+.saveBtn{
+   float: right;
+    margin-top: 10px !important;
+    margin: 5px;
+    background-color: #F45267 !important;
+    border: none !important;
 }
-
-
-
+#secondDiv{
+  width: 100%;
+  padding-top: 30px;
+  position: relative;
+  top: 200px; bottom: 0;
+  left: 0px; right: 0px;
+  margin: auto;
+}
+#secondDivContent{
+  width: 60%;
+  float: right;
+}
+#secondDivBtn{
+  width: 36%;
+}
 /*Tela de 320*/
-@media screen and (min-width:280px){
+@media screen and (max-width:280px){
   #mainDiv2{
   background-color:#E5E5E5 !important;
   max-height:260% !important;
@@ -288,7 +279,7 @@ div#titlePage  {
 
 }
 
-@media screen and (min-width:768px){
+@media screen and (max-width:768px){
   #mainDiv2{
   background-color:#E5E5E5 !important;
   max-height:260% !important;
@@ -347,7 +338,7 @@ div#titlePage  {
 
 }
 
-@media screen and (min-width:1281px){
+@media screen and (max-width:1281px){
   #mainDiv2{
   background-color:#E5E5E5 !important;
   max-height:260% !important;
@@ -360,7 +351,6 @@ div#titlePage  {
     top: -100px  ;
 }
 #selectDate{
-  
   position: relative;
   left: -10%;
   top: -90px;
@@ -387,11 +377,10 @@ div#titlePage  {
    background-color: #F45267 !important;
   position: relative !important;
   top: -60px !important;
-  left: 102%!important;
- 
+  left: 106.5%!important;
 }
 
-}
+} 
 
 
 </style>

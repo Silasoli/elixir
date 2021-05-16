@@ -1,5 +1,4 @@
 <template>
-
   <div>
     <div  id="mainDiv">
       <div id="titlePage">
@@ -70,12 +69,12 @@
   </div>
     </div>
   </div>
+</template>
+
 
 <script>
 import api from '/src/services/api';
 import jsPDF from 'jspdf';
-
-
   const toLower = text => {
     return text.toString().toLowerCase()
   }
@@ -99,12 +98,10 @@ import jsPDF from 'jspdf';
       search: null,
       users: [
         {
-
         }
       ],
       dadosAgen:[
-
-
+        {
         }
       ],
         horaSelecionada: '',
@@ -131,7 +128,6 @@ import jsPDF from 'jspdf';
           { value: 'astrazeneca', text: 'Astrazeneca' },
           { value: 'coronavac', text: 'Coronavac' },
         ]
-
     }),
     methods: {
       verifyExist: function(){
@@ -169,7 +165,6 @@ import jsPDF from 'jspdf';
           const data2 =  dataDoDia.toString().substring(0, 15)
           const mesEn = ['jan', 'feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
           const mesPt = ['01', '02','03','04','05','06','07','08','09','10','11','12'];
-
               const date = data2.toLowerCase();;
               const mes = date.substring(4,7);
               const dia = date.substring(8,10);
@@ -185,7 +180,6 @@ import jsPDF from 'jspdf';
                   const DataV1 = this.traduDate(this.selectedDate);
                   const DataV2 = this.getMes(DataV1);
                   const DataV3 = DataV2.replace("/", " de ").replace("/", " de "); 
-
                   doc.text('Recibo de Agendamento', 75,10);
                   doc.text('Paciente: '+Nome,25,25);
                   doc.text('Dose: Primeira',25,35);
@@ -227,7 +221,6 @@ import jsPDF from 'jspdf';
           const data2 =  dataRecebida.toString().substring(0, 15)
           const mesEn = ['jan', 'feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
           const mesPt = ['Jan', 'Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
-
               const date = data2.toLowerCase();;
               const mes = date.substring(4,7);
               const dia = date.substring(8,10);
@@ -241,7 +234,6 @@ import jsPDF from 'jspdf';
           const mesPt = ['Jan', 'Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
           const mesName = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto',
           'Setembro','Outubro','Novembro','Dezembro']
-
             const dia = mesRecebido.substring(0,3);
             const mes = mesRecebido.substring(3,6);
             const ano = mesRecebido.substring(6,11);
@@ -302,8 +294,6 @@ import jsPDF from 'jspdf';
     border-width: 2px;
     font-size: 16px;
     color: black;
-    
-   
   }
   #mainDiv{
   width: 61.8%;
@@ -333,7 +323,6 @@ import jsPDF from 'jspdf';
     font-weight: bolder;
     
   }
-
   #btn3dose{
     width: 100%;
     height: 50px;
@@ -394,306 +383,4 @@ import jsPDF from 'jspdf';
   width: 35px;
   height: 36px;
 }
-
-  @media screen and (min-width:20em){
-    
-   #title{
-     position: relative;
-     top: -60px;
-     left: -24%;
-   }
-   #dataDoDia{
-     position: absolute;
-     right: -30%;
-   } 
-   #searchBtn{
-     position: relative;
-     top: -30px;
-     left: 100%;
-   }
-    
-   #filtroInicio{
-      position: relative;
-      top: -150px !important;
-   }
-   #filtroFim{
-     position: relative;
-     top: -170px;
-   }
-    #tableDiv{
-    width: 160%;
-    position: absolute;
-    top: 280px; bottom: 0;
-    left: -30%; right: 0;
-    margin: auto;
-      
-    }
-   
-#mainDiv{
-       height: 150vh !important;
-       width: 60%;
-       background-color: #E5E5E5;
-     }
-     #pesquisa{
-       width: 280%;
-       
-     }
-     #search{
-       position: relative;
-       top: 0px;
-       left: -30%;
-       
-     }
-     #hora{
-       width: 10%;
-       text-align: start;
-     }
-     #dose2{
-       width: 1%;
-     }
-    .table{
-      width: 10%;
-    }
-  }
-  @media  screen and (min-width:375px){
-   #title{
-     position: relative;
-     top: -60px;
-     left: -24%;
-   }
-   #dataDoDia{
-     position: absolute;
-     right: -30%;
-   } 
-   #searchBtn{
-     position: relative;
-     top: -30px;
-     left: 100%;
-   }
-   #filtroInicio{
-      position: relative;
-      top: -150px !important;
-   }
-   #filtroFim{
-     position: relative;
-     top: -170px;
-   }
-   
-   #tableDiv{
-    width: 160%;
-    position: absolute;
-    top: 260px; bottom: 0;
-    left: -30%; right: 0;
-    margin: auto;
-  }
-     #mainDiv{
-       height: 150vh !important;
-       width: 60%;
-       background-color: #E5E5E5;
-     }
-    #pesquisa{
-       width: 280%;
-       
-     }
-     #search{
-       position: relative;
-       top: 0px;
-       left: -50%;
-       
-     }
-     #hora{
-       width: 10%;
-       text-align: start;
-     }
-     #dose2{
-       width: 1%;
-     }
-    .table{
-      width: 10%;
-    }
-  }
-  @media screen and (min-width:425px){
-#tableDiv{
-    width: 160%;
-    position: absolute;
-    top: 260px; bottom: 0;
-    left: -30%; right: 0;
-    margin: auto;
-  }
-    #filtroInicio{
-      position: relative;
-      top: -150px !important;
-      left: -15%;
-   }
-   #filtroFim{
-     position: relative;
-     top: -170px;
-     left: -15%;
-   }
-   #pesquisa{
-       width: 280%;
-       
-     }
-     #search{
-       position: relative;
-       top: 0px;
-       left: -55%;
-       
-     }
-     #hora{
-       width: 10%;
-       text-align: start;
-     }
-     #dose2{
-       width: 1%;
-     }
-    .table{
-      width: 10%;
-    }
-  
-  }
-@media screen and (min-width:768px){
- 
-  #tableDiv{
-    width: 160%;
-    position: absolute;
-    top: 260px; bottom: 0;
-    left: -30%; right: 0;
-    margin: auto;
-  }
-  #searchDiv{
-    position: relative;
-    top: 80px;
-  }
-    #filtroInicio{
-      position: relative;
-      top: -3px !important;
-      left: -40%;
-   }
-   #filtroFim{
-     position: relative;
-     top: -100px;
-     left: 0%;
-   }
-   #pesquisa{
-       width: 113.4%;
-       
-     }
-     #search{
-       position: relative;
-       top: 0px;
-       left: -2%;
-       
-     }
-     #hora{
-       width: -10%;
-       text-align: start;
-     }
-     #dose2{
-       width: 1%;
-     }
-    .table{
-      width: 10%;
-    }
-   
-}
-@media screen and (min-width:1024px){
- 
-  #tableDiv{
-    width: 160%;
-    position: absolute;
-    top: 230px; bottom: 0;
-    left: -30%; right: 0;
-    margin: auto;
-  }
-  #searchDiv{
-    position: relative;
-    top: 80px;
-  }
-    #filtroInicio{
-      position: relative;
-      top: 40px !important;
-      left: -40%;
-   }
-   #filtroFim{
-     position: relative;
-     top: -1px;
-     left: 30%;
-   }
-   #pesquisa{
-       width: 100%;
-       
-     }
-     #search{
-       position: relative;
-       top: 0px;
-       left: -2%;
-       
-     }
-     #hora{
-       width: -10%;
-       text-align: start;
-     }
-     #dose2{
-       width: 1%;
-     }
-    .table{
-      width: 2%;
-    }
-}
-@media screen and (min-width:1281px){
- #mainDiv{
-   height: 120vh !important;
- }
-  #tableDiv{
-    width: 130%;
-    position: absolute;
-    top: 170px; bottom: 0;
-    left: -10%; right: 0;
-    margin: auto;
-  }
-   #filtro{
-    position: relative;
-    top: -50px;
-  }
-
-  #searchDiv{
-    position: relative;
-    left: -110%;
-    top: 80px;
-  }
- 
-    #filtroInicio{
-      position: relative;
-      top: 40px !important;
-      left: -40%;
-   }
-   #filtroFim{
-     position: relative;
-     top: 40px;
-     left: 20%;
-   }
-   #pesquisa{
-       width: 100%;
-       
-     }
-     #search{
-       position: relative;
-       top: 0px;
-       left: -2%;
-       
-     }
-     #hora{
-       width: -10%;
-       text-align: start;
-     }
-     #dose2{
-       width: 1%;
-     }
-    .table{
-      width: 2%;
-    }
-}
-
 </style>
-
