@@ -43,7 +43,7 @@ import jsPDF from 'jspdf';
      components: {
   },
    mounted() {
-      // this.VerifySession();
+      this.VerifySession();
     },
     data() {
       return {
