@@ -31,8 +31,12 @@ export default {
   text-align: center;
   background: #E5E5E5;
   color: #2c3e50; */
- 
+  
+  
+  
 }
+ 
+
 
 
  

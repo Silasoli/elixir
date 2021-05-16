@@ -7,8 +7,10 @@
       <transition name="fade">
          <div v-if="!registerActive" class="wallpaper-login"></div>
       </transition>
-      <div class="wallpaper-register"></div>
-
+     
+       <div id="logo"><img src="../../assets/elixirlogo.png" alt=""></div>
+           <div class="wallpaper-register"></div>
+      
       <div class="container">
          <div class="row">
             <div class="col-lg-4 col-md-6 col-sm-8 mx-auto">
@@ -89,6 +91,16 @@ export default {
 </script>
 
 <style scoped>
+
+   
+ #logo{
+    z-index: 1;
+    width: 10%;
+    position: fixed;
+    bottom: 50px;
+    right: 10px;
+ }
+
 p {
    line-height: 1rem;
 }
@@ -104,6 +116,7 @@ input {
    height: 80vh;
 }
 .wallpaper-login {
+    z-index: 0;
     margin-top: 76px;
     background: url('https://docs.google.com/uc?export=download&id=1hc7I5hhzrzJq9LKXv_xPcsQefSfL0xaT')
     no-repeat center center;
@@ -140,26 +153,21 @@ h1 {
 }
 
 
-@media screen and (max-width:1440px)  {
-   .wallpaper-login {
-    margin-top: 60px;
-    background: url('https://docs.google.com/uc?export=download&id=1hc7I5hhzrzJq9LKXv_xPcsQefSfL0xaT')
-   }
-    h1 {
-    width: 100%;
-}
-}
+
 
 
 @media screen and (max-width:1440px)  {
+   
+   
    .wallpaper-login {
     margin-top: 66px;
     background: url('https://docs.google.com/uc?export=download&id=1hc7I5hhzrzJq9LKXv_xPcsQefSfL0xaT')
-    no-repeat center center;
+    no-repeat center center ;
     background-size: cover;
     height: 92%;
     position: absolute;
     width: 100%;
+    
 }
 
 }
@@ -173,6 +181,7 @@ h1 {
     height: 92%;
     position: absolute;
     width: 100%;
+    
 }
 .container{
  position: relative;

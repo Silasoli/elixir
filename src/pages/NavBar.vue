@@ -2,8 +2,8 @@
 <div>
   <div>
     <b-navbar id="nav">
-
-      <h1 id="titleNav" href="#">Elixir</h1>
+    
+      <div id="logo"></div>
       <b-button v-if="id!='null'" id="sideMenu" v-b-toggle.sidebar-right></b-button>
       <b-button v-if="id!='null'" id="logout" @click="destruirSessao"></b-button>
     </b-navbar>
@@ -72,7 +72,14 @@ export default {
   height: 70px;
   font-weight: bolder; 
   text-align: center !important;
+  background-image:url("../assets/elixirlogo.png");
+  background-size: 13.1%;
+  background-position: left;
+  background-position-x: -20px;
+  background-repeat: no-repeat;
+  
 }
+
 #sideMenu{
   width: 40px;
   height: 40px;
