@@ -171,8 +171,10 @@ export default {
 #btnSave4{
      position: relative !important;
     top: 10px !important;
-    left: 35%;
+    margin: 5px;
+    left: 29% !important;
     background-color: #F45267 !important;
+    border: none;
 }
 #returnBtn2{
     float: left;

@@ -81,9 +81,15 @@ import api from '/src/services/api';
               return result;
       },
       getDados: function(){
-        api.get(`http://localhost:3000/api/v1/cidadaos`)
+        api.get(`http://localhost:3000/api/v1/cidadaos/agen2`)
         .then((res)=>{
-          this.users = res.data;
+          console.log(res.data)
+          if (res.data.length===0) {
+             this.$swal('Sem agendamentos')
+             document.getElementById('tableDiv').style.display= 'none';
+          }else{
+            this.users = res.data;
+          }
         });
       },
       searchOnTable () {
