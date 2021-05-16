@@ -1,5 +1,6 @@
 <template>
     <div id="main">
+        
         <div id="CadUsu" class="cad">
             <h3 class="titleForm">Para começar realize o cadastro</h3>
                 <div id="name">
@@ -134,6 +135,8 @@ export default {
 </script>
 
 <style scoped>
+
+
 #main{
     max-width: 100%;
     text-align: center;

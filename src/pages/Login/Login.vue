@@ -8,7 +8,7 @@
          <div v-if="!registerActive" class="wallpaper-login"></div>
       </transition>
      
-       <div id="logo"><img src="../../assets/elixirlogo.png" alt=""></div>
+      
            <div class="wallpaper-register"></div>
       
       <div class="container">
@@ -93,14 +93,7 @@ export default {
 <style scoped>
 
    
- #logo{
-    z-index: 1;
-    width: 10%;
-    position: fixed;
-    bottom: 50px;
-    right: 10px;
- }
-
+ 
 p {
    line-height: 1rem;
 }

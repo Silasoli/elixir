@@ -74,8 +74,7 @@ export default {
   text-align: center !important;
   background-image:url("../assets/elixirlogo.png");
   background-size: 13.1%;
-  background-position: left;
-  background-position-x: -20px;
+  background-position: center;
   background-repeat: no-repeat;
   
 }
@@ -112,5 +111,66 @@ export default {
 #titleNav{
   margin-top: 10px;
   
+}
+@media screen and (min-width: 320px) {
+     #nav{
+  background-color: #6A5ACD !important;
+  height: 70px;
+  font-weight: bolder; 
+  text-align: center !important;
+  background-image:url("../assets/elixirlogo1.png");
+  background-size: 45.1%;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+}
+
+}
+@media screen and (min-width: 768px) {
+     #nav{
+  background-color: #6A5ACD !important;
+  height: 70px;
+  font-weight: bolder; 
+  text-align: center !important;
+  background-image:url("../assets/elixirlogo1.png");
+  
+  background-size: 23.1%;
+  background-position: center;
+  background-position-y:-20px;
+  background-repeat: no-repeat;
+  
+}
+
+}
+@media screen and (min-width: 1024px) {
+     #nav{
+  background-color: #6A5ACD !important;
+  height: 70px;
+  font-weight: bolder; 
+  text-align: center !important;
+  background-image:url("../assets/elixirlogo1.png");
+  
+  background-size: 15.1%;
+  background-position: center;
+  background-position-y:-8px;
+  background-repeat: no-repeat;
+  
+}
+
+}
+@media screen and (min-width: 1281px) {
+     #nav{
+  background-color: #6A5ACD !important;
+  height: 70px;
+  font-weight: bolder; 
+  text-align: center !important;
+  background-image:url("../assets/elixirlogo1.png");
+  background-size: 13.1%;
+  background-position: center;
+  background-position-y:40%;
+  background-repeat: no-repeat;
+  
+}
+
 }
 </style>
