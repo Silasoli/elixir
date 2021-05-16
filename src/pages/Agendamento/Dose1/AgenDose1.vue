@@ -3,7 +3,7 @@
       <!-- TELA 1 -->
       <div id="mainDiv">
           <div id="titlePage">
-            <h3>Selecione data , posto e horário:</h3>
+            <h3>Selecione local , data e hora:</h3>
           </div>
         <div id="localDrop">
           <div id="selectLocal">
@@ -43,7 +43,7 @@ import jsPDF from 'jspdf';
      components: {
   },
    mounted() {
-      this.VerifySession();
+      // this.VerifySession();
     },
     data() {
       return {
@@ -193,6 +193,10 @@ import jsPDF from 'jspdf';
 </script>
 
 <style scoped>
+#secondDiv{
+  z-index: -1;
+}
+
 #selectLocal{
   width: 100%;
   margin-top: 30px;
@@ -237,7 +241,7 @@ import jsPDF from 'jspdf';
   width: 36%;
 }
 /*Tela de 320*/
-@media screen and (max-width:280px){
+@media screen and (min-width:280px){
   #mainDiv2{
   background-color:#E5E5E5 !important;
   max-height:260% !important;
@@ -247,7 +251,7 @@ import jsPDF from 'jspdf';
 div#titlePage  {
     text-align: center;
     position: absolute;
-    top: -100px  ;
+    top: -40px  ;
 }
 #selectDate{
   
@@ -258,28 +262,30 @@ div#titlePage  {
 }
 .selectLocalItem{
   position: relative;
-  left: -30%;
-  top: 0px;
+  left: -21%;
+  top: 30px;
   width: 120%;
+  z-index: 1;
 }
 
 .selectHours{
   position: relative;
-  left: -30%;
-  top: 298px;
-  width: 100%;
+  left: -40%;
+  top: 320px;
+  width: 120% !important;
 }
-#btnSave1{
+.saveBtn{
    background-color: #F45267 !important;
   position: relative !important;
-  top: -10px !important;
-  left: 80%!important;
+  top: -30px !important;
+  left: 40%!important;
+  border: none !important;
  
 }
 
 }
 
-@media screen and (max-width:768px){
+@media screen and (min-width:768px){
   #mainDiv2{
   background-color:#E5E5E5 !important;
   max-height:260% !important;
@@ -289,7 +295,7 @@ div#titlePage  {
 div#titlePage  {
     text-align: center;
     position: absolute;
-    top: -100px  ;
+    top: -20px  ;
 }
 
 #secondDiv{
@@ -312,72 +318,74 @@ div#titlePage  {
   
   position: relative;
   left: -38%;
-  top: -30px;
+  top: -60px;
   width: 175% !important;
 }
 .selectLocalItem{
   position: relative;
-  left: -30%;
-  top: 0px;
+  left: -87%;
+  top: -10px;
   width: 50%;
 }
 
 .selectHours{
   position: relative;
-  left: 70%;
-  top: -40px;
-  width: 60%;
+  left: 85.6%;
+  top: -50px;
+  width: 51% !important;
+  z-index: 1;
 }
-#btnSave1{
+.saveBtn{
    background-color: #F45267 !important;
   position: relative !important;
-  top: -10px !important;
-  left: 105%!important;
+  top: -60px !important;
+  left: 38%!important;
  
 }
 
 }
 
-@media screen and (max-width:1281px){
+@media screen and (min-width:1281px){
   #mainDiv2{
   background-color:#E5E5E5 !important;
-  max-height:260% !important;
+  max-height:280% !important;
   overflow-x:hidden !important;
 }
 
 div#titlePage  {
     text-align: center;
     position: absolute;
-    top: -100px  ;
+    top: -60px  ;
 }
 #selectDate{
   position: relative;
   left: -10%;
-  top: -90px;
+  top: -70px;
   width: 125% !important;
 }
 .selectLocalItem{
   position: relative;
-  left: -8%;
+  left: -69%;
   top: 0px;
   width: 40%;
 }
 
 .selectHours{
   position: relative;
-  left: 74%;
-  top: -40px;
-  width: 40%;
+  left: 80%;
+  top: 0px;
+  width: 35% !important;
 }
 #selectLocal{
   position: relative;
   top: -60px;
 }
-#btnSave1{
+.saveBtn{
    background-color: #F45267 !important;
   position: relative !important;
   top: -60px !important;
-  left: 106.5%!important;
+  left: 15%!important;
+  z-index: 1 !important;
 }
 
 } 

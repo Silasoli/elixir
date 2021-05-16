@@ -138,7 +138,7 @@ export default {
     max-width: 100%;
     text-align: center;
     /* width: 100%; */
-    /* height: 100vh; */
+    height: 90vh;
     position: relative;
     left: 0; right: 0;
     top: 100px;

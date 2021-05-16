@@ -19,5 +19,6 @@ export default {
   bottom: 0;
   color: white;
   text-align: center;
+  z-index: 1;
 }
 </style>
