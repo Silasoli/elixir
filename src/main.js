@@ -20,10 +20,13 @@ import 'sweetalert2/dist/sweetalert2.min.css';
 
 // import for routes
 import Login from './pages/Login/Login.vue';
+import LoginAplicador from './pages/Login/LoginAplicador.vue';
 import Home from './pages/Home/Home.vue';
 import CadCidadao from './pages/Cadastro/CadCidadao/CadCidadao.vue';
 import AgenDose1 from './pages/Agendamento/Dose1/AgenDose1.vue';
 import AgenDose2 from './pages/Agendamento/Dose2/AgenDose2.vue';
+import listaAgenDose from './pages/Agendamento/ListaAgenDose/ListaAgenDose.vue';
+
 
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
@@ -37,15 +40,17 @@ Vue.use(VueMaterial);
 
 const routes = [
   { path: '/', component: Login },
+  { path: '/LoginAplicador', component: LoginAplicador },
   { path: '/Home', component: Home },
   { path: '/CadCidadao', component: CadCidadao },
   { path: '/AgenDose1', component: AgenDose1 },
-  { path: '/AgenDose2', component: AgenDose2 },
-
+  { path: '/AgenDose2', component: AgenDose2 }, 
+  { path: '/listaAgenDose', component: listaAgenDose },
 ];
 
 const router = new VueRouter({
   routes,
+  jsPDF
 });
 
 new Vue({

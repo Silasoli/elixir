@@ -6,9 +6,11 @@
                     <h4 class="titleInput1">Nome Completo</h4>    
                     <b-form-input class="name" type="text" v-model="nomeField" placeholder="Nome completo" required></b-form-input>
                 </div>
+
                 <div id="data">
                     <h4 class="titleInput1">Data de Nascimento</h4>    
                     <b-form-input  class="data" type="date" v-model="dataField" placeholder="Data de Nascimento" required></b-form-input>
+
                 </div>
                 <div id="CPF">
                     <h4 class="titleInput1">CPF</h4>    
