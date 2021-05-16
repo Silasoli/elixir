@@ -2,7 +2,7 @@
   <div id="app">
     <NavBar></NavBar>
     <router-view></router-view>
-    <Footer></Footer>
+    <Footer id="footer"></Footer>
   </div>
 </template>
 
@@ -23,6 +23,9 @@ export default {
 #body{
   background-color:#E5E5E5;
 }
+#footer{
+  display: none;
+}
 #app {
   /* font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -30,5 +33,9 @@ export default {
   text-align: center;
   background: #E5E5E5;
   color: #2c3e50; */
+ 
 }
+
+
+ 
 </style>

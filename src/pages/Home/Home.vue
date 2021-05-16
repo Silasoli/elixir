@@ -110,6 +110,7 @@ export default {
     font-size: 20px;
   }
 
+
    @media screen and (max-width:768px){
      #divInfo{ 
         width: 100%;
@@ -125,5 +126,22 @@ export default {
         #prin{
           height: 120vh;
         }
+
+  @media screen and (min-width:320px){
+     #divInfo{ 
+  width: 100%;
+  padding-top: 15px;
+  position: relative;
+  top: 0;
+  bottom: 100px !important;
+  left: 0; 
+  right: 20;
+  margin: auto;
+  background-color: #6A5ACD;
+  }
+  #prin{
+    height: 120vh;
+  }
+
   }
 </style>

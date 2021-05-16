@@ -2,6 +2,7 @@
 <div>
   <div>
     <b-navbar id="nav">
+
       <h1 id="titleNav" href="#">Elixir</h1>
       <b-button v-if="id!='null'" id="sideMenu" v-b-toggle.sidebar-right></b-button>
       <b-button v-if="id!='null'" id="logout" @click="destruirSessao"></b-button>
@@ -83,6 +84,7 @@ export default {
   background-repeat: repeat-x;
   background-size: contain;
 }
+
 #logout{
   width: 40px;
   height: 40px;
@@ -102,5 +104,6 @@ export default {
 }
 #titleNav{
   margin-top: 10px;
+  
 }
 </style>

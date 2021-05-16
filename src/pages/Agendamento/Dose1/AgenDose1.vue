@@ -1,10 +1,9 @@
 <template>
-  <div>
-    <div id="totalDiv">
+  <div id="mainDiv2">
       <!-- TELA 1 -->
       <div id="mainDiv">
         <div id="titlePage">
-       <h3>Preencha o formulário abaixo:</h3>
+       <h3>Selecione data , posto e horário:</h3>
       </div>
       <div>
       </div>
@@ -24,7 +23,7 @@
         </div>
       </div>
         <div id="selectDate">
-           <v-date-picker mode="date" v-model='selectedDate'  :value="null" color="purple" is-dark is-expanded />
+           <v-date-picker class="Data" mode="date" v-model='selectedDate'  :value="null" color="purple" is-dark is-expanded />
         </div> 
             <b-button id="btnSave1" class="saveBtn"    @click="verifyExist" variant="primary">Salvar</b-button>
       </div>
@@ -183,10 +182,10 @@ import jsPDF from 'jspdf';
                   const dataDose1 = res.data.dataDose1;
                   const horaDose1 = res.data.horaDose1;
                     if (dataDose1!='null' && horaDose1!='null') {
-                      document.getElementById('totalDiv').style.display = 'none';
+                      document.getElementById('mainDiv2').style.display = 'none';
                       document.getElementById('secondDiv').style.display = 'block';
                     }  else {
-                        document.getElementById('totalDiv').style.display = 'block';
+                        document.getElementById('mainDiv2').style.display = 'block';
                       document.getElementById('secondDiv').style.display = 'none';
                     }
             });        
@@ -197,34 +196,111 @@ import jsPDF from 'jspdf';
 </script>
 
 <style scoped>
-#selectLocal{
+
+*{
+  box-sizing: border-box;
+}
+#mainDiv2{
   width: 100%;
-  margin-top: 30px;
+  overflow-x:hidden !important;
+  background-color:#E5E5E5 !important;
+  height:110vh !important;
+}
+/* Style TELA 1 */
+#titlePage{
+  text-align: center;
+  width: 100%;
+  float: left;
+  display: flex;
+  flex-wrap: wrap;
+  
+}
+#selectDate{
+  width: 120% !important;
 }
 .selectLocalItem{
-  width: 40%;
-  float: right;
+  position: relative;
+  left: 50%;
+  top: 70px;
 }
+
 .selectHours{
-  width: 40% !important;
-  margin-bottom: 30px;
-  float: left;
+  position: relative;
+  left: 120%;
+  top: 28px;
 }
 #mainDiv{
   width: 50%;
   padding-top: 30px;
   position: relative;
-  top: 40px; bottom: 0;
+  top: 140px; bottom: 0;
   left: 0; right: 0;
   margin: auto;
 }
-.saveBtn{
-   float: right;
-    margin-top: 10px !important;
-    margin: 5px;
-    background-color: #F45267 !important;
-    border: none !important;
+#btnSave1{
+  position: relative;
+  top: -100px !important;
+ 
 }
+
+
+
+/*Tela de 320*/
+@media screen and (min-width:280px){
+  #mainDiv2{
+  background-color:#E5E5E5 !important;
+  max-height:260% !important;
+  overflow-x:hidden !important;
+}
+
+div#titlePage  {
+    text-align: center;
+    position: absolute;
+    top: -100px  ;
+}
+#selectDate{
+  
+  position: relative;
+  left: -38%;
+  top: -30px;
+  width: 175% !important;
+}
+.selectLocalItem{
+  position: relative;
+  left: -30%;
+  top: 0px;
+  width: 120%;
+}
+
+.selectHours{
+  position: relative;
+  left: -30%;
+  top: 298px;
+  width: 100%;
+}
+#btnSave1{
+   background-color: #F45267 !important;
+  position: relative !important;
+  top: -10px !important;
+  left: 80%!important;
+ 
+}
+
+}
+
+@media screen and (min-width:768px){
+  #mainDiv2{
+  background-color:#E5E5E5 !important;
+  max-height:260% !important;
+  overflow-x:hidden !important;
+}
+
+div#titlePage  {
+    text-align: center;
+    position: absolute;
+    top: -100px  ;
+}
+
 #secondDiv{
   width: 100%;
   padding-top: 30px;
@@ -240,4 +316,82 @@ import jsPDF from 'jspdf';
 #secondDivBtn{
   width: 36%;
 }
+
+#selectDate{
+  
+  position: relative;
+  left: -38%;
+  top: -30px;
+  width: 175% !important;
+}
+.selectLocalItem{
+  position: relative;
+  left: -30%;
+  top: 0px;
+  width: 50%;
+}
+
+.selectHours{
+  position: relative;
+  left: 70%;
+  top: -40px;
+  width: 60%;
+}
+#btnSave1{
+   background-color: #F45267 !important;
+  position: relative !important;
+  top: -10px !important;
+  left: 105%!important;
+ 
+}
+
+}
+
+@media screen and (min-width:1281px){
+  #mainDiv2{
+  background-color:#E5E5E5 !important;
+  max-height:260% !important;
+  overflow-x:hidden !important;
+}
+
+div#titlePage  {
+    text-align: center;
+    position: absolute;
+    top: -100px  ;
+}
+#selectDate{
+  
+  position: relative;
+  left: -10%;
+  top: -90px;
+  width: 125% !important;
+}
+.selectLocalItem{
+  position: relative;
+  left: -8%;
+  top: 0px;
+  width: 40%;
+}
+
+.selectHours{
+  position: relative;
+  left: 74%;
+  top: -40px;
+  width: 40%;
+}
+#selectLocal{
+  position: relative;
+  top: -60px;
+}
+#btnSave1{
+   background-color: #F45267 !important;
+  position: relative !important;
+  top: -60px !important;
+  left: 102%!important;
+ 
+}
+
+}
+
+
 </style>

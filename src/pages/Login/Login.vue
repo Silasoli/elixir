@@ -1,6 +1,7 @@
 <template>
-  <div>
-      <div id="principal">
+  <div id="principal">
+      <div id="app">
+
 
    <div class="login-page">
       <transition name="fade">
@@ -103,7 +104,7 @@ input {
    height: 80vh;
 }
 .wallpaper-login {
-    margin-top: 68px;
+    margin-top: 76px;
     background: url('https://docs.google.com/uc?export=download&id=1hc7I5hhzrzJq9LKXv_xPcsQefSfL0xaT')
     no-repeat center center;
     background-size: cover;
@@ -118,6 +119,7 @@ h1 {
     animation-name: errorShake;
     animation-duration: 0.3s;
 }
+
 
 @keyframes errorShake {
    0% {
@@ -137,6 +139,7 @@ h1 {
    }
 }
 
+
 @media screen and (max-width:1440px)  {
    .wallpaper-login {
     margin-top: 60px;
@@ -148,6 +151,21 @@ h1 {
 }
 
 @media screen and (min-height: 900px){
+
+@media screen and (max-width:1440px)  {
+   .wallpaper-login {
+    margin-top: 66px;
+    background: url('https://docs.google.com/uc?export=download&id=1hc7I5hhzrzJq9LKXv_xPcsQefSfL0xaT')
+    no-repeat center center;
+    background-size: cover;
+    height: 92%;
+    position: absolute;
+    width: 100%;
+}
+
+}
+@media screen and (min-height: 812px){
+
     .wallpaper-login {
     margin-top: 99px;
     background: url('https://docs.google.com/uc?export=download&id=1hc7I5hhzrzJq9LKXv_xPcsQefSfL0xaT')
