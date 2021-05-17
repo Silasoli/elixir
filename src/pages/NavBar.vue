@@ -70,13 +70,6 @@ export default {
 #nav{
   background-color: #6A5ACD !important;
   height: 70px;
-  font-weight: bolder; 
-  text-align: center !important;
-  background-image:url("../assets/elixirlogo.png");
-  background-size: 13.1%;
-  background-position: center;
-  background-repeat: no-repeat;
-  
 }
 
 #sideMenu{
@@ -112,7 +105,7 @@ export default {
   margin-top: 10px;
   
 }
-@media screen and (min-width: 320px) {
+/* @media screen and (max-width: 320px) {
      #nav{
   background-color: #6A5ACD !important;
   height: 70px;
@@ -126,7 +119,7 @@ export default {
 }
 
 }
-@media screen and (min-width: 768px) {
+@media screen and (max-width: 768px) {
      #nav{
   background-color: #6A5ACD !important;
   height: 70px;
@@ -142,7 +135,7 @@ export default {
 }
 
 }
-@media screen and (min-width: 1024px) {
+@media screen and (max-width: 1024px) {
      #nav{
   background-color: #6A5ACD !important;
   height: 70px;
@@ -158,7 +151,7 @@ export default {
 }
 
 }
-@media screen and (min-width: 1281px) {
+@media screen and (max-width: 1281px) {
      #nav{
   background-color: #6A5ACD !important;
   height: 70px;
@@ -172,5 +165,5 @@ export default {
   
 }
 
-}
+} */
 </style>

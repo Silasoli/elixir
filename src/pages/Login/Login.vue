@@ -2,15 +2,10 @@
   <div id="principal">
       <div id="app">
 
-
    <div class="login-page">
       <transition name="fade">
          <div v-if="!registerActive" class="wallpaper-login"></div>
       </transition>
-     
-      
-           <div class="wallpaper-register"></div>
-      
       <div class="container">
          <div class="row">
             <div class="col-lg-4 col-md-6 col-sm-8 mx-auto">
@@ -92,13 +87,13 @@ export default {
 
 <style scoped>
 
-   
  
 p {
    line-height: 1rem;
 }
 .card {
    padding: 20px;
+   opacity: 90%;
 }
 input {
     margin-bottom: 20px;
@@ -109,11 +104,12 @@ input {
    height: 80vh;
 }
 .wallpaper-login {
-    z-index: 0;
+    /* z-index: 0; */
     margin-top: 76px;
-    background: url('https://docs.google.com/uc?export=download&id=1hc7I5hhzrzJq9LKXv_xPcsQefSfL0xaT')
+    background: url('../../assets/slide2.png')
     no-repeat center center;
     background-size: cover;
+    background-position-y: 10px;
     height: 89.5%;
     position: absolute;
     width: 100%;
@@ -154,23 +150,28 @@ h1 {
    
    .wallpaper-login {
     margin-top: 66px;
-    background: url('https://docs.google.com/uc?export=download&id=1hc7I5hhzrzJq9LKXv_xPcsQefSfL0xaT')
-    no-repeat center center ;
+     background: url('../../assets/slide2.png')
+    no-repeat center center;
     background-size: cover;
+    background-position-y: 10px;
     height: 92%;
     position: absolute;
     width: 100%;
     
 }
-
+   .card{
+      position: relative;
+      top: 100px;
+   }
 }
-@media screen and (min-height: 812px){
+@media screen and (max-height: 812px){
 
     .wallpaper-login {
     margin-top: 99px;
-    background: url('https://docs.google.com/uc?export=download&id=1hc7I5hhzrzJq9LKXv_xPcsQefSfL0xaT')
+    background: url('../../assets/slide2.png')
     no-repeat center center;
     background-size: cover;
+    background-position-y: 10px;
     height: 92%;
     position: absolute;
     width: 100%;
@@ -179,6 +180,11 @@ h1 {
 .container{
  position: relative;
  top: -100px !important;
+}
+
+ .card{
+      position: relative;
+     top: 100px;
 }
 }
 </style>

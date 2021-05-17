@@ -79,6 +79,7 @@ p {
 }
 .card {
    padding: 20px;
+   opacity: 90%;
 }
 input {
     margin-bottom: 20px;
@@ -89,10 +90,12 @@ input {
    height: 80vh;
 }
 .wallpaper-login {
-    margin-top: 68px;
-    background: url('https://docs.google.com/uc?export=download&id=1hc7I5hhzrzJq9LKXv_xPcsQefSfL0xaT')
+    /* z-index: 0; */
+    margin-top: 76px;
+    background: url('../../assets/slide2.png')
     no-repeat center center;
     background-size: cover;
+    background-position-y: 10px;
     height: 89.5%;
     position: absolute;
     width: 100%;
@@ -104,6 +107,7 @@ h1 {
     animation-name: errorShake;
     animation-duration: 0.3s;
 }
+
 
 @keyframes errorShake {
    0% {
@@ -123,29 +127,50 @@ h1 {
    }
 }
 
-@media screen and (max-width:1440px)  {
-   .wallpaper-login {
-    margin-top: 60px;
-    background: url('https://docs.google.com/uc?export=download&id=1hc7I5hhzrzJq9LKXv_xPcsQefSfL0xaT')
-   }
-    h1 {
-    width: 100%;
-}
-}
 
-@media screen and (min-height: 900px){
-    .wallpaper-login {
-    margin-top: 99px;
-    background: url('https://docs.google.com/uc?export=download&id=1hc7I5hhzrzJq9LKXv_xPcsQefSfL0xaT')
+
+
+
+@media screen and (max-width:1440px)  {
+   
+   
+   .wallpaper-login {
+    margin-top: 66px;
+     background: url('../../assets/slide2.png')
     no-repeat center center;
     background-size: cover;
+    background-position-y: 10px;
     height: 92%;
     position: absolute;
     width: 100%;
+    
+}
+   .card{
+      position: relative;
+      top: 100px;
+   }
+}
+@media screen and (max-height: 812px){
+
+    .wallpaper-login {
+    margin-top: 99px;
+    background: url('../../assets/slide2.png')
+    no-repeat center center;
+    background-size: cover;
+    background-position-y: 10px;
+    height: 92%;
+    position: absolute;
+    width: 100%;
+    
 }
 .container{
  position: relative;
  top: -100px !important;
+}
+
+ .card{
+      position: relative;
+     top: 100px;
 }
 }
 </style>
