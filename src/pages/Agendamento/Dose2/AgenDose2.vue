@@ -184,7 +184,7 @@ import jsPDF from 'jspdf';
                   const DataV3 = DataV2.replace("/", " de ").replace("/", " de "); 
                   doc.text('Recibo de Agendamento', 75,10);
                   doc.text('Paciente: '+Nome,25,25);
-                  doc.text('Dose: Primeira',25,35);
+                  doc.text('Dose: Segunda',25,35);
                   doc.text('Local: '+this.value,25,45);
                   doc.text('Data: '+DataV3,25,55);
                   doc.text('Horário: '+this.horaSelecionada,25,65);

@@ -193,10 +193,6 @@ import jsPDF from 'jspdf';
 </script>
 
 <style scoped>
-#secondDiv{
-  z-index: -1;
-}
-
 #selectLocal{
   width: 100%;
   margin-top: 30px;
@@ -241,7 +237,7 @@ import jsPDF from 'jspdf';
   width: 36%;
 }
 /*Tela de 320*/
-@media screen and (min-width:280px){
+/* @media screen and (max-width:280px){
   #mainDiv2{
   background-color:#E5E5E5 !important;
   max-height:260% !important;
@@ -285,7 +281,7 @@ div#titlePage  {
 
 }
 
-@media screen and (min-width:768px){
+@media screen and (max-width:768px){
   #mainDiv2{
   background-color:#E5E5E5 !important;
   max-height:260% !important;
@@ -341,15 +337,15 @@ div#titlePage  {
   top: -60px !important;
   left: 38%!important;
  
-}
+} */
 
-}
+/* } */
 
-@media screen and (min-width:1281px){
+@media screen and (max-width:1281px){
   #mainDiv2{
   background-color:#E5E5E5 !important;
-  max-height:280% !important;
-  overflow-x:hidden !important;
+  /* max-height:280% !important; */
+  /* overflow-x:hidden !important; */
 }
 
 div#titlePage  {
